@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8328E059-34DA-4798-8B84-9BCBB750B5F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EuroManager.MatchSimulator.Domain.Tests</RootNamespace>
+    <AssemblyName>EuroManager.MatchSimulator.Domain.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\RuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="A.cs" />
+    <Compile Include="Actions\DribbleActionTests.cs" />
+    <Compile Include="Actions\PassActionTests.cs" />
+    <Compile Include="Actions\ShootActionTests.cs" />
+    <Compile Include="Builders\MatchBuilder.cs" />
+    <Compile Include="Builders\TeamBuilder.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="PositionTests.cs" />
+    <Compile Include="SimulatorTests.cs" />
+    <Compile Include="MatchTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EuroManager.Common.Domain\EuroManager.Common.Domain.csproj">
+      <Project>{78AA6D0D-CCF7-4766-B2BB-CC2955B66BB1}</Project>
+      <Name>EuroManager.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EuroManager.Common.Tests\EuroManager.Common.Tests.csproj">
+      <Project>{5F11F882-ED67-4CBE-9BCA-BFEAC63EA036}</Project>
+      <Name>EuroManager.Common.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EuroManager.Common\EuroManager.Common.csproj">
+      <Project>{28764F38-8A0D-4DD6-B5C1-8FDAC0AEE750}</Project>
+      <Name>EuroManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EuroManager.MatchSimulator.Domain\EuroManager.MatchSimulator.Domain.csproj">
+      <Project>{E0CC53BB-164B-44FB-8D52-67370450AED6}</Project>
+      <Name>EuroManager.MatchSimulator.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E0CC53BB-164B-44FB-8D52-67370450AED6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EuroManager.MatchSimulator.Domain</RootNamespace>
+    <AssemblyName>EuroManager.MatchSimulator.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\RuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\DribbleAction.cs" />
+    <Compile Include="Actions\IMatchAction.cs" />
+    <Compile Include="Actions\NullAction.cs" />
+    <Compile Include="Actions\PassAction.cs" />
+    <Compile Include="Actions\ShootAction.cs" />
+    <Compile Include="Events\DribbleEvent.cs" />
+    <Compile Include="Events\GoalEvent.cs" />
+    <Compile Include="Events\IMatchEventVisitor.cs" />
+    <Compile Include="Events\PenaltyKickEvent.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IMatchRandomizer.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Simulator.cs" />
+    <Compile Include="Events\IMatchEvent.cs" />
+    <Compile Include="Match.cs" />
+    <Compile Include="MatchResult.cs" />
+    <Compile Include="Events\PassEvent.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Position.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MatchRandomizer.cs" />
+    <Compile Include="Events\ShootEvent.cs" />
+    <Compile Include="Side.cs" />
+    <Compile Include="Team.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EuroManager.Common.Domain\EuroManager.Common.Domain.csproj">
+      <Project>{78AA6D0D-CCF7-4766-B2BB-CC2955B66BB1}</Project>
+      <Name>EuroManager.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EuroManager.Common\EuroManager.Common.csproj">
+      <Project>{28764F38-8A0D-4DD6-B5C1-8FDAC0AEE750}</Project>
+      <Name>EuroManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

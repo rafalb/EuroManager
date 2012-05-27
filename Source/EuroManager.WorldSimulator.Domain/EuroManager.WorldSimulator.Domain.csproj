@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2BED317-B589-447E-8D76-FF33842CBA43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EuroManager.WorldSimulator.Domain</RootNamespace>
+    <AssemblyName>EuroManager.WorldSimulator.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\RuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Competition.cs" />
+    <Compile Include="CompetitionSeason.cs" />
+    <Compile Include="Cup.cs" />
+    <Compile Include="CupSeason.cs" />
+    <Compile Include="CupStage.cs" />
+    <Compile Include="CupStageSeason.cs" />
+    <Compile Include="GroupStageSeason.cs" />
+    <Compile Include="GroupStats.cs" />
+    <Compile Include="IFixtureSet.cs" />
+    <Compile Include="KnockoutStage.cs" />
+    <Compile Include="KnockoutStageSeason.cs" />
+    <Compile Include="RoundDate.cs" />
+    <Compile Include="TeamPair.cs" />
+    <Compile Include="TieKnockoutStage.cs" />
+    <Compile Include="TieKnockoutStageSeason.cs" />
+    <Compile Include="TournamentPhase.cs" />
+    <Compile Include="LeagueSeason.cs" />
+    <Compile Include="EuroLeagueBuilder.cs" />
+    <Compile Include="Fixture.cs" />
+    <Compile Include="Goal.cs" />
+    <Compile Include="GroupStage.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="NationalLeague.cs" />
+    <Compile Include="League.cs" />
+    <Compile Include="LeaguePlayOffs.cs" />
+    <Compile Include="LeaguePlayOffsSeason.cs" />
+    <Compile Include="NationalLeagueSeason.cs" />
+    <Compile Include="MatchResult.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler.cs" />
+    <Compile Include="SquadMember.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="TeamStats.cs" />
+    <Compile Include="Tie.cs" />
+    <Compile Include="Tournament.cs" />
+    <Compile Include="TournamentSeason.cs" />
+    <Compile Include="World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EuroManager.Common.Domain\EuroManager.Common.Domain.csproj">
+      <Project>{78AA6D0D-CCF7-4766-B2BB-CC2955B66BB1}</Project>
+      <Name>EuroManager.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EuroManager.Common\EuroManager.Common.csproj">
+      <Project>{28764F38-8A0D-4DD6-B5C1-8FDAC0AEE750}</Project>
+      <Name>EuroManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

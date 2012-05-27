@@ -1,0 +1,744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<World xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       Name="Sample" Year="2011">
+  <EuroLeague>
+    <Division1>
+      <Club Id="Barcelona"/>
+      <Club Id="RealM"/>
+      <Club Id="ManUtd"/>
+      <Club Id="Chelsea"/>
+      <Club Id="Inter"/>
+      <Club Id="Milan"/>
+      <Club Id="BorussiaD"/>
+      <Club Id="Lille"/>
+    </Division1>
+    <Division2>
+      <Club Id="Villarreal"/>
+      <Club Id="Arsenal"/>
+      <Club Id="Bayern"/>
+      <Club Id="CSKA"/>
+      <Club Id="Porto"/>
+      <Club Id="Ajax"/>
+      <Club Id="Shakhtar"/>
+      <Club Id="Olympiakos"/>
+    </Division2>
+    <Division3>
+      <Club Id="Atletico"/>
+      <Club Id="Bilbao"/>
+      <Club Id="Getafe"/>
+      <Club Id="Malaga"/>
+      <Club Id="Osasuna"/>
+      <Club Id="Sevilla"/>
+      <Club Id="Valencia"/>
+      <Club Id="Bolton"/>
+      <Club Id="Everton"/>
+      <Club Id="Fulham"/>
+      <Club Id="Liverpool"/>
+      <Club Id="ManCity"/>
+      <Club Id="Newcastle"/>
+      <Club Id="Tottenham"/>
+      <Club Id="Wisla"/>
+      <Club Id="Polonia"/>
+    </Division3>
+  </EuroLeague>
+  <League Name="Spanish">
+    <Division Level="1" Name="Spanish Primera Division">
+      <Club Id="Bilbao" Name="Athletic Bilbao" Strategy="Wings">
+        <Player Name="Iraizoz" Position="GK" Defending="81" Attacking="50" Form="81" />
+        <Player Name="Iraola" Position="RB" Defending="79" Attacking="70" Form="79" />
+        <Player Name="San Jose" Position="RCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Amorebieta" Position="LCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="De Marcos" Position="RB" Defending="71" Attacking="65" Form="71" />
+        <Player Name="Javi Martinez" Position="CDM" Defending="82" Attacking="75" Form="82" />
+        <Player Name="Ander Herrera" Position="RCM" Defending="75" Attacking="79" Form="79" />
+        <Player Name="Iturraspe" Position="LCM" Defending="70" Attacking="73" Form="73" />
+        <Player Name="Susaeta" Position="RW" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Muniain" Position="LW" Defending="60" Attacking="78" Form="78" />
+        <Player Name="F. Llorente" Position="ST" Defending="65" Attacking="83" Form="83" />
+      </Club>
+      <Club Id="Atletico" Name="Atletico Madrid" Strategy="Playmaker">
+        <Player Name="Curtois" Position="GK" Defending="73" Attacking="50" Form="73" />
+        <Player Name="Silvio" Position="RB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="L. Perea" Position="RCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Dominguez" Position="LCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Filipe" Position="LB" Defending="80" Attacking="75" Form="80" />
+        <Player Name="Tiago" Position="RCM" Defending="75" Attacking="79" Form="79" />
+        <Player Name="Gabi" Position="LCM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Diego" Position="CAM" Defending="65" Attacking="83" Form="83" />
+        <Player Name="Reyes" Position="RW" Defending="65" Attacking="85" Form="85" />
+        <Player Name="Turan" Position="LW" Defending="65" Attacking="83" Form="83" />
+        <Player Name="Falcao" Position="ST" Defending="60" Attacking="86" Form="86" />
+      </Club>
+      <Club Id="Osasuna" Name="Osasuna Pampeluna" Strategy="Center">
+        <Player Name="Riesgo" Position="GK" Defending="73" Attacking="50" Form="73" />
+        <Player Name="Bertran" Position="RB" Defending="69" Attacking="65" Form="69" />
+        <Player Name="Roversio" Position="RCB" Defending="71" Attacking="60" Form="71" />
+        <Player Name="Sergio" Position="LCB" Defending="71" Attacking="60" Form="71" />
+        <Player Name="Raitala" Position="LB" Defending="68" Attacking="65" Form="68" />
+        <Player Name="Cejudo" Position="RM" Defending="65" Attacking="72" Form="72" />
+        <Player Name="Nekounam" Position="RCM" Defending="70" Attacking="76" Form="76" />
+        <Player Name="Punal" Position="LCM" Defending="65" Attacking="73" Form="73" />
+        <Player Name="Lamah" Position="LM" Defending="60" Attacking="69" Form="69" />
+        <Player Name="Kike Sola" Position="RF" Defending="55" Attacking="73" Form="73" />
+        <Player Name="Nino" Position="LF" Defending="55" Attacking="71" Form="71" />
+      </Club>
+      <Club Id="Barcelona" Name="FC Barcelona" Strategy="Center">
+        <Player Name="Valdes" Position="GK" Defending="85" Attacking="50" Form="85" />
+        <Player Name="Dani Alves" Position="RWB" Defending="86" Attacking="86" Form="86" />
+        <Player Name="Puyol" Position="RCB" Defending="86" Attacking="75" Form="86" />
+        <Player Name="Pique" Position="LCB" Defending="88" Attacking="75" Form="88" />
+        <Player Name="Abidal" Position="LWB" Defending="81" Attacking="75" Form="81" />
+        <Player Name="Sergio" Position="CDM" Defending="83" Attacking="83" Form="83" />
+        <Player Name="Xavi" Position="RCM" Defending="80" Attacking="92" Form="92" />
+        <Player Name="Fabregas" Position="LCM" Defending="80" Attacking="88" Form="88" />
+        <Player Name="Iniesta" Position="RW" Defending="75" Attacking="91" Form="91" />
+        <Player Name="David Villa" Position="LW" Defending="70" Attacking="88" Form="88" />
+        <Player Name="Messi" Position="ST" Defending="70" Attacking="94" Form="94" />
+      </Club>
+      <Club Id="Getafe" Name="Getafe CF" Strategy="Wings">
+        <Player Name="Moya" Position="GK" Defending="75" Attacking="50" Form="75" />
+        <Player Name="M. Torres" Position="RB" Defending="73" Attacking="70" Form="73" />
+        <Player Name="D. Diaz" Position="RCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Lopo" Position="LCB" Defending="79" Attacking="65" Form="79" />
+        <Player Name="Mane" Position="LB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Pedro Leon" Position="RM" Defending="65" Attacking="77" Form="77" />
+        <Player Name="Michel" Position="RCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="M. Lacen" Position="LCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Diego Castro" Position="LM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Juan Rodriguez" Position="CAM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Guiza" Position="ST" Defending="60" Attacking="74" Form="74" />
+      </Club>
+      <Club Name="Granada CF" Strategy="Playmaker">
+        <Player Name="Roberto" Position="GK" Defending="71" Attacking="50" Form="71" />
+        <Player Name="Nyom" Position="RB" Defending="69" Attacking="65" Form="69" />
+        <Player Name="Pamarot" Position="RCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Diakhate" Position="LCB" Defending="74" Attacking="60" Form="74" />
+        <Player Name="Siqueira" Position="LB" Defending="69" Attacking="65" Form="69" />
+        <Player Name="Romero" Position="RM" Defending="55" Attacking="67" Form="67" />
+        <Player Name="Hurtado" Position="RCM" Defending="65" Attacking="72" Form="72" />
+        <Player Name="Yebda" Position="LCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Benitez" Position="LM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Carlos Martins" Position="CAM" Defending="60" Attacking="78" Form="78" />
+        <Player Name="Jara" Position="ST" Defending="60" Attacking="77" Form="77" />
+      </Club>
+      <Club Name="Levante" Strategy="Wings">
+        <Player Name="Munua" Position="GK" Defending="73" Attacking="50" Form="73" />
+        <Player Name="Javi Venta" Position="RWB" Defending="71" Attacking="70" Form="71" />
+        <Player Name="Ballesteros" Position="RCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Nano" Position="LCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Juanfran" Position="LWB" Defending="71" Attacking="70" Form="71" />
+        <Player Name="Valdo" Position="RM" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Xavi Torres" Position="RCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="Iborra" Position="LCM" Defending="70" Attacking="72" Form="72" />
+        <Player Name="Barkero" Position="LM" Defending="60" Attacking="73" Form="73" />
+        <Player Name="Ruben Suarez" Position="CAM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Kone" Position="ST" Defending="55" Attacking="73" Form="73" />
+      </Club>
+      <Club Id="Malaga" Name="Malaga CF" Strategy="Wings">
+        <Player Name="Caballero" Position="GK" Defending="75" Attacking="50" Form="75" />
+        <Player Name="Gamez" Position="RB" Defending="76" Attacking="75" Form="76" />
+        <Player Name="Demichelis" Position="RCB" Defending="79" Attacking="65" Form="79" />
+        <Player Name="Mathijsen" Position="LCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Monreal" Position="LB" Defending="77" Attacking="75" Form="77" />
+        <Player Name="Apono" Position="RDM" Defending="75" Attacking="65" Form="75" />
+        <Player Name="Toulalan" Position="LDM" Defending="81" Attacking="75" Form="81" />
+        <Player Name="Baptista" Position="CAM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Joaquin" Position="RW" Defending="70" Attacking="81" Form="81" />
+        <Player Name="Santi Cazorla" Position="LW" Defending="70" Attacking="84" Form="84" />
+        <Player Name="Van Nistelrooy" Position="ST" Defending="60" Attacking="80" Form="80" />
+      </Club>
+      <Club Name="Racing Santander" Strategy="Center">
+        <Player Name="Tono" Position="GK" Defending="74" Attacking="50" Form="74" />
+        <Player Name="Francis" Position="RB" Defending="71" Attacking="70" Form="71" />
+        <Player Name="Osmar" Position="RCB" Defending="65" Attacking="50" Form="65" />
+        <Player Name="Torrejon" Position="LCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Cisma" Position="LB" Defending="73" Attacking="70" Form="73" />
+        <Player Name="Bakircioglu" Position="RM" Defending="60" Attacking="73" Form="73" />
+        <Player Name="Diop" Position="RCM" Defending="65" Attacking="70" Form="70" />
+        <Player Name="Colsa" Position="LCM" Defending="75" Attacking="76" Form="76" />
+        <Player Name="Munitis" Position="LM" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Stuani" Position="RF" Defending="55" Attacking="73" Form="73" />
+        <Player Name="Acosta" Position="LF" Defending="50" Attacking="69" Form="69" />
+      </Club>
+      <Club Id="RayoV" Name="Rayo Vallecano" Strategy="Wings">
+        <Player Name="Gimenez" Position="GK" Defending="68" Attacking="50" Form="68" />
+        <Player Name="Tito" Position="RB" Defending="66" Attacking="65" Form="66" />
+        <Player Name="Arribas" Position="RCB" Defending="68" Attacking="55" Form="68" />
+        <Player Name="Jordi" Position="LCB" Defending="70" Attacking="55" Form="70" />
+        <Player Name="Raul Bravo" Position="LB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Javi Fuego" Position="CDM" Defending="71" Attacking="70" Form="71" />
+        <Player Name="Movilla" Position="RCM" Defending="65" Attacking="69" Form="69" />
+        <Player Name="Trashorras" Position="LCM" Defending="70" Attacking="71" Form="71" />
+        <Player Name="Piti" Position="RW" Defending="55" Attacking="69" Form="69" />
+        <Player Name="Botelho" Position="LW" Defending="60" Attacking="73" Form="73" />
+        <Player Name="Tamudo" Position="ST" Defending="55" Attacking="74" Form="74" />
+      </Club>
+      <Club Name="Espanyol" Strategy="Center">
+        <Player Name="Alvarez" Position="GK" Defending="72" Attacking="50" Form="72" />
+        <Player Name="Javi Lopez" Position="RB" Defending="68" Attacking="65" Form="68" />
+        <Player Name="Amat" Position="RCB" Defending="69" Attacking="55" Form="69" />
+        <Player Name="Moreno" Position="LCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Didac" Position="LB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Baena" Position="RCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Verdu" Position="CM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Javi Marquez" Position="LCM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Weiss" Position="RW" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Albin" Position="LW" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Alvaro" Position="ST" Defending="55" Attacking="71" Form="71" />
+      </Club>
+      <Club Name="RCD Mallorca" Strategy="Playmaker">
+        <Player Name="Aouate" Position="GK" Defending="77" Attacking="50" Form="77" />
+        <Player Name="Zuiverloon" Position="RB" Defending="70" Attacking="65" Form="70" />
+        <Player Name="Chico" Position="RCB" Defending="75" Attacking="60" Form="75" />
+        <Player Name="Ramis" Position="LCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Caceres" Position="LB" Defending="69" Attacking="65" Form="69" />
+        <Player Name="Alfaro" Position="RM" Defending="60" Attacking="72" Form="72" />
+        <Player Name="Marti" Position="RCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="Sergio Tejera" Position="LCM" Defending="70" Attacking="73" Form="73" />
+        <Player Name="Nsue" Position="LM" Defending="60" Attacking="73" Form="73" />
+        <Player Name="Tissone" Position="CAM" Defending="60" Attacking="72" Form="72" />
+        <Player Name="Hemed" Position="ST" Defending="50" Attacking="69" Form="69" />
+      </Club>
+      <Club Name="Real Betis" Strategy="Wings">
+        <Player Name="Casto" Position="GK" Defending="70" Attacking="50" Form="70" />
+        <Player Name="Chica" Position="RB" Defending="73" Attacking="70" Form="73" />
+        <Player Name="Mario" Position="RCB" Defending="74" Attacking="60" Form="74" />
+        <Player Name="Dorado" Position="LCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Tosic" Position="LB" Defending="70" Attacking="65" Form="70" />
+        <Player Name="Iriney" Position="CDM" Defending="74" Attacking="70" Form="74" />
+        <Player Name="Sevilla" Position="RCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="Benat" Position="LCM" Defending="70" Attacking="71" Form="71" />
+        <Player Name="Montero" Position="RW" Defending="60" Attacking="73" Form="73" />
+        <Player Name="Ruben Castro" Position="LW" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Santa Cruz" Position="ST" Defending="60" Attacking="79" Form="79" />
+      </Club>
+      <Club Id="RealM" Name="Real Madrid" Strategy="Wings">
+        <Player Name="Casillas" Position="GK" Defending="89" Attacking="50" Form="89" />
+        <Player Name="Sergio Ramos" Position="RB" Defending="85" Attacking="80" Form="85" />
+        <Player Name="Pepe" Position="RCB" Defending="85" Attacking="70" Form="85" />
+        <Player Name="R. Carvalho" Position="LCB" Defending="84" Attacking="70" Form="84" />
+        <Player Name="Marcelo" Position="LB" Defending="82" Attacking="80" Form="82" />
+        <Player Name="Xabi Alonso" Position="RDM" Defending="86" Attacking="85" Form="86" />
+        <Player Name="F. Coentrao" Position="LDM" Defending="82" Attacking="75" Form="82" />
+        <Player Name="Di Maria" Position="RM" Defending="70" Attacking="84" Form="84" />
+        <Player Name="C. Ronaldo" Position="LM" Defending="75" Attacking="92" Form="92" />
+        <Player Name="Ozil" Position="CAM" Defending="70" Attacking="86" Form="86" />
+        <Player Name="Benzema" Position="ST" Defending="65" Attacking="84" Form="84" />
+      </Club>
+      <Club Name="Real Sociedad" Strategy="Wings">
+        <Player Name="Bravo" Position="GK" Defending="77" Attacking="50" Form="77" />
+        <Player Name="C. Martinez" Position="RB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Demidov" Position="RCB" Defending="75" Attacking="60" Form="75" />
+        <Player Name="Mikel Gonzalez" Position="LCB" Defending="75" Attacking="60" Form="75" />
+        <Player Name="De la Bella" Position="LB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Mariga" Position="RCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="Aranburu" Position="LCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="Zurutuza" Position="CAM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Xabi Prieto" Position="RW" Defending="65" Attacking="78" Form="78" />
+        <Player Name="Griezmann" Position="LW" Defending="65" Attacking="76" Form="76" />
+        <Player Name="Llorente" Position="ST" Defending="55" Attacking="74" Form="74" />
+      </Club>
+      <Club Name="Sporting de Gijon" Strategy="Center">
+        <Player Name="Juan Pablo" Position="GK" Defending="73" Attacking="50" Form="73" />
+        <Player Name="Lora" Position="RB" Defending="74" Attacking="70" Form="74" />
+        <Player Name="Botia" Position="RCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Ivan Hernandez" Position="LCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Canella" Position="LB" Defending="74" Attacking="70" Form="74" />
+        <Player Name="Nacho Novo" Position="RM" Defending="60" Attacking="71" Form="71" />
+        <Player Name="Rivera" Position="RCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="Nacho Cases" Position="LCM" Defending="70" Attacking="74" Form="74" />
+        <Player Name="De las Cuevas" Position="LM" Defending="65" Attacking="77" Form="77" />
+        <Player Name="Andre Castro" Position="CAM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Barral" Position="ST" Defending="55" Attacking="73" Form="73" />
+      </Club>
+      <Club Name="Real Zaragoza" Strategy="Wings">
+        <Player Name="Roberto" Position="GK" Defending="75" Attacking="50" Form="75" />
+        <Player Name="Juarez" Position="RB" Defending="71" Attacking="70" Form="71" />
+        <Player Name="F. Meira" Position="RCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Da Silva" Position="LCB" Defending="75" Attacking="60" Form="75" />
+        <Player Name="Abraham" Position="LB" Defending="68" Attacking="65" Form="68" />
+        <Player Name="Ponzio" Position="CDM" Defending="74" Attacking="70" Form="74" />
+        <Player Name="Lafita" Position="RM" Defending="65" Attacking="76" Form="76" />
+        <Player Name="Zuculini" Position="RCM" Defending="70" Attacking="71" Form="71" />
+        <Player Name="R. Micael" Position="LCM" Defending="75" Attacking="77" Form="77" />
+        <Player Name="Barrera" Position="LM" Defending="60" Attacking="75" Form="75" />
+        <Player Name="H. Postiga" Position="ST" Defending="60" Attacking="78" Form="78" />
+      </Club>
+      <Club Id="Sevilla" Name="Sevilla FC" Strategy="Wings">
+        <Player Name="Javi Varas" Position="GK" Defending="76" Attacking="50" Form="76" />
+        <Player Name="Caceres" Position="RB" Defending="78" Attacking="75" Form="78" />
+        <Player Name="Spahic" Position="RCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Escude" Position="LCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="F. Navarro" Position="LB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="Jesus Navas" Position="RM" Defending="70" Attacking="84" Form="84" />
+        <Player Name="Medel" Position="RCM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Rakitic" Position="LCM" Defending="75" Attacking="79" Form="79" />
+        <Player Name="Perotti" Position="LM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Negredo" Position="RF" Defending="65" Attacking="82" Form="82" />
+        <Player Name="Manu" Position="LF" Defending="60" Attacking="78" Form="78" />
+      </Club>
+      <Club Id="Valencia" Name="Valencia CF" Strategy="Playmaker">
+        <Player Name="Guaita" Position="GK" Defending="76" Attacking="50" Form="76" />
+        <Player Name="Bruno" Position="RB" Defending="74" Attacking="70" Form="74" />
+        <Player Name="Rami" Position="RCB" Defending="81" Attacking="70" Form="81" />
+        <Player Name="Victor Ruiz" Position="LCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Alba" Position="LB" Defending="77" Attacking="75" Form="77" />
+        <Player Name="P. Hernandez" Position="RM" Defending="70" Attacking="81" Form="81" />
+        <Player Name="Topal" Position="RCM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Banega" Position="LCM" Defending="75" Attacking="79" Form="79" />
+        <Player Name="Piatti" Position="LM" Defending="65" Attacking="78" Form="78" />
+        <Player Name="A. Costa" Position="CAM" Defending="65" Attacking="78" Form="78" />
+        <Player Name="Soldado" Position="ST" Defending="65" Attacking="82" Form="82" />
+      </Club>
+      <Club Id="Villarreal" Name="Villarreal CF" Strategy="Wings">
+        <Player Name="D. Lopez" Position="GK" Defending="84" Attacking="50" Form="84" />
+        <Player Name="Gaspar" Position="RWB" Defending="73" Attacking="70" Form="73" />
+        <Player Name="Zapata" Position="RCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Musacchio" Position="LCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Oriol" Position="LWB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Marchena" Position="RDM" Defending="79" Attacking="75" Form="79" />
+        <Player Name="Bruno" Position="LDM" Defending="82" Attacking="80" Form="82" />
+        <Player Name="Borja Valero" Position="RM" Defending="70" Attacking="81" Form="81" />
+        <Player Name="Cani" Position="LM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Nilmar" Position="RF" Defending="65" Attacking="83" Form="83" />
+        <Player Name="Rossi" Position="LF" Defending="65" Attacking="85" Form="85" />
+      </Club>
+    </Division>
+  </League>
+  <League Name="English">
+    <Division Level="1" Name="English Premier Division">
+      <Club Id="Arsenal" Name="Arsenal" Strategy="Wings">
+        <Player Name="Szczesny" Position="GK" Defending="79" Attacking="50" Form="79" />
+        <Player Name="Sagna" Position="RB" Defending="83" Attacking="80" Form="83" />
+        <Player Name="Mertesacker" Position="RCB" Defending="82" Attacking="70" Form="82" />
+        <Player Name="Vermaelen" Position="LCB" Defending="83" Attacking="70" Form="83" />
+        <Player Name="Gibbs" Position="LB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="Song" Position="RCM" Defending="80" Attacking="82" Form="82" />
+        <Player Name="Wilshere" Position="LCM" Defending="70" Attacking="82" Form="82" />
+        <Player Name="Mikel Arteta" Position="CAM" Defending="70" Attacking="82" Form="82" />
+        <Player Name="Walcott" Position="RW" Defending="70" Attacking="82" Form="82" />
+        <Player Name="Gervinho" Position="LW" Defending="70" Attacking="84" Form="84" />
+        <Player Name="Van Persie" Position="ST" Defending="70" Attacking="86" Form="86" />
+      </Club>
+      <Club Name="Aston Villa" Strategy="Center">
+        <Player Name="Given" Position="GK" Defending="82" Attacking="50" Form="82" />
+        <Player Name="Hutton" Position="RB" Defending="76" Attacking="75" Form="76" />
+        <Player Name="Collins" Position="RCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Dunne" Position="LCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Warnock" Position="LB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="N'Zogbia" Position="RM" Defending="65" Attacking="77" Form="77" />
+        <Player Name="Petrov" Position="RCM" Defending="75" Attacking="77" Form="77" />
+        <Player Name="Delph" Position="LCM" Defending="70" Attacking="73" Form="73" />
+        <Player Name="Agbonlahor" Position="LM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Bent" Position="RF" Defending="65" Attacking="82" Form="82" />
+        <Player Name="Heskey" Position="LF" Defending="55" Attacking="72" Form="72" />
+      </Club>
+      <Club Name="Blackburn Rovers" Strategy="Playmaker">
+        <Player Name="Robinson" Position="GK" Defending="79" Attacking="50" Form="79" />
+        <Player Name="M. Salgado" Position="RB" Defending="70" Attacking="65" Form="70" />
+        <Player Name="Samba" Position="RCB" Defending="79" Attacking="65" Form="79" />
+        <Player Name="Nelsen" Position="LCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Olsson" Position="LB" Defending="74" Attacking="70" Form="70" />
+        <Player Name="N'Zonzi" Position="CDM" Defending="76" Attacking="70" Form="76" />
+        <Player Name="Hoilett" Position="RM" Defending="65" Attacking="76" Form="76" />
+        <Player Name="Pedersen" Position="LM" Defending="65" Attacking="78" Form="78" />
+        <Player Name="Dunn" Position="CAM" Defending="65" Attacking="76" Form="76" />
+        <Player Name="Goodwillie" Position="RF" Defending="60" Attacking="76" Form="76" />
+        <Player Name="Roberts" Position="LF" Defending="55" Attacking="71" Form="71" />
+      </Club>
+      <Club Id="Bolton" Name="Bolton Wanderers" Strategy="Wings">
+        <Player Name="Jaaskelainen" Position="GK" Defending="78" Attacking="50" Form="78" />
+        <Player Name="Steinsson" Position="RB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="Cahill" Position="RCB" Defending="79" Attacking="65" Form="79" />
+        <Player Name="Knight" Position="LCB" Defending="74" Attacking="60" Form="74" />
+        <Player Name="Robinson" Position="LB" Defending="72" Attacking="70" Form="72" />
+        <Player Name="Muamba" Position="RDM" Defending="78" Attacking="70" Form="78" />
+        <Player Name="Reo-Cocker" Position="LDM" Defending="77" Attacking="70" Form="77" />
+        <Player Name="Eagles" Position="RM" Defending="60" Attacking="72" Form="72" />
+        <Player Name="Petrov" Position="LM" Defending="65" Attacking="76" Form="76" />
+        <Player Name="Klasnic" Position="RF" Defending="55" Attacking="75" Form="75" />
+        <Player Name="Davies" Position="LF" Defending="60" Attacking="77" Form="77" />
+      </Club>
+      <Club Id="Chelsea" Name="Chelsea" Strategy="Playmaker">
+        <Player Name="Cech" Position="GK" Defending="85" Attacking="50" Form="85" />
+        <Player Name="Bosingwa" Position="RWB" Defending="80" Attacking="75" Form="80" />
+        <Player Name="Ivanovic" Position="RCB" Defending="83" Attacking="70" Form="83" />
+        <Player Name="Terry" Position="LCB" Defending="86" Attacking="75" Form="86" />
+        <Player Name="A. Cole" Position="LWB" Defending="85" Attacking="80" Form="85" />
+        <Player Name="Mikel" Position="CDM" Defending="81" Attacking="75" Form="81" />
+        <Player Name="Ramires" Position="RM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Mata" Position="LM" Defending="70" Attacking="85" Form="85" />
+        <Player Name="Lampard" Position="CAM" Defending="80" Attacking="87" Form="87" />
+        <Player Name="F. Torres" Position="RF" Defending="70" Attacking="86" Form="86" />
+        <Player Name="Drogba" Position="LF" Defending="70" Attacking="86" Form="86" />
+      </Club>
+      <Club Id="Everton" Name="Everton" Strategy="Playmaker">
+        <Player Name="Howard" Position="GK" Defending="81" Attacking="50" Form="81" />
+        <Player Name="Neville" Position="RWB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="Jagielka" Position="RCB" Defending="80" Attacking="65" Form="80" />
+        <Player Name="Distin" Position="LCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Baines" Position="LWB" Defending="80" Attacking="75" Form="80" />
+        <Player Name="Heitinga" Position="RDM" Defending="76" Attacking="70" Form="76" />
+        <Player Name="Fellaini" Position="LDM" Defending="79" Attacking="70" Form="79" />
+        <Player Name="Cahill" Position="CAM" Defending="65" Attacking="80" Form="80" />
+        <Player Name="Barkley" Position="RW" Defending="55" Attacking="69" Form="69" />
+        <Player Name="Osman" Position="LW" Defending="65" Attacking="77" Form="77" />
+        <Player Name="Saha" Position="ST" Defending="60" Attacking="79" Form="79" />
+      </Club>
+      <Club Id="Fulham" Name="Fulham" Strategy="Wings">
+        <Player Name="Schwarzer" Position="GK" Defending="81" Attacking="50" Form="81" />
+        <Player Name="Hughes" Position="RWB" Defending="76" Attacking="75" Form="76" />
+        <Player Name="Senderos" Position="RCB" Defending="72" Attacking="60" Form="72" />
+        <Player Name="Hangeland" Position="LCB" Defending="81" Attacking="70" Form="81" />
+        <Player Name="Riise" Position="LWB" Defending="77" Attacking="75" Form="77" />
+        <Player Name="Duff" Position="RM" Defending="65" Attacking="78" Form="78" />
+        <Player Name="Etuhu" Position="RCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Murphy" Position="LCM" Defending="75" Attacking="77" Form="77" />
+        <Player Name="Dempsey" Position="LM" Defending="65" Attacking="80" Form="80" />
+        <Player Name="Zamora" Position="RF" Defending="60" Attacking="80" Form="80" />
+        <Player Name="A. Johnson" Position="LF" Defending="60" Attacking="76" Form="76" />
+      </Club>
+      <Club Id="Liverpool" Name="Liverpool FC" Strategy="Center">
+        <Player Name="Pepe Reina" Position="GK" Defending="84" Attacking="50" Form="84" />
+        <Player Name="G. Johnson" Position="RB" Defending="80" Attacking="75" Form="80" />
+        <Player Name="Carragher" Position="RCB" Defending="80" Attacking="65" Form="80" />
+        <Player Name="Agger" Position="LCB" Defending="83" Attacking="70" Form="83" />
+        <Player Name="J. Enrique" Position="LB" Defending="79" Attacking="75" Form="79" />
+        <Player Name="Kuyt" Position="RM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Gerrard" Position="RCM" Defending="85" Attacking="87" Form="87" />
+        <Player Name="Lucas Leiva" Position="LCM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Downing" Position="LM" Defending="70" Attacking="82" Form="82" />
+        <Player Name="Carroll" Position="RF" Defending="65" Attacking="81" Form="81" />
+        <Player Name="Suarez" Position="LF" Defending="65" Attacking="85" Form="85" />
+      </Club>
+      <Club Id="ManCity" Name="Manchester City" Strategy="Wings">
+        <Player Name="Hart" Position="GK" Defending="83" Attacking="50" Form="83" />
+        <Player Name="Richards" Position="RB" Defending="80" Attacking="75" Form="80" />
+        <Player Name="Kompany" Position="RCB" Defending="84" Attacking="70" Form="84" />
+        <Player Name="Lescott" Position="LCB" Defending="80" Attacking="65" Form="80" />
+        <Player Name="Clichy" Position="LB" Defending="80" Attacking="75" Form="80" />
+        <Player Name="K. Toure" Position="RDM" Defending="83" Attacking="70" Form="83" />
+        <Player Name="Barry" Position="LDM" Defending="81" Attacking="75" Form="81" />
+        <Player Name="David Silva" Position="RW" Defending="70" Attacking="87" Form="87" />
+        <Player Name="Nasri" Position="LW" Defending="70" Attacking="86" Form="86" />
+        <Player Name="Dzeko" Position="RF" Defending="65" Attacking="84" Form="84" />
+        <Player Name="S. Aguero" Position="LF" Defending="70" Attacking="86" Form="86" />
+      </Club>
+      <Club Id="ManUtd" Name="Manchester United" Strategy="Wings">
+        <Player Name="De Gea" Position="GK" Defending="80" Attacking="50" Form="80" />
+        <Player Name="Smalling" Position="RB" Defending="77" Attacking="75" Form="77" />
+        <Player Name="R. Ferdinand" Position="RCB" Defending="87" Attacking="75" Form="87" />
+        <Player Name="Vidic" Position="LCB" Defending="89" Attacking="75" Form="89" />
+        <Player Name="Evra" Position="LB" Defending="85" Attacking="80" Form="85" />
+        <Player Name="Nani" Position="RM" Defending="70" Attacking="85" Form="85" />
+        <Player Name="Cleverley" Position="RCM" Defending="70" Attacking="73" Form="73" />
+        <Player Name="Anderson" Position="LCM" Defending="75" Attacking="77" Form="77" />
+        <Player Name="A. Young" Position="LM" Defending="70" Attacking="85" Form="85" />
+        <Player Name="Rooney" Position="RF" Defending="70" Attacking="90" Form="90" />
+        <Player Name="Hernandez" Position="LF" Defending="65" Attacking="82" Form="82" />
+      </Club>
+      <Club Id="Newcastle" Name="Newcastle United" Strategy="Center">
+        <Player Name="Krul" Position="GK" Defending="74" Attacking="50" Form="74" />
+        <Player Name="Simpson" Position="RB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="S. Taylor" Position="RCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Coloccini" Position="LCB" Defending="79" Attacking="65" Form="79" />
+        <Player Name="R. Taylor" Position="LB" Defending="73" Attacking="70" Form="73" />
+        <Player Name="Obertan" Position="RM" Defending="60" Attacking="71" Form="71" />
+        <Player Name="Tiote" Position="RCM" Defending="75" Attacking="78" Form="78" />
+        <Player Name="Cabaye" Position="LCM" Defending="75" Attacking="80" Form="80" />
+        <Player Name="Jonas" Position="LM" Defending="65" Attacking="79" Form="79" />
+        <Player Name="Ba" Position="RF" Defending="60" Attacking="79" Form="79" />
+        <Player Name="Ameobi" Position="LF" Defending="55" Attacking="71" Form="71" />
+      </Club>
+      <Club Name="Norwich City" Strategy="Playmaker">
+        <Player Name="Ruddy" Position="GK" Defending="69" Attacking="50" Form="69" />
+        <Player Name="Naughton" Position="RB" Defending="70" Attacking="65" Form="70" />
+        <Player Name="Barnett" Position="RCB" Defending="68" Attacking="55" Form="68" />
+        <Player Name="De Laet" Position="LCB" Defending="69" Attacking="55" Form="69" />
+        <Player Name="Tierney" Position="LB" Defending="67" Attacking="65" Form="67" />
+        <Player Name="Crofts" Position="RCM" Defending="65" Attacking="70" Form="70" />
+        <Player Name="Fox" Position="CM" Defending="65" Attacking="67" Form="67" />
+        <Player Name="Surman" Position="LCM" Defending="70" Attacking="71" Form="71" />
+        <Player Name="Hoolahan" Position="CAM" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Holt" Position="RF" Defending="55" Attacking="73" Form="73" />
+        <Player Name="Morison" Position="LF" Defending="55" Attacking="73" Form="73" />
+      </Club>
+      <Club Name="Queens Park Rangers" Strategy="Wings">
+        <Player Name="Kenny" Position="GK" Defending="73" Attacking="50" Form="73" />
+        <Player Name="L. Young" Position="RB" Defending="74" Attacking="70" Form="74" />
+        <Player Name="A. Ferdinand" Position="RCB" Defending="71" Attacking="60" Form="71" />
+        <Player Name="Hall" Position="LCB" Defending="67" Attacking="55" Form="67" />
+        <Player Name="A. Traore" Position="LB" Defending="71" Attacking="70" Form="71" />
+        <Player Name="Barton" Position="RDM" Defending="80" Attacking="70" Form="80" />
+        <Player Name="Faurlin" Position="LDM" Defending="71" Attacking="65" Form="71" />
+        <Player Name="Taarabt" Position="CAM" Defending="65" Attacking="78" Form="78" />
+        <Player Name="Wright-Phillips" Position="RW" Defending="65" Attacking="79" Form="79" />
+        <Player Name="T. Smith" Position="LW" Defending="60" Attacking="71" Form="71" />
+        <Player Name="Bothroyd" Position="ST" Defending="55" Attacking="73" Form="73" />
+      </Club>
+      <Club Id="Tottenham" Name="Tottenham Hotspur" Strategy="Playmaker">
+        <Player Name="Friedel" Position="GK" Defending="81" Attacking="50" Form="81" />
+        <Player Name="Walker" Position="RB" Defending="76" Attacking="75" Form="76" />
+        <Player Name="Dawson" Position="RCB" Defending="80" Attacking="65" Form="80" />
+        <Player Name="Kaboul" Position="LCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Assou-Ekotto" Position="LB" Defending="78" Attacking="75" Form="78" />
+        <Player Name="A. Lennon" Position="RM" Defending="70" Attacking="82" Form="82" />
+        <Player Name="Parker" Position="RCM" Defending="80" Attacking="82" Form="82" />
+        <Player Name="Modric" Position="LCM" Defending="80" Attacking="88" Form="88" />
+        <Player Name="Bale" Position="LM" Defending="75" Attacking="86" Form="86" />
+        <Player Name="Van der Vaart" Position="CAM" Defending="70" Attacking="87" Form="87" />
+        <Player Name="Adebayor" Position="ST" Defending="65" Attacking="82" Form="82" />
+      </Club>
+      <Club Name="Stoke City" Strategy="Center">
+        <Player Name="Begovic" Position="GK" Defending="76" Attacking="50" Form="76" />
+        <Player Name="Huth" Position="RB" Defending="78" Attacking="70" Form="78" />
+        <Player Name="Shawcross" Position="RCB" Defending="77" Attacking="65" Form="77" />
+        <Player Name="Woodgate" Position="LCB" Defending="80" Attacking="65" Form="80" />
+        <Player Name="M. Wilson" Position="LB" Defending="73" Attacking="70" Form="73" />
+        <Player Name="Pennant" Position="RM" Defending="65" Attacking="77" Form="77" />
+        <Player Name="Palacios" Position="RCM" Defending="75" Attacking="79" Form="79" />
+        <Player Name="Delap" Position="LCM" Defending="70" Attacking="71" Form="71" />
+        <Player Name="Etherington" Position="LM" Defending="65" Attacking="80" Form="80" />
+        <Player Name="Crouch" Position="RF" Defending="60" Attacking="79" Form="79" />
+        <Player Name="Walters" Position="LF" Defending="55" Attacking="75" Form="75" />
+      </Club>
+      <Club Name="Sunderland AFC" Strategy="Center">
+        <Player Name="Mignolet" Position="GK" Defending="74" Attacking="50" Form="74" />
+        <Player Name="O'Shea" Position="RB" Defending="75" Attacking="70" Form="75" />
+        <Player Name="Brown" Position="RCB" Defending="76" Attacking="65" Form="76" />
+        <Player Name="Turner" Position="LCB" Defending="75" Attacking="60" Form="75" />
+        <Player Name="Bardsley" Position="LB" Defending="74" Attacking="65" Form="74" />
+        <Player Name="Larsson" Position="RM" Defending="65" Attacking="78" Form="78" />
+        <Player Name="Gardner" Position="RCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Cattermole" Position="LCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="Richardson" Position="LM" Defending="65" Attacking="77" Form="77" />
+        <Player Name="Gyan" Position="RF" Defending="65" Attacking="81" Form="81" />
+        <Player Name="Sessegnon" Position="LF" Defending="60" Attacking="79" Form="79" />
+      </Club>
+      <Club Name="Swansea City" Strategy="Playmaker">
+        <Player Name="Vorm" Position="GK" Defending="78" Attacking="50" Form="78" />
+        <Player Name="A. Rangel" Position="RB" Defending="67" Attacking="65" Form="67" />
+        <Player Name="Caulker" Position="RCB" Defending="70" Attacking="55" Form="70" />
+        <Player Name="Williams" Position="LCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="N. Taylor" Position="LB" Defending="68" Attacking="65" Form="68" />
+        <Player Name="Britton" Position="RCM" Defending="65" Attacking="68" Form="68" />
+        <Player Name="Augustien" Position="LCM" Defending="65" Attacking="66" Form="66" />
+        <Player Name="Routledge" Position="CAM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Dyer" Position="RW" Defending="60" Attacking="73" Form="73" />
+        <Player Name="Sinclair" Position="LW" Defending="60" Attacking="74" Form="74" />
+        <Player Name="Graham" Position="ST" Defending="55" Attacking="74" Form="74" />
+      </Club>
+      <Club Name="West Bromwich Albion" Strategy="Playmaker">
+        <Player Name="Foster" Position="GK" Defending="78" Attacking="50" Form="78" />
+        <Player Name="Reid" Position="RB" Defending="71" Attacking="65" Form="71" />
+        <Player Name="Tamas" Position="RCB" Defending="75" Attacking="60" Form="75" />
+        <Player Name="Olsson" Position="LCB" Defending="74" Attacking="60" Form="74" />
+        <Player Name="Shorey" Position="LB" Defending="72" Attacking="65" Form="72" />
+        <Player Name="Mulumbu" Position="RDM" Defending="74" Attacking="65" Form="74" />
+        <Player Name="Scharner" Position="LDM" Defending="77" Attacking="70" Form="77" />
+        <Player Name="Brunt" Position="RM" Defending="60" Attacking="75" Form="75" />
+        <Player Name="Morrison" Position="LM" Defending="60" Attacking="71" Form="71" />
+        <Player Name="Tchoyi" Position="CAM" Defending="50" Attacking="70" Form="70" />
+        <Player Name="Long" Position="ST" Defending="55" Attacking="75" Form="75" />
+      </Club>
+      <Club Name="Wigan Athletic" Strategy="Center">
+        <Player Name="Al-Habsi" Position="GK" Defending="76" Attacking="50" Form="76" />
+        <Player Name="Boyce" Position="RB" Defending="72" Attacking="65" Form="72" />
+        <Player Name="Caldwell" Position="RCB" Defending="74" Attacking="60" Form="74" />
+        <Player Name="Piscu" Position="LCB" Defending="66" Attacking="55" Form="66" />
+        <Player Name="M. Figueroa" Position="LB" Defending="74" Attacking="70" Form="74" />
+        <Player Name="Watson" Position="CDM" Defending="73" Attacking="65" Form="73" />
+        <Player Name="Diame" Position="RCM" Defending="70" Attacking="72" Form="72" />
+        <Player Name="McCarthy" Position="LCM" Defending="70" Attacking="75" Form="75" />
+        <Player Name="J. Gomez" Position="RW" Defending="60" Attacking="71" Form="71" />
+        <Player Name="Moses" Position="LW" Defending="60" Attacking="72" Form="72" />
+        <Player Name="Di Santo" Position="ST" Defending="50" Attacking="70" Form="70" />
+      </Club>
+      <Club Name="Wolverhampton Wanderers" Strategy="Wings">
+        <Player Name="Hennessey" Position="GK" Defending="75" Attacking="50" Form="75" />
+        <Player Name="Stearman" Position="RWB" Defending="71" Attacking="70" Form="71" />
+        <Player Name="R. Johnson" Position="RCB" Defending="78" Attacking="65" Form="78" />
+        <Player Name="Berra" Position="LCB" Defending="73" Attacking="60" Form="73" />
+        <Player Name="Ward" Position="LWB" Defending="69" Attacking="65" Form="69" />
+        <Player Name="Hunt" Position="RM" Defending="60" Attacking="74" Form="74" />
+        <Player Name="K. Henry" Position="RCM" Defending="70" Attacking="71" Form="71" />
+        <Player Name="O'Hara" Position="LCM" Defending="75" Attacking="76" Form="76" />
+        <Player Name="Jarvis" Position="LM" Defending="65" Attacking="76" Form="76" />
+        <Player Name="S. Fletcher" Position="RF" Defending="60" Attacking="76" Form="76" />
+        <Player Name="Doyle" Position="LF" Defending="60" Attacking="78" Form="78" />
+      </Club>
+    </Division>
+  </League>
+  <RestOfWorld>
+    <Club Id="Inter" Name="Inter Milan" Strategy="Playmaker">
+      <Player Name="Julio Cesar" Position="GK" Defending="85" Attacking="50" Form="85" />
+      <Player Name="Ranocchia" Position="RCB" Defending="80" Attacking="65" Form="80" />
+      <Player Name="Lucio" Position="CB" Defending="85" Attacking="70" Form="85" />
+      <Player Name="Samuel" Position="LCB" Defending="85" Attacking="70" Form="85" />
+      <Player Name="Maicon" Position="RM" Defending="75" Attacking="85" Form="85" />
+      <Player Name="J. Zanetti" Position="RCM" Defending="80" Attacking="82" Form="82" />
+      <Player Name="Cambiasso" Position="LCM" Defending="80" Attacking="85" Form="85" />
+      <Player Name="Nagatomo" Position="LM" Defending="70" Attacking="76" Form="76" />
+      <Player Name="Sneijder" Position="CAM" Defending="75" Attacking="88" Form="88" />
+      <Player Name="Pazzini" Position="RF" Defending="65" Attacking="83" Form="83" />
+      <Player Name="Forlan" Position="LF" Defending="65" Attacking="84" Form="84" />
+    </Club>
+    <Club Id="Milan" Name="AC Milan" Strategy="Center">
+      <Player Name="Abbiati" Position="GK" Defending="83" Attacking="50" Form="83" />
+      <Player Name="Abate" Position="RB" Defending="78" Attacking="70" Form="78" />
+      <Player Name="Nesta" Position="RCB" Defending="85" Attacking="70" Form="85" />
+      <Player Name="T. Silva" Position="LCB" Defending="87" Attacking="75" Form="87" />
+      <Player Name="Taiwo" Position="LB" Defending="79" Attacking="75" Form="79" />
+      <Player Name="Ambrosini" Position="RCM" Defending="75" Attacking="80" Form="80" />
+      <Player Name="Van Bommel" Position="CM" Defending="80" Attacking="82" Form="82" />
+      <Player Name="Aquilani" Position="LCM" Defending="80" Attacking="81" Form="81" />
+      <Player Name="K. Boateng" Position="CAM" Defending="70" Attacking="82" Form="82" />
+      <Player Name="A. Pato" Position="RF" Defending="65" Attacking="85" Form="85" />
+      <Player Name="Ibrahimovic" Position="LF" Defending="70" Attacking="88" Form="88" />
+    </Club>
+    <Club Id="Bayern" Name="Bayern Munich" Strategy="Wings">
+      <Player Name="Neuer" Position="GK" Defending="86" Attacking="50" Form="86" />
+      <Player Name="Rafinha" Position="RWB" Defending="79" Attacking="75" Form="79" />
+      <Player Name="J. Boateng" Position="RCB" Defending="78" Attacking="65" Form="78" />
+      <Player Name="Badstuber" Position="LCB" Defending="75" Attacking="60" Form="75" />
+      <Player Name="Lahm" Position="LWB" Defending="87" Attacking="85" Form="87" />
+      <Player Name="Luiz Gustavo" Position="RDM" Defending="79" Attacking="70" Form="79" />
+      <Player Name="Schweinsteiger" Position="LDM" Defending="87" Attacking="80" Form="87" />
+      <Player Name="Mueller" Position="CAM" Defending="70" Attacking="83" Form="83" />
+      <Player Name="Robben" Position="RW" Defending="75" Attacking="90" Form="90" />
+      <Player Name="Ribery" Position="LW" Defending="75" Attacking="88" Form="88" />
+      <Player Name="Gomez" Position="ST" Defending="70" Attacking="86" Form="86" />
+    </Club>
+    <Club Id="BorussiaD" Name="Borussia Dortmund" Strategy="Playmaker">
+      <Player Name="Weidenfeller" Position="GK" Defending="82" Attacking="50" Form="82" />
+      <Player Name="Piszczek" Position="RWB" Defending="76" Attacking="75" Form="76" />
+      <Player Name="Subotic" Position="RCB" Defending="82" Attacking="70" Form="82" />
+      <Player Name="Hummels" Position="LCB" Defending="84" Attacking="70" Form="84" />
+      <Player Name="Schmelzer" Position="LWB" Defending="77" Attacking="75" Form="77" />
+      <Player Name="Bender" Position="RDM" Defending="79" Attacking="70" Form="79" />
+      <Player Name="Gundogan" Position="LDM" Defending="77" Attacking="70" Form="77" />
+      <Player Name="Kagawa" Position="CAM" Defending="70" Attacking="82" Form="82" />
+      <Player Name="Goetze" Position="RW" Defending="70" Attacking="84" Form="84" />
+      <Player Name="Grosskreutz" Position="LW" Defending="65" Attacking="76" Form="76" />
+      <Player Name="Barrios" Position="ST" Defending="65" Attacking="83" Form="83" />
+    </Club>
+    <Club Id="Lille" Name="Lille OSC" Strategy="Wings">
+      <Player Name="Landreaus" Position="GK" Defending="80" Attacking="50" Form="80" />
+      <Player Name="Debuchy" Position="RB" Defending="77" Attacking="75" Form="77" />
+      <Player Name="Basa" Position="RCB" Defending="77" Attacking="65" Form="77" />
+      <Player Name="Chedjou" Position="LCB" Defending="79" Attacking="65" Form="79" />
+      <Player Name="Beria" Position="LB" Defending="76" Attacking="75" Form="76" />
+      <Player Name="Mavuba" Position="RCM" Defending="80" Attacking="81" Form="81" />
+      <Player Name="Pedretti" Position="LCM" Defending="75" Attacking="80" Form="80" />
+      <Player Name="J. Cole" Position="CAM" Defending="65" Attacking="80" Form="80" />
+      <Player Name="Payet" Position="RW" Defending="65" Attacking="79" Form="79" />
+      <Player Name="Hazard" Position="LW" Defending="70" Attacking="85" Form="85" />
+      <Player Name="Sow" Position="ST" Defending="65" Attacking="83" Form="83" />
+    </Club>
+    <Club Id="CSKA" Name="CSKA Moscow" Strategy="Wings">
+      <Player Name="Chepchugov" Position="GK" Defending="65" Attacking="50" Form="65" />
+      <Player Name="V. Berezutskiy" Position="RB" Defending="76" Attacking="75" Form="76" />
+      <Player Name="Ignashevich" Position="RCB" Defending="77" Attacking="65" Form="77" />
+      <Player Name="A. Berezutskiy" Position="LCB" Defending="74" Attacking="60" Form="74" />
+      <Player Name="Schennikov" Position="LB" Defending="72" Attacking="70" Form="72" />
+      <Player Name="Mamaev" Position="RDM" Defending="75" Attacking="65" Form="75" />
+      <Player Name="Aldonin" Position="LDM" Defending="69" Attacking="60" Form="69" />
+      <Player Name="Dzagoev" Position="RW" Defending="65" Attacking="79" Form="79" />
+      <Player Name="Honda" Position="LW" Defending="70" Attacking="81" Form="81" />
+      <Player Name="Vagner Love" Position="RF" Defending="65" Attacking="81" Form="81" />
+      <Player Name="Doumbia" Position="LF" Defending="65" Attacking="82" Form="82" />
+    </Club>
+    <Club Id="Porto" Name="FC Porto" Strategy="Center">
+      <Player Name="Helton" Position="GK" Defending="82" Attacking="50" Form="82" />
+      <Player Name="Sapunaru" Position="RB" Defending="76" Attacking="70" Form="76" />
+      <Player Name="Rolando" Position="RCB" Defending="80" Attacking="65" Form="80" />
+      <Player Name="Otamendi" Position="LCB" Defending="79" Attacking="65" Form="79" />
+      <Player Name="A. Pereira" Position="LB" Defending="79" Attacking="75" Form="79" />
+      <Player Name="Souza" Position="CDM" Defending="73" Attacking="65" Form="73" />
+      <Player Name="F. Guarin" Position="RCM" Defending="75" Attacking="80" Form="80" />
+      <Player Name="J. Moutinho" Position="LCM" Defending="75" Attacking="84" Form="84" />
+      <Player Name="Hulk" Position="RW" Defending="70" Attacking="84" Form="84" />
+      <Player Name="Varela" Position="LW" Defending="70" Attacking="81" Form="81" />
+      <Player Name="Kleber" Position="ST" Defending="60" Attacking="76" Form="76" />
+    </Club>
+    <Club Id="Ajax" Name="Ajax Amsterdam" Strategy="Center">
+      <Player Name="Vermeer" Position="GK" Defending="75" Attacking="50" Form="75" />
+      <Player Name="Van der Wiel" Position="RB" Defending="78" Attacking="70" Form="78" />
+      <Player Name="Alderweireld" Position="RCB" Defending="75" Attacking="60" Form="75" />
+      <Player Name="Vertonghen" Position="LCB" Defending="80" Attacking="65" Form="80" />
+      <Player Name="Anita" Position="LB" Defending="73" Attacking="70" Form="73" />
+      <Player Name="De Jong" Position="RCM" Defending="70" Attacking="75" Form="75" />
+      <Player Name="Janssen" Position="CM" Defending="75" Attacking="79" Form="79" />
+      <Player Name="Eriksen" Position="LCM" Defending="75" Attacking="80" Form="80" />
+      <Player Name="Sulejmani" Position="RW" Defending="65" Attacking="77" Form="77" />
+      <Player Name="Boerrigter" Position="LW" Defending="60" Attacking="72" Form="72" />
+      <Player Name="Sigborsson" Position="ST" Defending="55" Attacking="74" Form="74" />
+    </Club>
+    <Club Id="Shakhtar" Name="Shakhtar Donetsk" Strategy="Wings">
+      <Player Name="Rybka" Position="GK" Defending="71" Attacking="50" Form="71" />
+      <Player Name="Srna" Position="RWB" Defending="82" Attacking="80" Form="82" />
+      <Player Name="Kucher" Position="RCB" Defending="73" Attacking="60" Form="73" />
+      <Player Name="Chygrynskiy" Position="LCB" Defending="77" Attacking="65" Form="77" />
+      <Player Name="Rat" Position="LWB" Defending="73" Attacking="70" Form="73" />
+      <Player Name="Eduardo" Position="RM" Defending="70" Attacking="81" Form="81" />
+      <Player Name="Fernandinho" Position="RCM" Defending="75" Attacking="77" Form="77" />
+      <Player Name="Huebschman" Position="LCM" Defending="70" Attacking="74" Form="74" />
+      <Player Name="Willian" Position="LM" Defending="60" Attacking="75" Form="75" />
+      <Player Name="Luiz Adriano" Position="RF" Defending="60" Attacking="80" Form="80" />
+      <Player Name="Jadson" Position="LF" Defending="60" Attacking="80" Form="80" />
+    </Club>
+    <Club Id="Olympiakos" Name="Olympiakos Piraeus" Strategy="Center">
+      <Player Name="Costanzo" Position="GK" Defending="72" Attacking="50" Form="72" />
+      <Player Name="Torosidis" Position="RB" Defending="79" Attacking="75" Form="79" />
+      <Player Name="Mellberg" Position="RCB" Defending="78" Attacking="65" Form="78" />
+      <Player Name="Papadopoulos" Position="LCB" Defending="76" Attacking="65" Form="76" />
+      <Player Name="Holebas" Position="LB" Defending="67" Attacking="65" Form="67" />
+      <Player Name="Makoun" Position="RCM" Defending="75" Attacking="78" Form="78" />
+      <Player Name="Ibagaza" Position="LCM" Defending="70" Attacking="75" Form="75" />
+      <Player Name="D. Fuster" Position="CAM" Defending="60" Attacking="75" Form="75" />
+      <Player Name="Mirallas" Position="RW" Defending="65" Attacking="77" Form="77" />
+      <Player Name="Riera" Position="LW" Defending="65" Attacking="77" Form="77" />
+      <Player Name="Djebbour" Position="ST" Defending="55" Attacking="75" Form="75" />
+    </Club>
+    <Club Id="Wisla" Name="Wisla Krakow" Strategy="Playmaker">
+      <Player Name="Pareiko" Position="GK" Defending="70" Attacking="50" Form="70" />
+      <Player Name="Lamey" Position="RB" Defending="67" Attacking="60" Form="67" />
+      <Player Name="Jaliens" Position="RCB" Defending="68" Attacking="60" Form="68" />
+      <Player Name="Chavez" Position="LCB" Defending="71" Attacking="60" Form="71" />
+      <Player Name="Diaz" Position="LB" Defending="64" Attacking="60" Form="64" />
+      <Player Name="Sobolewski" Position="RDM" Defending="69" Attacking="65" Form="69" />
+      <Player Name="Nunez" Position="LDM" Defending="69" Attacking="65" Form="69" />
+      <Player Name="Melikson" Position="CAM" Defending="60" Attacking="76" Form="76" />
+      <Player Name="Malecki" Position="RW" Defending="60" Attacking="70" Form="70" />
+      <Player Name="Iliev" Position="LW" Defending="60" Attacking="71" Form="71" />
+      <Player Name="Genkov" Position="ST" Defending="60" Attacking="68" Form="68" />
+    </Club>
+    <Club Id="Polonia" Name="Polonia Warszawa" Strategy="Wings">
+      <Player Name="Przyrowski" Position="GK" Defending="61" Attacking="50" Form="61" />
+      <Player Name="Baszczynski" Position="RB" Defending="64" Attacking="60" Form="64" />
+      <Player Name="Kokoszka" Position="RCB" Defending="67" Attacking="60" Form="67" />
+      <Player Name="Jodlowiec" Position="LCB" Defending="68" Attacking="60" Form="68" />
+      <Player Name="Sadlok" Position="LB" Defending="67" Attacking="60" Form="67" />
+      <Player Name="Tralka" Position="RDM" Defending="67" Attacking="65" Form="67" />
+      <Player Name="Piatek" Position="LDM" Defending="64" Attacking="65" Form="64" />
+      <Player Name="Jez" Position="CAM" Defending="60" Attacking="69" Form="69" />
+      <Player Name="Bonin" Position="RW" Defending="60" Attacking="63" Form="63" />
+      <Player Name="Bruno" Position="LW" Defending="60" Attacking="65" Form="65" />
+      <Player Name="Sikorski" Position="ST" Defending="60" Attacking="67" Form="67" />
+    </Club>
+  </RestOfWorld>
+</World>
+
+    <!--<Club Id="" Name="" Strategy="">
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+      <Player Name="" Position="" Defending="" Attacking="" Form="" />
+    </Club>-->
