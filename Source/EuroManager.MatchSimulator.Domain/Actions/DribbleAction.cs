@@ -7,15 +7,22 @@ namespace EuroManager.MatchSimulator.Domain.Actions
 {
     public class DribbleAction : IMatchAction
     {
+        private PlayerRatingAdjuster ratingAdjuster = new PlayerRatingAdjuster();
+
         public bool CanContinue { get; private set; }
+
+        public Player Dribbler { get; private set; }
+
+        public Player Opponent { get; private set; }
 
         public void Perform(Match match)
         {
-            Player dribbler = match.CurrentPlayer;
-            Player opponent = dribbler.Team.Opponent.PickPlayerToConfrontDribbler(dribbler);
+            Dribbler = match.CurrentPlayer;
+            Opponent = Dribbler.Team.Opponent.PickPlayerToConfrontDribbler(Dribbler);
 
-            bool isSuccessful = dribbler.TryDribble(opponent);
-            match.OnDribble(opponent, isSuccessful);
+            bool isSuccessful = Dribbler.TryDribble(Opponent);
+            match.OnDribble(Opponent, isSuccessful);
+            ratingAdjuster.OnDribble(Dribbler, Opponent, isSuccessful);
 
             CanContinue = isSuccessful;
         }

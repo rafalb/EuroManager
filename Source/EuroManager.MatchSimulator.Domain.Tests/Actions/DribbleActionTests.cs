@@ -8,59 +8,105 @@ using EuroManager.MatchSimulator.Domain.Actions;
 using Moq;
 using NUnit.Framework;
 
-namespace EuroManager.MatchSimulator.Domain.Tests.Actions
+namespace EuroManager.MatchSimulator.Domain.Tests.Actions.DribbleActionTests
 {
     [TestFixture]
-    public class DribbleActionTests : UnitTestFixture
+    public class WhenDribbleActionSucceeded : UnitTestFixture
     {
-        private MockRepository mocks;
-        private Mock<MatchRandomizer> randomizerMock;
+        private DribbleAction action;
 
         [SetUp]
         public override void SetUp()
         {
-            mocks = new MockRepository(MockBehavior.Loose);
-            randomizerMock = mocks.Create<MatchRandomizer>(MockBehavior.Loose, new StaticRandomGenerator());
-
-            MatchRandomizer.Current = randomizerMock.Object;
-
             base.SetUp();
+
+            var mocks = new MockRepository(MockBehavior.Loose);
+
+            var randomizerStub = mocks.Create<MatchRandomizer>(MockBehavior.Loose, new StaticRandomGenerator());
+            randomizerStub.Setup(r => r.TryDribble(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            MatchRandomizer.Current = randomizerStub.Object;
+            
+            Match match = A.Match.Build();
+            match.InitiateAttack(match.Team1.Squad.ElementAt(3));
+
+            action = new DribbleAction();
+            action.Perform(match);
         }
 
         [TearDown]
         public override void TearDown()
         {
-            MatchRandomizer.ResetCurrent();
-
             base.TearDown();
+
+            MatchRandomizer.ResetCurrent();
         }
 
         [Test]
-        public void ShouldNotContinueOnFail()
+        public void ShouldContinueAttack()
         {
-            randomizerMock.Setup(r => r.TryDribble(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            Assert.That(action.CanContinue, Is.True);
+        }
+
+        [Test]
+        public void ShouldIncreaseDribblerRating()
+        {
+            Assert.That(action.Dribbler.Rating, Is.GreaterThan(Player.InitialRating));
+        }
+
+        [Test]
+        public void ShouldDecreaseOpponentRating()
+        {
+            Assert.That(action.Opponent.Rating, Is.LessThan(Player.InitialRating));
+        }
+    }
+
+    [TestFixture]
+    public class WhenDribbleActoinFailed : UnitTestFixture
+    {
+        private DribbleAction action;
+
+        [SetUp]
+        public override void SetUp()
+        {
+            base.SetUp();
+
+            var mocks = new MockRepository(MockBehavior.Loose);
+
+            var randomizerStub = mocks.Create<MatchRandomizer>(MockBehavior.Loose, new StaticRandomGenerator());
+            randomizerStub.Setup(r => r.TryDribble(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            MatchRandomizer.Current = randomizerStub.Object;
 
             Match match = A.Match.Build();
             match.InitiateAttack(match.Team1.Squad.ElementAt(3));
 
-            var action = new DribbleAction();
+            action = new DribbleAction();
             action.Perform(match);
+        }
 
+        [TearDown]
+        public override void TearDown()
+        {
+            base.TearDown();
+
+            MatchRandomizer.ResetCurrent();
+        }
+
+        [Test]
+        public void ShouldNotContinueAttack()
+        {
             Assert.That(action.CanContinue, Is.False);
         }
 
         [Test]
-        public void ShouldContinueOnSuccess()
+        public void ShouldDecreaseDribblerRating()
         {
-            randomizerMock.Setup(r => r.TryDribble(It.IsAny<double>(), It.IsAny<double>())).Returns(true);
+            Assert.That(action.Dribbler.Rating, Is.LessThan(Player.InitialRating));
+        }
 
-            Match match = A.Match.Build();
-            match.InitiateAttack(match.Team1.Squad.ElementAt(3));
-
-            var action = new DribbleAction();
-            action.Perform(match);
-
-            Assert.That(action.CanContinue, Is.True);
+        [Test]
+        public void ShouldIncreaseOpponentRating()
+        {
+            Assert.That(action.Opponent.Rating, Is.GreaterThan(Player.InitialRating));
         }
     }
 }

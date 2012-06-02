@@ -8,6 +8,11 @@ namespace EuroManager.MatchSimulator.Domain.Tests
 {
     public static class A
     {
+        public static PlayerBuilder Player
+        {
+            get { return new PlayerBuilder(); }
+        }
+
         public static TeamBuilder Team
         {
             get { return new TeamBuilder(); }

@@ -10,7 +10,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Builders
     {
         private string name = "Team";
         private TeamStrategy strategy = TeamStrategy.Center;
-        private int rating = 75;
+        private int skills = 75;
 
         public TeamBuilder Named(string name)
         {
@@ -24,9 +24,9 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Builders
             return this;
         }
 
-        public TeamBuilder Rated(int rating)
+        public TeamBuilder Skilled(int skills)
         {
-            this.rating = rating;
+            this.skills = skills;
             return this;
         }
 
@@ -44,7 +44,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Builders
 
             for (int i = 1; i <= 11; i++)
             {
-                team.AddSquadPlayer(i, "Player " + i, positions[i - 1], rating, rating, rating);
+                team.AddSquadPlayer(i, "Player " + i, positions[i - 1], skills, skills, skills);
             }
 
             return team;

@@ -7,16 +7,25 @@ namespace EuroManager.MatchSimulator.Domain.Actions
 {
     public class PassAction : IMatchAction
     {
+        private PlayerRatingAdjuster ratingAdjuster = new PlayerRatingAdjuster();
+
         public bool CanContinue { get; private set; }
+
+        public Player PassingPlayer { get; private set; }
+
+        public Player Receiver { get; private set; }
+
+        public Player Opponent { get; private set; }
 
         public void Perform(Match match)
         {
-            Player passingPlayer = match.CurrentPlayer;
-            Player receiver = passingPlayer.Team.PickPlayerToReceivePass(passingPlayer);
-            Player opponent = passingPlayer.Team.Opponent.PickPlayerToMarkPassReceiver(receiver);
+            PassingPlayer = match.CurrentPlayer;
+            Receiver = PassingPlayer.Team.PickPlayerToReceivePass(PassingPlayer);
+            Opponent = PassingPlayer.Team.Opponent.PickPlayerToMarkPassReceiver(Receiver);
 
-            bool isSuccessful = passingPlayer.TryPass(receiver, opponent);
-            match.OnPass(receiver, opponent, isSuccessful);
+            bool isSuccessful = PassingPlayer.TryPass(Receiver, Opponent);
+            match.OnPass(Receiver, Opponent, isSuccessful);
+            ratingAdjuster.OnPass(PassingPlayer, Receiver, Opponent, isSuccessful);
 
             CanContinue = isSuccessful;
         }

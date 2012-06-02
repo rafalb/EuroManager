@@ -38,6 +38,8 @@ namespace EuroManager.MatchSimulator.Domain
         };
         #endregion
 
+        public static readonly double InitialRating = 0.55;
+
         private IMatchRandomizer randomizer = MatchRandomizer.Current;
 
         public Player(int id, string name, Team team, Position position, int defensiveSkills, int offensiveSkills, int form)
@@ -50,6 +52,8 @@ namespace EuroManager.MatchSimulator.Domain
             DefensiveSkills = defensiveSkills;
             OffensiveSkills = offensiveSkills;
             Form = form;
+
+            Rating = InitialRating;
         }
 
         public int Id { get; private set; }
@@ -65,6 +69,8 @@ namespace EuroManager.MatchSimulator.Domain
         public int OffensiveSkills { get; private set; }
 
         public int Form { get; private set; }
+
+        public double Rating { get; private set; }
 
         public bool IsGoalkeeper
         {
@@ -108,6 +114,11 @@ namespace EuroManager.MatchSimulator.Domain
         public override string ToString()
         {
             return string.Format(CultureInfo.CurrentCulture, "{0} {1}", Position, Name);
+        }
+
+        public void AdjustRating(double adjustment)
+        {
+            Rating = Math.Max(0, Math.Min(Rating + adjustment, 1.0));
         }
 
         public bool TryPass(Player receiver, Player opponent)
