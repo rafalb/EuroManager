@@ -10,6 +10,8 @@ namespace EuroManager.MatchSimulator.Domain
 {
     public class Player
     {
+        public static readonly double InitialRating = 0.55;
+
         #region InitiateAttackChanceByPosition
         private static readonly Dictionary<Position, double> initiateAttackChanceByPosition = new Dictionary<Position, double>
         {
@@ -37,8 +39,6 @@ namespace EuroManager.MatchSimulator.Domain
             { Position.Striker, 4 }
         };
         #endregion
-
-        public static readonly double InitialRating = 0.55;
 
         private IMatchRandomizer randomizer = MatchRandomizer.Current;
 

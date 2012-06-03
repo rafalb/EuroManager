@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using EuroManager.Common;
@@ -67,7 +68,7 @@ namespace EuroManager.MatchSimulator.Domain
             }
             else
             {
-                throw new InvalidOperationException(String.Format("Shot result {0} not supported", result));
+                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Shot result {0} not supported", result));
             }
         }
 

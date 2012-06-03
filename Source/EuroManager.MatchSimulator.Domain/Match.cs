@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using EuroManager.MatchSimulator.Domain.Events;
@@ -122,7 +123,7 @@ namespace EuroManager.MatchSimulator.Domain
 
         public override string ToString()
         {
-            return String.Format("{0} - {1} {2}:{3}", Team1.Name, Team2.Name, Score1, Score2);
+            return string.Format(CultureInfo.InvariantCulture, "{0} - {1} {2}:{3}", Team1.Name, Team2.Name, Score1, Score2);
         }
 
         public void AdvanceTime()
