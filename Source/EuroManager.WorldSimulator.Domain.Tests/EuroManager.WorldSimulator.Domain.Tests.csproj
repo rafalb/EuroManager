@@ -70,6 +70,7 @@
     <Compile Include="LeaguePlayOffsSeasonTests.cs" />
     <Compile Include="LeagueSeasonTests.cs" />
     <Compile Include="NationalLeagueSeasonTests.cs" />
+    <Compile Include="PlayerTournamentStatsTests.cs" />
     <Compile Include="SchedulerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamStatsTests.cs" />

@@ -72,6 +72,11 @@ namespace EuroManager.MatchSimulator.Domain
 
         public double Rating { get; private set; }
 
+        public int FinalRating
+        {
+            get { return Math.Max(1, (int)Math.Ceiling(10 * Rating)); }
+        }
+
         public bool IsGoalkeeper
         {
             get { return Position == Position.Goalkeeper; }

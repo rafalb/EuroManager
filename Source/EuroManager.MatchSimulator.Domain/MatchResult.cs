@@ -8,7 +8,8 @@ namespace EuroManager.MatchSimulator.Domain
 {
     public class MatchResult
     {
-        public MatchResult(Team team1, Team team2, Team winner, int score1, int score2, int penaltyScore1, int penaltyScore2, IEnumerable<IMatchEvent> events)
+        public MatchResult(Team team1, Team team2, Team winner, int score1, int score2, int penaltyScore1, int penaltyScore2,
+            IEnumerable<IMatchEvent> events)
         {
             Team1 = team1;
             Team2 = team2;

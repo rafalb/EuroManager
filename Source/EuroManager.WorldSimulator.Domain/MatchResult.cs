@@ -9,7 +9,10 @@ namespace EuroManager.WorldSimulator.Domain
 {
     public class MatchResult : IEntity
     {
-        public MatchResult(Fixture fixture, Team winner, int score1, int score2, int penaltyScore1, int penaltyScore2, IEnumerable<Goal> goals)
+        public MatchResult(Fixture fixture, Team winner, int score1, int score2, int penaltyScore1, int penaltyScore2,
+            IEnumerable<Goal> goals,
+            IEnumerable<PlayerMatchStats> playersStats1,
+            IEnumerable<PlayerMatchStats> playersStats2)
         {
             TournamentSeasonId = fixture.TournamentSeasonId;
             Date = fixture.Date;
@@ -23,6 +26,8 @@ namespace EuroManager.WorldSimulator.Domain
             PenaltyScore1 = penaltyScore1;
             PenaltyScore2 = penaltyScore2;
             Goals = goals.ToList();
+            PlayersStats1 = playersStats1.ToList();
+            PlayersStats2 = playersStats2.ToList();
         }
 
         protected MatchResult()
@@ -65,6 +70,15 @@ namespace EuroManager.WorldSimulator.Domain
         public int PenaltyScore2 { get; private set; }
 
         public virtual List<Goal> Goals { get; private set; }
+
+        public virtual List<PlayerMatchStats> PlayersStats1 { get; private set; }
+
+        public virtual List<PlayerMatchStats> PlayersStats2 { get; private set; }
+
+        public IEnumerable<PlayerMatchStats> PlayersStats
+        {
+            get { return Enumerable.Concat(PlayersStats1, PlayersStats2).ToArray(); }
+        }
 
         public IEnumerable<Goal> Goals1
         {

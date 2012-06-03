@@ -13,13 +13,15 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         private TeamStats stats;
         private Team team1;
         private Team team2;
+        private Player player;
 
         [SetUp]
         public override void SetUp()
         {
             base.SetUp();
 
-            team1 = A.Team.Build();
+            player = new Player(A.World.Build(), "Test", 75, 75, 75);
+            team1 = A.Team.WithPlayers(player).Build();
             team2 = A.Team.Build();
             stats = new TeamStats(team1);
         }
@@ -120,6 +122,15 @@ namespace EuroManager.WorldSimulator.Domain.Tests
             stats2.ApplyResult(A.MatchResult.ForTeams(team2, A.Team.Build()).WithScore(2, 3).Build());
 
             Assert.That(stats1, Is.LessThan(stats2));
+        }
+
+        [Test]
+        public void ShouldApplyResultToPlayerStats()
+        {
+            stats.ApplyResult(A.MatchResult.ForTeams(team1, team2)
+                .WithTeam1PlayersStats(new PlayerMatchStats(player, 5)).Build());
+
+            Assert.That(stats.PlayersStats.First(s => s.Player == player).Played, Is.EqualTo(1));
         }
 
         private MatchResult ResultForScore(int score1, int score2)

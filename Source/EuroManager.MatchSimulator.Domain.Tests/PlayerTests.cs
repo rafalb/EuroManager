@@ -58,5 +58,22 @@ namespace EuroManager.MatchSimulator.Domain.Tests.PlayerTests
 
             Assert.That(player.Rating, Is.EqualTo(0.0));
         }
+
+        [Test]
+        public void ShouldRoundFinalRating()
+        {
+            player.AdjustRating(-0.03);
+            player.AdjustRating(0.19);
+
+            Assert.That(player.FinalRating, Is.EqualTo(8));
+        }
+
+        [Test]
+        public void ShouldNotGiveFinalRatingBelowMin()
+        {
+            player.AdjustRating(-0.7);
+
+            Assert.That(player.FinalRating, Is.EqualTo(1));
+        }
     }
 }

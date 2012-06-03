@@ -13,6 +13,8 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
         private Team winner;
         private int score1 = 1;
         private int score2 = 0;
+        private IEnumerable<PlayerMatchStats> playersStats1 = Enumerable.Empty<PlayerMatchStats>();
+        private IEnumerable<PlayerMatchStats> playersStats2 = Enumerable.Empty<PlayerMatchStats>();
 
         public MatchResultBuilder ForFixture(Fixture fixture)
         {
@@ -42,6 +44,18 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
             return this;
         }
 
+        public MatchResultBuilder WithTeam1PlayersStats(params PlayerMatchStats[] playersStats)
+        {
+            this.playersStats1 = playersStats;
+            return this;
+        }
+
+        public MatchResultBuilder WithTeam2PlayersStats(params PlayerMatchStats[] playersStats)
+        {
+            this.playersStats2 = playersStats;
+            return this;
+        }
+        
         public MatchResult Build()
         {
             if (fixture == null)
@@ -59,7 +73,8 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
                 fixture = new Fixture(A.LeagueSeason.Build(), A.Date, team1, team2, true, false);
             }
 
-            return new MatchResult(fixture, winner == null ? team1 : winner, score1, score2, 0, 0, Enumerable.Empty<Goal>());
+            return new MatchResult(fixture, winner == null ? team1 : winner, score1, score2, 0, 0,
+                Enumerable.Empty<Goal>(), playersStats1, playersStats2);
         }
     }
 }

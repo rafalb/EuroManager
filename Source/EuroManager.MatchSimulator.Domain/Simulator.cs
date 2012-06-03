@@ -36,7 +36,8 @@ namespace EuroManager.MatchSimulator.Domain
                 }
             }
 
-            return new MatchResult(match.Team1, match.Team2, match.Winner, match.Score1, match.Score2, match.PenaltyScore1, match.PenaltyScore2, match.Events);
+            return new MatchResult(match.Team1, match.Team2, match.Winner, match.Score1, match.Score2, match.PenaltyScore1, match.PenaltyScore2,
+                match.Events);
         }
 
         private void AdvanceMatch(Match match)

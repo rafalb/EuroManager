@@ -54,6 +54,8 @@
     <Compile Include="IFixtureSet.cs" />
     <Compile Include="KnockoutStage.cs" />
     <Compile Include="KnockoutStageSeason.cs" />
+    <Compile Include="PlayerMatchStats.cs" />
+    <Compile Include="PlayerTournamentStats.cs" />
     <Compile Include="RoundDate.cs" />
     <Compile Include="TeamPair.cs" />
     <Compile Include="TieKnockoutStage.cs" />

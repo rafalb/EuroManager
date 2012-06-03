@@ -8,8 +8,12 @@ namespace EuroManager.WorldSimulator.Services
 {
     public class MatchSimulatorFacade
     {
+        private IEnumerable<Player> allPlayers;
+
         public MatchResult Play(Fixture fixture)
         {
+            allPlayers = Enumerable.Union(fixture.Team1.Players, fixture.Team2.Players).ToArray();
+
             MatchSimulator.Domain.Team team1 = ConvertTeamForMatchSimulator(fixture.Team1);
             MatchSimulator.Domain.Team team2 = ConvertTeamForMatchSimulator(fixture.Team2);
 
@@ -28,9 +32,8 @@ namespace EuroManager.WorldSimulator.Services
             var simulator = new MatchSimulator.Domain.Simulator(MatchSimulator.Domain.MatchRandomizer.Current);
             var simulatorResult = simulator.Play(match);
 
-            var allPlayers = Enumerable.Union(fixture.Team1.Players, fixture.Team2.Players).ToArray();
             var goals = simulatorResult.Goals.Select(g =>
-                new Goal(g.IsForFirstTeam, g.Minute, g.Extended, allPlayers.Single(p => p.Id == g.Scorer.Id))).ToArray();
+                new Goal(g.IsForFirstTeam, g.Minute, g.Extended, MapPlayer(g.Scorer))).ToArray();
 
             Team winner = null;
 
@@ -39,8 +42,12 @@ namespace EuroManager.WorldSimulator.Services
                 winner = simulatorResult.Winner == team1 ? fixture.Team1 : fixture.Team2;
             }
 
+            var playersStats1 = team1.Squad.Select(p => new PlayerMatchStats(MapPlayer(p), p.FinalRating)).ToArray();
+            var playersStats2 = team2.Squad.Select(p => new PlayerMatchStats(MapPlayer(p), p.FinalRating)).ToArray();
+
             var result = new MatchResult(fixture, winner, simulatorResult.Score1, simulatorResult.Score2,
-                simulatorResult.PenaltyScore1, simulatorResult.PenaltyScore2, goals);
+                simulatorResult.PenaltyScore1, simulatorResult.PenaltyScore2,
+                goals, playersStats1, playersStats2);
 
             return result;
         }
@@ -58,6 +65,11 @@ namespace EuroManager.WorldSimulator.Services
             }
 
             return matchTeam;
+        }
+
+        private Player MapPlayer(MatchSimulator.Domain.Player player)
+        {
+            return allPlayers.Single(p => p.Id == player.Id);
         }
     }
 }

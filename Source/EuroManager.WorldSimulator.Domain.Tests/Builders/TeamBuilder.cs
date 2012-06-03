@@ -9,6 +9,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
     public class TeamBuilder
     {
         private World world;
+        private IEnumerable<Player> players = Enumerable.Empty<Player>();
 
         public TeamBuilder InWorld(World world)
         {
@@ -16,9 +17,16 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
             return this;
         }
 
+        public TeamBuilder WithPlayers(params Player[] players)
+        {
+            this.players = players;
+            return this;
+        }
+
         public Team Build()
         {
-            return new Team(world, "Test", TeamStrategy.Center, Enumerable.Empty<SquadMember>());
+            SquadMember[] squad = players.Select(p => new SquadMember(PositionCode.CB, p)).ToArray();
+            return new Team(world, "Test", TeamStrategy.Center, squad);
         }
 
         public IEnumerable<Team> Repeat(int count)
