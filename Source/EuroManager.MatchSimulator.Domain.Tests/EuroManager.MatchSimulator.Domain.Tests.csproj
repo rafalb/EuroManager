@@ -56,8 +56,10 @@
     <Compile Include="Actions\PassActionTests.cs" />
     <Compile Include="Actions\ShootActionTests.cs" />
     <Compile Include="Builders\MatchBuilder.cs" />
+    <Compile Include="Builders\PlayerBuilder.cs" />
     <Compile Include="Builders\TeamBuilder.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="PlayerTests.cs" />
     <Compile Include="PositionTests.cs" />
     <Compile Include="SimulatorTests.cs" />
     <Compile Include="MatchTests.cs" />

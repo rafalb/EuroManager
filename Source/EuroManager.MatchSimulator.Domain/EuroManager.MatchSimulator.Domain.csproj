@@ -54,6 +54,8 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IMatchRandomizer.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="PlayerRatingAdjuster.cs" />
+    <Compile Include="ShotResult.cs" />
     <Compile Include="Simulator.cs" />
     <Compile Include="Events\IMatchEvent.cs" />
     <Compile Include="Match.cs" />

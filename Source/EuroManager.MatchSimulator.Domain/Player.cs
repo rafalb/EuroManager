@@ -136,7 +136,7 @@ namespace EuroManager.MatchSimulator.Domain
                 tackling: opponent.DefensiveSkills + opponent.Form);
         }
 
-        public bool TryShoot(Player opponent, Player goalkeeper)
+        public ShotResult TryShoot(Player opponent, Player goalkeeper)
         {
             return randomizer.TryShoot(
                 shooting: OffensiveSkills + Form,

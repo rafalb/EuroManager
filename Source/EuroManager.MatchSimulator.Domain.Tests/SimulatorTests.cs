@@ -67,7 +67,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
         public void ShouldPlayExtraTimeWhenInconclusive()
         {
             var randomizerStub = mocks.Create<MatchRandomizer>(MockBehavior.Loose, new StaticRandomGenerator());
-            randomizerStub.Setup(r => r.TryShoot(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            randomizerStub.Setup(r => r.TryShoot(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<double>())).Returns(ShotResult.Missed);
             MatchRandomizer.Current = randomizerStub.Object;
 
             var match = A.Match.WithExtraTimeRequired().Build();
@@ -81,7 +81,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
         public void ShouldPlayPenaltyShootoutWhenInconclusive()
         {
             var randomizerStub = mocks.Create<MatchRandomizer>(MockBehavior.Loose, new StaticRandomGenerator());
-            randomizerStub.Setup(r => r.TryShoot(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<double>())).Returns(false);
+            randomizerStub.Setup(r => r.TryShoot(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<double>())).Returns(ShotResult.Missed);
             randomizerStub.Setup(r => r.IsFirstTeamStartingPenaltyShootout()).Returns(true);
             
             bool toggle = false;

@@ -17,8 +17,8 @@ namespace EuroManager.MatchSimulator.Domain.Actions
             Player shooter = match.CurrentPlayer;
             Player opponent = shooter.Team.Opponent.PickPlayerToConfrontShooter(shooter);
 
-            bool isSuccessful = shooter.TryShoot(opponent, shooter.Team.Opponent.Goalkeeper);
-            match.OnShoot(opponent, isSuccessful);
+            ShotResult result = shooter.TryShoot(opponent, shooter.Team.Opponent.Goalkeeper);
+            match.OnShoot(opponent, isSuccessful: result == ShotResult.Scored);
         }
     }
 }

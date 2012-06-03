@@ -16,7 +16,7 @@ namespace EuroManager.MatchSimulator.Domain
 
         bool TryDribble(double dribbling, double tackling);
 
-        bool TryShoot(double shooting, double blocking, double goalkeeping);
+        ShotResult TryShoot(double shooting, double blocking, double goalkeeping);
 
         bool TryPenaltyKick();
 

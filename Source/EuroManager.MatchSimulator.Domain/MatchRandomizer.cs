@@ -62,17 +62,27 @@ namespace EuroManager.MatchSimulator.Domain
             return Match(dribbling, tackling);
         }
 
-        public virtual bool TryShoot(double shooting, double blocking, double goalkeeping)
+        public virtual ShotResult TryShoot(double shooting, double blocking, double goalkeeping)
         {
             shooting = EnhanceSkill(shooting, blocking);
-
-            bool isBlocked = Match(0.1 * blocking, shooting);
-            bool isMissed = Match(blocking, shooting);
-
             double adjustedGoalkeeping = 0.3 * goalkeeping + 0.7 * blocking;
-            bool isSaved = Match(1.6 * adjustedGoalkeeping, shooting);
 
-            return !(isBlocked || isMissed || isSaved);
+            if (Match(0.1 * blocking, shooting))
+            {
+                return ShotResult.Blocked;
+            }
+            else if (Match(blocking, shooting))
+            {
+                return ShotResult.Missed;
+            }
+            else if (Match(1.6 * adjustedGoalkeeping, shooting))
+            {
+                return ShotResult.Saved;
+            }
+            else
+            {
+                return ShotResult.Scored;
+            }
         }
 
         public virtual bool TryPenaltyKick()
