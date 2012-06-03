@@ -82,7 +82,7 @@ namespace EuroManager.WorldSimulator.Domain
         {
             foreach (var group in Groups)
             {
-                if (group.TryApplyResult(result.Team1, result.Team2, result.Score1, result.Score2))
+                if (group.TryApplyResult(result))
                 {
                     if (group.IsCompleted)
                     {

@@ -91,8 +91,8 @@ namespace EuroManager.WorldSimulator.Domain
 
         public override void ApplyResult(MatchResult result)
         {
-            GetStatsFor(result.Team1).ApplyResult(result.Score1, result.Score2);
-            GetStatsFor(result.Team2).ApplyResult(result.Score2, result.Score1);
+            GetStatsFor(result.Team1).ApplyResult(result);
+            GetStatsFor(result.Team2).ApplyResult(result);
 
             if (Phase == TournamentPhase.InProgress)
             {

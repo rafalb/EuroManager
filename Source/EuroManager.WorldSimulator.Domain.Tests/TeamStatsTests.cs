@@ -10,11 +10,24 @@ namespace EuroManager.WorldSimulator.Domain.Tests
     [TestFixture]
     public class TeamStatsTests : UnitTestFixture
     {
+        private TeamStats stats;
+        private Team team1;
+        private Team team2;
+
+        [SetUp]
+        public override void SetUp()
+        {
+            base.SetUp();
+
+            team1 = A.Team.Build();
+            team2 = A.Team.Build();
+            stats = new TeamStats(team1);
+        }
+
         [Test]
         public void ShouldCalculateGoalDifference()
         {
-            var stats = new TeamStats(A.Team.Build());
-            stats.ApplyResult(2, 5);
+            stats.ApplyResult(ResultForScore(2, 5));
 
             Assert.That(stats.GoalDifference, Is.EqualTo(-3));
         }
@@ -22,9 +35,8 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldCountPlayedMatches()
         {
-            var stats = new TeamStats(A.Team.Build());
-            stats.ApplyResult(1, 0);
-            stats.ApplyResult(2, 2);
+            stats.ApplyResult(ResultForScore(1, 0));
+            stats.ApplyResult(ResultForScore(2, 2));
 
             Assert.That(stats.Played, Is.EqualTo(2));
         }
@@ -32,10 +44,9 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldCountWins()
         {
-            var stats = new TeamStats(A.Team.Build());
-            stats.ApplyResult(1, 0);
-            stats.ApplyResult(0, 1);
-            stats.ApplyResult(2, 1);
+            stats.ApplyResult(ResultForScore(1, 0));
+            stats.ApplyResult(ResultForScore(0, 1));
+            stats.ApplyResult(ResultForScore(2, 1));
 
             Assert.That(stats.Wins, Is.EqualTo(2));
         }
@@ -43,10 +54,9 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldCountDraws()
         {
-            var stats = new TeamStats(A.Team.Build());
-            stats.ApplyResult(1, 1);
-            stats.ApplyResult(0, 1);
-            stats.ApplyResult(2, 1);
+            stats.ApplyResult(ResultForScore(1, 1));
+            stats.ApplyResult(ResultForScore(0, 1));
+            stats.ApplyResult(ResultForScore(2, 1));
 
             Assert.That(stats.Draws, Is.EqualTo(1));
         }
@@ -54,10 +64,9 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldCountLosses()
         {
-            var stats = new TeamStats(A.Team.Build());
-            stats.ApplyResult(1, 1);
-            stats.ApplyResult(0, 1);
-            stats.ApplyResult(2, 4);
+            stats.ApplyResult(ResultForScore(1, 1));
+            stats.ApplyResult(ResultForScore(0, 1));
+            stats.ApplyResult(ResultForScore(2, 4));
 
             Assert.That(stats.Losses, Is.EqualTo(2));
         }
@@ -65,15 +74,14 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldCalculatePoints()
         {
-            var stats = new TeamStats(A.Team.Build());
-            stats.ApplyResult(1, 0);
-            stats.ApplyResult(0, 1);
-            stats.ApplyResult(2, 4);
-            stats.ApplyResult(3, 1);
-            stats.ApplyResult(1, 1);
-            stats.ApplyResult(2, 0);
-            stats.ApplyResult(1, 2);
-            stats.ApplyResult(2, 2);
+            stats.ApplyResult(ResultForScore(1, 0));
+            stats.ApplyResult(ResultForScore(0, 1));
+            stats.ApplyResult(ResultForScore(2, 4));
+            stats.ApplyResult(ResultForScore(3, 1));
+            stats.ApplyResult(ResultForScore(1, 1));
+            stats.ApplyResult(ResultForScore(2, 0));
+            stats.ApplyResult(ResultForScore(1, 2));
+            stats.ApplyResult(ResultForScore(2, 2));
 
             Assert.That(stats.Points, Is.EqualTo(11));
         }
@@ -81,10 +89,11 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldConsiderHigherPointsAsHigherPosition()
         {
-            var stats1 = new TeamStats(A.Team.Build());
-            stats1.ApplyResult(1, 0);
-            var stats2 = new TeamStats(A.Team.Build());
-            stats2.ApplyResult(0, 0);
+            var stats1 = new TeamStats(team1);
+            var stats2 = new TeamStats(team2);
+            
+            stats1.ApplyResult(A.MatchResult.ForTeams(team1, A.Team.Build()).WithScore(1, 0).Build());
+            stats2.ApplyResult(A.MatchResult.ForTeams(team2, A.Team.Build()).WithScore(0, 0).Build());
 
             Assert.That(stats1, Is.GreaterThan(stats2));
         }
@@ -92,10 +101,11 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldConsiderHigherGoalDifferenceAsHigherPositionWhenPointsAreEqual()
         {
-            var stats1 = new TeamStats(A.Team.Build());
-            stats1.ApplyResult(1, 0);
-            var stats2 = new TeamStats(A.Team.Build());
-            stats2.ApplyResult(2, 0);
+            var stats1 = new TeamStats(team1);
+            var stats2 = new TeamStats(team2);
+            
+            stats1.ApplyResult(A.MatchResult.ForTeams(team1, A.Team.Build()).WithScore(1, 0).Build());
+            stats2.ApplyResult(A.MatchResult.ForTeams(team2, A.Team.Build()).WithScore(2, 0).Build());
 
             Assert.That(stats1, Is.LessThan(stats2));
         }
@@ -103,12 +113,18 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         [Test]
         public void ShouldConsiderHigherGoalsScoredAsHigherPositionWhenPointsAndGoalDifferenceAreEqual()
         {
-            var stats1 = new TeamStats(A.Team.Build());
-            stats1.ApplyResult(1, 2);
-            var stats2 = new TeamStats(A.Team.Build());
-            stats2.ApplyResult(2, 3);
+            var stats1 = new TeamStats(team1);
+            var stats2 = new TeamStats(team2);
+
+            stats1.ApplyResult(A.MatchResult.ForTeams(team1, A.Team.Build()).WithScore(1, 2).Build());
+            stats2.ApplyResult(A.MatchResult.ForTeams(team2, A.Team.Build()).WithScore(2, 3).Build());
 
             Assert.That(stats1, Is.LessThan(stats2));
+        }
+
+        private MatchResult ResultForScore(int score1, int score2)
+        {
+            return A.MatchResult.ForTeams(team1, team2).WithScore(score1, score2).Build();
         }
     }
 }

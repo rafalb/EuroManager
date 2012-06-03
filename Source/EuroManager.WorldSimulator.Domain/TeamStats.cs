@@ -139,8 +139,11 @@ namespace EuroManager.WorldSimulator.Domain
             }
         }
 
-        public void ApplyResult(int score, int opponentScore)
+        public void ApplyResult(MatchResult result)
         {
+            int score = result.Team1 == Team ? result.Score1 : result.Score2;
+            int opponentScore = result.Team1 == Team ? result.Score2 : result.Score1;
+
             Played += 1;
 
             if (score > opponentScore)

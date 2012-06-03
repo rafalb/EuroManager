@@ -40,8 +40,9 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         public void ShouldApplyMatchResult()
         {
             var groupStats = new GroupStats(1, A.Team.Repeat(4), isNeutralGround: false, hasReturnRound: false);
+            var result = A.MatchResult.ForTeams(groupStats.Teams.ElementAt(0), groupStats.Teams.ElementAt(2)).WithScore(0, 1).Build();
 
-            bool hasAppliedResult = groupStats.TryApplyResult(groupStats.Teams.ElementAt(0), groupStats.Teams.ElementAt(2), 0, 1);
+            bool hasAppliedResult = groupStats.TryApplyResult(result);
 
             Assert.That(hasAppliedResult, Is.True);
         }
@@ -50,8 +51,9 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         public void ShouldNotApplyMatchResultMeantForOtherGroup()
         {
             var groupStats = new GroupStats(1, A.Team.Repeat(4), isNeutralGround: false, hasReturnRound: false);
+            var result = A.MatchResult.ForTeams(A.Team.Build(), groupStats.Teams.ElementAt(2)).WithScore(0, 1).Build();
 
-            bool hasAppliedResult = groupStats.TryApplyResult(A.Team.Build(), groupStats.Teams.ElementAt(2), 0, 1);
+            bool hasAppliedResult = groupStats.TryApplyResult(result);
 
             Assert.That(hasAppliedResult, Is.False);
         }
@@ -60,8 +62,9 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         public void ShouldUpdateTeamStatsAfterMatch()
         {
             var groupStats = new GroupStats(1, A.Team.Repeat(4), isNeutralGround: false, hasReturnRound: false);
+            var result = A.MatchResult.ForTeams(groupStats.Teams.ElementAt(0), groupStats.Teams.ElementAt(2)).WithScore(0, 1).Build();
 
-            groupStats.TryApplyResult(groupStats.Teams.ElementAt(0), groupStats.Teams.ElementAt(2), 0, 1);
+            groupStats.TryApplyResult(result);
 
             Assert.That(groupStats.TeamStats[2].Played, Is.EqualTo(1));
         }
@@ -82,7 +85,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         {
             foreach (var fixture in fixtures)
             {
-                groupStats.TryApplyResult(fixture.Team1, fixture.Team2, 1, 0);
+                groupStats.TryApplyResult(A.MatchResult.ForFixture(fixture).WithScore(1, 0).Build());
             }
         }
     }

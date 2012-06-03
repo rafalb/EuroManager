@@ -59,15 +59,15 @@ namespace EuroManager.WorldSimulator.Domain
             return scheduler.ScheduleLeagueFixtures(season, dates, HasReturnRound, Teams);
         }
 
-        public bool TryApplyResult(Team team1, Team team2, int score1, int score2)
+        public bool TryApplyResult(MatchResult result)
         {
-            var stats1 = TeamStats.FirstOrDefault(s => s.Team == team1);
-            var stats2 = TeamStats.FirstOrDefault(s => s.Team == team2);
+            var stats1 = TeamStats.FirstOrDefault(s => s.Team == result.Team1);
+            var stats2 = TeamStats.FirstOrDefault(s => s.Team == result.Team2);
 
             if (stats1 != null && stats2 != null)
             {
-                stats1.ApplyResult(score1, score2);
-                stats2.ApplyResult(score2, score1);
+                stats1.ApplyResult(result);
+                stats2.ApplyResult(result);
 
                 return true;
             }
