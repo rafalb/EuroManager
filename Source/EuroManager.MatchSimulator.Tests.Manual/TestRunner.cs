@@ -13,8 +13,8 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 
         public void Run()
         {
-            Console.SetWindowSize(120, 60);
-            Console.SetBufferSize(120, 60);
+            //Console.SetWindowSize(120, 60);
+            //Console.SetBufferSize(120, 60);
 
             using (var stream = File.OpenRead("Data.xml"))
             {

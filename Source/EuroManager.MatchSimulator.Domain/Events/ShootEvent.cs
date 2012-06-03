@@ -7,12 +7,13 @@ namespace EuroManager.MatchSimulator.Domain.Events
 {
     public class ShootEvent : IMatchEvent
     {
-        public ShootEvent(int minute, int extended, Player shooter, Player opponent)
+        public ShootEvent(int minute, int extended, Player shooter, Player opponent, ShotResult result)
         {
             Minute = minute;
             Extended = extended;
             Shooter = shooter;
             Opponent = opponent;
+            Result = result;
         }
 
         public int Minute { get; private set; }
@@ -22,6 +23,8 @@ namespace EuroManager.MatchSimulator.Domain.Events
         public Player Shooter { get; private set; }
 
         public Player Opponent { get; private set; }
+
+        public ShotResult Result { get; private set; }
 
         public void Visit(IMatchEventVisitor visitor)
         {

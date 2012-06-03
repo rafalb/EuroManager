@@ -7,6 +7,16 @@ namespace EuroManager.MatchSimulator.Domain.Actions
 {
     public class ShootAction : IMatchAction
     {
+        private PlayerRatingAdjuster ratingAdjuster = new PlayerRatingAdjuster();
+
+        public Player Shooter { get; private set; }
+
+        public Player Assistant { get; private set; }
+
+        public Player Opponent { get; private set; }
+
+        public Player Goalkeeper { get; private set; }
+
         public bool CanContinue
         {
             get { return false; }
@@ -14,11 +24,14 @@ namespace EuroManager.MatchSimulator.Domain.Actions
 
         public void Perform(Match match)
         {
-            Player shooter = match.CurrentPlayer;
-            Player opponent = shooter.Team.Opponent.PickPlayerToConfrontShooter(shooter);
+            Shooter = match.CurrentPlayer;
+            Assistant = match.PreviousPlayer;
+            Opponent = Shooter.Team.Opponent.PickPlayerToConfrontShooter(Shooter);
+            Goalkeeper = Shooter.Team.Opponent.Goalkeeper;
 
-            ShotResult result = shooter.TryShoot(opponent, shooter.Team.Opponent.Goalkeeper);
-            match.OnShoot(opponent, isSuccessful: result == ShotResult.Scored);
+            ShotResult result = Shooter.TryShoot(Opponent, Goalkeeper);
+            match.OnShoot(Opponent, result);
+            ratingAdjuster.OnShoot(Shooter, Assistant, Opponent, Goalkeeper, result);
         }
     }
 }

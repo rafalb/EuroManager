@@ -256,7 +256,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
             match.InitiateAttack(player);
             match.OnPass(assistant, null, isSuccessful: true);
             match.OnPass(scorer, null, isSuccessful: true);
-            match.OnShoot(null, isSuccessful: true);
+            match.OnShoot(null, ShotResult.Scored);
             match.CompleteAttack();
 
             Assert.That(match.Events.OfType<GoalEvent>(), Has.Some.Matches<GoalEvent>(e =>
@@ -270,7 +270,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
             Player scorer = match.Team2.Squad.ElementAt(9);
 
             match.InitiateAttack(scorer);
-            match.OnShoot(null, isSuccessful: true);
+            match.OnShoot(null, ShotResult.Scored);
             match.CompleteAttack();
 
             Assert.That(match.Score2, Is.EqualTo(1));
@@ -323,7 +323,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
             match.EnterExtraTime();
 
             match.InitiateAttack(match.Team1.Squad.ElementAt(7));
-            match.OnShoot(null, isSuccessful: true);
+            match.OnShoot(null, ShotResult.Scored);
             match.CompleteAttack();
 
             Assert.That(match.Winner, Is.EqualTo(match.Team1));

@@ -80,7 +80,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Builders
             for (int i = 0; i < score; i++)
             {
                 match.InitiateAttack(team.Squad.Last());
-                match.OnShoot(null, true);
+                match.OnShoot(null, ShotResult.Scored);
             }
         }
 

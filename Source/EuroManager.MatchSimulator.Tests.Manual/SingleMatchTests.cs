@@ -52,6 +52,26 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 
                 Console.WriteLine();
             }
+
+            Console.WriteLine();
+            Console.WriteLine(match);
+            Console.WriteLine();
+
+            PrintPlayerRatings(match.Team1);
+            PrintPlayerRatings(match.Team2);
+        }
+
+        private static void PrintPlayerRatings(Team team)
+        {
+            Console.WriteLine(team.Name);
+            Console.WriteLine("-------------------");
+
+            foreach (var player in team.Squad)
+            {
+                Console.WriteLine("{0,-15} {1,2}", player, (int)Math.Ceiling(player.Rating * 10));
+            }
+
+            Console.WriteLine();
         }
     }
 }

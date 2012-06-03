@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="IRandomGenerator.cs" />
+    <Compile Include="MathHelper.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

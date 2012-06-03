@@ -94,7 +94,7 @@ namespace EuroManager.MatchSimulator.Domain
             get { return isSecondLeg ? SelectTieWinner() : SelectSingleMatchWinner(); }
         }
 
-        private Player PreviousPlayer { get; set; }
+        public Player PreviousPlayer { get; private set; }
 
         private int PenaltyRoundsPlayed1 { get; set; }
 
@@ -118,6 +118,11 @@ namespace EuroManager.MatchSimulator.Domain
         private int AwayGoals2
         {
             get { return isSecondLeg && !IsNeutralGround ? Score2 : 0; }
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0} - {1} {2}:{3}", Team1.Name, Team2.Name, Score1, Score2);
         }
 
         public void AdvanceTime()
@@ -187,11 +192,11 @@ namespace EuroManager.MatchSimulator.Domain
             }
         }
 
-        public void OnShoot(Player opponent, bool isSuccessful)
+        public void OnShoot(Player opponent, ShotResult result)
         {
-            events.Add(new ShootEvent(Minute, ExtendedMinute, CurrentPlayer, opponent));
+            events.Add(new ShootEvent(Minute, ExtendedMinute, CurrentPlayer, opponent, result));
 
-            if (isSuccessful)
+            if (result == ShotResult.Scored)
             {
                 IncreaseScore(CurrentPlayer.Team);
                 events.Add(new GoalEvent(CurrentPlayer.Team == Team1, Minute, ExtendedMinute, CurrentPlayer, PreviousPlayer));
