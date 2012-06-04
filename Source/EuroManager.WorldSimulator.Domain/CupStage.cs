@@ -23,6 +23,8 @@ namespace EuroManager.WorldSimulator.Domain
         [Timestamp]
         public byte[] Version { get; private set; }
 
+        public int StageNumber { get; set; }
+
         public int TeamCount { get; private set; }
 
         public int RoundCount { get; private set; }

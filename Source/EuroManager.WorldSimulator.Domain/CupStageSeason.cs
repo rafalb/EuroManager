@@ -11,6 +11,7 @@ namespace EuroManager.WorldSimulator.Domain
         protected CupStageSeason(CupStage stage)
         {
             Stage = stage;
+            StageNumber = stage.StageNumber;
             TeamCount = stage.TeamCount;
             RoundCount = stage.RoundCount;
 
@@ -43,6 +44,8 @@ namespace EuroManager.WorldSimulator.Domain
             get { return (TournamentPhase)PhaseId; }
             protected set { PhaseId = (int)value; }
         }
+
+        public int StageNumber { get; private set; }
 
         public int TeamCount { get; private set; }
 

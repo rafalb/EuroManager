@@ -31,7 +31,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
 
             if (!teams.Any())
             {
-                teams.AddRange(Enumerable.Repeat(0, cup.Stages[0].TeamCount).Select(x => A.Team.InWorld(cup.World).Build()));
+                teams.AddRange(Enumerable.Repeat(0, cup.StagesOrdered.First().TeamCount).Select(x => A.Team.InWorld(cup.World).Build()));
             }
 
             return new CupSeason(cup, new DateTime(2012, 08, 01), new DateTime(2013, 05, 31), teams);

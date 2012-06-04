@@ -18,7 +18,7 @@ namespace EuroManager.WorldSimulator.Domain
 
             AddTeams(teams);
 
-            Stages = cup.Stages.Select(s => s.CreateStageSeason()).OrderByDescending(s => s.TeamCount).ToList();
+            Stages = cup.StagesOrdered.Select(s => s.CreateStageSeason()).ToList();
             InitializeStages();
         }
 
@@ -38,11 +38,16 @@ namespace EuroManager.WorldSimulator.Domain
 
         public virtual List<CupStageSeason> Stages { get; private set; }
 
+        public IEnumerable<CupStageSeason> StagesOrdered
+        {
+            get { return Stages.OrderBy(s => s.StageNumber); }
+        }
+
         public int CurrentStageIndex { get; private set; }
 
         public CupStageSeason CurrentStage
         {
-            get { return CurrentStageIndex < Stages.Count ? Stages[CurrentStageIndex] : null; }
+            get { return CurrentStageIndex < Stages.Count ? StagesOrdered.ElementAt(CurrentStageIndex) : null; }
         }
 
         private Cup Cup
@@ -117,11 +122,12 @@ namespace EuroManager.WorldSimulator.Domain
         private void ScheduleRoundDates()
         {
             var scheduler = new Scheduler();
-            var roundDates = scheduler.ScheduleRoundDates(StartDate, EndDate, DayOfWeek, Frequency, Stages.Select(s => s.RoundCount).ToArray());
+            var roundDates = scheduler.ScheduleRoundDates(StartDate, EndDate, DayOfWeek, Frequency,
+                StagesOrdered.Select(s => s.RoundCount).ToArray());
 
             int roundCount = 0;
 
-            foreach (var stage in Stages)
+            foreach (var stage in StagesOrdered)
             {
                 var stageDates = roundDates.Skip(roundCount).Take(stage.RoundCount).ToArray();
                 stage.ScheduleRoundDates(stageDates);

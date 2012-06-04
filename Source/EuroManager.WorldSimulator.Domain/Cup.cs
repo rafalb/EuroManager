@@ -14,6 +14,11 @@ namespace EuroManager.WorldSimulator.Domain
             Frequency = frequency;
 
             Stages = stages.ToList();
+
+            for (int i = 0; i < Stages.Count; i++)
+            {
+                Stages[i].StageNumber = i + 1;
+            }
         }
 
         protected Cup()
@@ -31,5 +36,10 @@ namespace EuroManager.WorldSimulator.Domain
         public int Frequency { get; private set; }
 
         public virtual List<CupStage> Stages { get; private set; }
+
+        public IEnumerable<CupStage> StagesOrdered
+        {
+            get { return Stages.OrderBy(s => s.StageNumber); }
+        }
     }
 }
