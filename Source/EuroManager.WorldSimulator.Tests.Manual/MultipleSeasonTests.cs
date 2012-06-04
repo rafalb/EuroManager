@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using EuroManager.Common;
 using EuroManager.WorldSimulator.Services;
 using EuroManager.WorldSimulator.Services.Data;
 
@@ -10,6 +11,8 @@ namespace EuroManager.WorldSimulator.Tests.Manual
 {
     public class MultipleSeasonTests
     {
+        private static readonly string[] trackedTeams = { "Barcelona", "Real M", "Newcastle", "Wisla", "Polonia" };
+
         public void Perform()
         {
             DateTime nextDate;
@@ -99,7 +102,10 @@ namespace EuroManager.WorldSimulator.Tests.Manual
         private void PrintMatchResult(MatchResult result)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("{0,57}{1,2}:{2,-2}{3,-57}", result.Team1Name, result.Score1, result.Score2, result.Team2Name);
+            PrintTeamName("{0,57}", result.Team1Name);
+            Console.Write("{0,2}:{1,-2}", result.Score1, result.Score2);
+            PrintTeamName("{0,-57}", result.Team2Name);
+            Console.WriteLine();
             Console.ResetColor();
 
             if (result.Goals1.Any() || result.Goals2.Any())
@@ -137,12 +143,31 @@ namespace EuroManager.WorldSimulator.Tests.Manual
                     Console.WriteLine("                          -----------------------------------------------------");
                 }
 
-                Console.WriteLine("                          {0,2}. {1,-23}{2,3}{3,4}  {4,3}{5,3}{6,3}  {7,3}-{8,-3}",
-                    position, standing.TeamName, standing.Played, standing.Points,
-                    standing.Wins, standing.Draws, standing.Losses, standing.GoalsFor, standing.GoalsAgainst);
+                Console.Write("                          {0,2}. ", position);
+                PrintTeamName("{0,-23}", standing.TeamName);
+                Console.WriteLine("{0,3}{1,4}  {2,3}{3,3}{4,3}  {5,3}-{6,-3}",
+                    standing.Played, standing.Points, standing.Wins, standing.Draws, standing.Losses,
+                    standing.GoalsFor, standing.GoalsAgainst);
 
                 previousGroupNumber = standing.GroupNumber;
                 position++;
+            }
+        }
+
+        private void PrintTeamName(string format, string name)
+        {
+            bool isTrackedTeam = trackedTeams.Any(t => name.Contains(t));
+
+            if (isTrackedTeam)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+
+            Console.Write(format, name);
+
+            if (isTrackedTeam)
+            {
+                Console.ResetColor();
             }
         }
     }
