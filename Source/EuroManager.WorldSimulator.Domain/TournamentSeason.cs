@@ -19,6 +19,8 @@ namespace EuroManager.WorldSimulator.Domain
             NextSchedulingDate = World.Date;
 
             Teams = teams == null ? new List<Team>() : teams.ToList();
+            TeamTournamentStats = Teams.Select(t => new TeamTournamentStats(this, t)).ToList();
+
             PromotedTeams = new List<Team>();
             RelegatedTeams = new List<Team>();
             PromotionPlayOffTeams = new List<Team>();
@@ -56,6 +58,8 @@ namespace EuroManager.WorldSimulator.Domain
 
         public virtual List<Team> Teams { get; private set; }
 
+        public virtual List<TeamTournamentStats> TeamTournamentStats { get; private set; }
+
         public virtual List<Team> PromotedTeams { get; private set; }
 
         public virtual List<Team> RelegatedTeams { get; private set; }
@@ -81,7 +85,11 @@ namespace EuroManager.WorldSimulator.Domain
 
         public abstract void ScheduleFixtures(Action<Fixture> addFixture);
 
-        public abstract void ApplyResult(MatchResult result);
+        public virtual void ApplyResult(MatchResult result)
+        {
+            TeamTournamentStats.First(s => s.Team == result.Team1).ApplyResult(result);
+            TeamTournamentStats.First(s => s.Team == result.Team2).ApplyResult(result);
+        }
 
         public virtual TournamentSeason AdvanceSeason(IEnumerable<Team> relegatedFromHigher, IEnumerable<Team> promotedFromLower)
         {
@@ -102,6 +110,7 @@ namespace EuroManager.WorldSimulator.Domain
         protected void AddTeams(IEnumerable<Team> teams)
         {
             Teams.AddRange(teams);
+            TeamTournamentStats.AddRange(teams.Select(t => new TeamTournamentStats(this, t)).ToArray());
         }
     }
 }

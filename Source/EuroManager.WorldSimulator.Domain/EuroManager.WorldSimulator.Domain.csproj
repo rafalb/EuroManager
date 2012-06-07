@@ -58,6 +58,7 @@
     <Compile Include="PlayerTournamentStats.cs" />
     <Compile Include="RoundDate.cs" />
     <Compile Include="TeamPair.cs" />
+    <Compile Include="TeamTournamentStats.cs" />
     <Compile Include="TieKnockoutStage.cs" />
     <Compile Include="TieKnockoutStageSeason.cs" />
     <Compile Include="TournamentPhase.cs" />

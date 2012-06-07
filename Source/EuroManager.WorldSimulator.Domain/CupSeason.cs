@@ -67,6 +67,8 @@ namespace EuroManager.WorldSimulator.Domain
 
         public override void ApplyResult(MatchResult result)
         {
+            base.ApplyResult(result);
+
             CurrentStage.ApplyResult(result);
 
             if (CurrentStage.IsFinished)
