@@ -101,12 +101,14 @@ namespace EuroManager.WorldSimulator.Services
             var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
                     join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
                     join t in Context.TournamentSeasons on s.TournamentSeasonId equals t.Id
+                    join tm in Context.Teams on m.TeamId equals tm.Id
                     where t.TournamentId == tournamentId
                     orderby s.AverageRating descending
                     select new Data.PlayerStats
                     {
                         Id = s.Id,
                         Name = s.PlayerName,
+                        TeamName = tm.Name,
                         Position = (PositionCode)m.PositionId,
                         Played = s.Played,
                         Rating = s.AverageRating

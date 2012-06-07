@@ -16,12 +16,12 @@ namespace EuroManager.MatchSimulator.Domain
             if (isSuccessful)
             {
                 AdjustExponentiallyRight(dribbler, 0.010, 0.015);
-                AdjustExponentially(opponent, -0.020, 0.010);
+                AdjustExponentiallyLeft(opponent, -0.010, 0.015);
             }
             else
             {
-                AdjustLinearly(dribbler, -0.008, 0.002);
-                AdjustExponentiallyRight(opponent, 0.015, 0.025);
+                AdjustLinearly(dribbler, -0.010, 0.002);
+                AdjustExponentiallyRight(opponent, 0.020, 0.030);
             }
         }
 
@@ -29,15 +29,15 @@ namespace EuroManager.MatchSimulator.Domain
         {
             if (isSuccessful)
             {
-                AdjustExponentiallyRight(passingPlayer, 0.003, 0.012);
+                AdjustExponentiallyRight(passingPlayer, 0.003, 0.020);
                 AdjustExponentiallyRight(receiver, 0.002, 0.008);
-                AdjustLinearly(opponent, -0.008, 0.004);
+                AdjustExponentiallyLeft(opponent, -0.002, 0.028);
             }
             else
             {
-                AdjustLinearly(passingPlayer, -0.007, 0.003);
+                AdjustLinearly(passingPlayer, -0.010, 0.002);
                 AdjustExponentially(receiver, -0.003, 0.003);
-                AdjustExponentiallyRight(opponent, 0.015, 0.025);
+                AdjustExponentiallyRight(opponent, 0.020, 0.030);
             }
         }
 
@@ -45,20 +45,20 @@ namespace EuroManager.MatchSimulator.Domain
         {
             if (result == ShotResult.Scored)
             {
-                AdjustLinearly(shooter, 0.080, 0.030);
-                AdjustExponentiallyRight(assistant, 0.040, 0.080);
-                AdjustExponentiallyLeft(opponent, -0.030, 0.070);
-                AdjustExponentiallyLeft(goalkeeper, -0.040, 0.120);
+                AdjustLinearly(shooter, 0.070, 0.030);
+                AdjustExponentiallyRight(assistant, 0.030, 0.070);
+                AdjustExponentiallyLeft(opponent, -0.020, 0.080);
+                AdjustExponentiallyLeft(goalkeeper, -0.020, 0.080);
             }
             else if (result == ShotResult.Blocked)
             {
-                AdjustExponentiallyLeft(shooter, -0.020, 0.080);
-                AdjustExponentiallyRight(opponent, 0.030, 0.040);
+                AdjustLinearly(shooter, -0.010, 0.002);
+                AdjustExponentiallyRight(opponent, 0.030, 0.070);
             }
             else if (result == ShotResult.Missed)
             {
                 AdjustExponentiallyLeft(shooter, -0.030, 0.070);
-                AdjustExponentiallyRight(opponent, 0.000, 0.050);
+                AdjustExponentiallyRight(opponent, 0.000, 0.080);
             }
             else if (result == ShotResult.Saved)
             {

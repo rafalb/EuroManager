@@ -102,7 +102,7 @@ namespace EuroManager.WorldSimulator.Tests.Manual
 
             foreach (var stats in playerStats)
             {
-                Console.WriteLine("          {0,-4} {1,-20}{2:0.00}", stats.Position, stats.Name, stats.Rating);
+                Console.WriteLine("          {0,-4} {1,-20}{2,-25}{3:0.00}", stats.Position, stats.Name, stats.TeamName, stats.Rating);
             }
 
             Console.WriteLine();
