@@ -19,7 +19,6 @@ namespace EuroManager.WorldSimulator.Domain
             Team = team;
             TeamName = team.Name;
             GroupNumber = groupNumber;
-            PlayersStats = team.Players.Select(p => new PlayerTournamentStats(p)).ToList();
         }
 
         protected TeamStats()
@@ -166,11 +165,6 @@ namespace EuroManager.WorldSimulator.Domain
 
             GoalsFor += score;
             GoalsAgainst += opponentScore;
-
-            foreach (var playerStats in PlayersStats)
-            {
-                playerStats.ApplyResult(result);
-            }
         }
     }
 }

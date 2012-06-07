@@ -124,15 +124,6 @@ namespace EuroManager.WorldSimulator.Domain.Tests
             Assert.That(stats1, Is.LessThan(stats2));
         }
 
-        [Test]
-        public void ShouldApplyResultToPlayerStats()
-        {
-            stats.ApplyResult(A.MatchResult.ForTeams(team1, team2)
-                .WithTeam1PlayersStats(new PlayerMatchStats(player, 5)).Build());
-
-            Assert.That(stats.PlayersStats.First(s => s.Player == player).Played, Is.EqualTo(1));
-        }
-
         private MatchResult ResultForScore(int score1, int score2)
         {
             return A.MatchResult.ForTeams(team1, team2).WithScore(score1, score2).Build();

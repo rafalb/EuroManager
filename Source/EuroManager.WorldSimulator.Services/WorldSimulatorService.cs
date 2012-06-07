@@ -96,6 +96,25 @@ namespace EuroManager.WorldSimulator.Services
             }
         }
 
+        public IEnumerable<Data.PlayerStats> GetTopPlayerStats(int tournamentId, int count)
+        {
+            var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
+                    join p in Context.Players on s.PlayerId equals p.Id
+                    join m in Context.SquadMembers on p.Id equals m.PlayerId
+                    where s.TournamentSeasonId == tournamentId
+                    orderby s.AverageRating descending
+                    select new Data.PlayerStats
+                    {
+                        Id = s.Id,
+                        Name = p.Name,
+                        Position = (PositionCode)m.PositionId,
+                        Played = s.Played,
+                        Rating = s.AverageRating
+                    };
+
+            return q.Take(count).ToArray();
+        }
+
         public void SwitchDefaultWorld(int worldId)
         {
             World currentDefaultWorld = Context.GetDefaultWorld();

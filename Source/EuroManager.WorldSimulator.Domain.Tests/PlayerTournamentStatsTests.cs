@@ -24,7 +24,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests
             player = new Player(season.World, "Test", 75, 75, 75);
             team = A.Team.WithPlayers(player).Build();
 
-            stats = new PlayerTournamentStats(player);
+            stats = new PlayerTournamentStats(season, player);
 
             stats.ApplyResult(A.MatchResult.ForTeams(team, A.Team.Build())
                 .WithTeam1PlayersStats(new PlayerMatchStats(player, 7)).Build());
