@@ -102,7 +102,7 @@ namespace EuroManager.WorldSimulator.Services
                     join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
                     join t in Context.TournamentSeasons on s.TournamentSeasonId equals t.Id
                     join tm in Context.Teams on m.TeamId equals tm.Id
-                    where t.TournamentId == tournamentId
+                    where t.TournamentId == tournamentId && t.IsActive
                     orderby s.AverageRating descending
                     select new Data.PlayerStats
                     {

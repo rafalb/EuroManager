@@ -18,8 +18,8 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 
         public void Perform()
         {
-            Team team1 = teamConverter.CreateTeam("Newcastle United");
-            Team team2 = teamConverter.CreateTeam("FC Barcelona");
+            Team team1 = teamConverter.CreateTeam("FC Barcelona");
+            Team team2 = teamConverter.CreateTeam("Wisla Krakow");
 
             var match = new Match(team1, team2, isNeutralGround: false, isExtraTimeRequired: true);
             var simulator = new Simulator(MatchRandomizer.Current);
@@ -57,18 +57,31 @@ namespace EuroManager.MatchSimulator.Tests.Manual
             Console.WriteLine(match);
             Console.WriteLine();
 
-            PrintPlayerRatings(match.Team1);
-            PrintPlayerRatings(match.Team2);
+            PrintPlayerStats(match.Team1);
+            PrintPlayerStats(match.Team2);
         }
 
-        private static void PrintPlayerRatings(Team team)
+        private static void PrintPlayerStats(Team team)
         {
-            Console.WriteLine(team.Name);
-            Console.WriteLine("-------------------");
+            Console.WriteLine("{0,-18}  G  A  P+ P- D+ D- S+ S- Sb I+ I- T+ T- B+ B- G+ G- R", team.Name);
+            Console.WriteLine("-------------------------------------------------------------------------");
 
             foreach (var player in team.Squad)
             {
-                Console.WriteLine("{0,-15} {1,2}", player, (int)Math.Ceiling(player.Rating * 10));
+                Console.Write("{0,-4}{1,-14} ", player.Position, player.Name);
+                Console.Write("{0,2} {1,2} {2,2} {3,2} {4,2} {5,2} {6,2} {7,2} {8,2} ",
+                    player.Goals, player.Assists, player.PassesCompleted, player.PassesFailed,
+                    player.DribblesCompleted, player.DribblesFailed, player.ShotsOnTarget, player.ShotsMissed, player.ShotsBlocked);
+
+                Console.Write("{0,2} {1,2} {2,2} {3,2} {4,2} {5,2} {6,2} {7,2} ",
+                    player.PassesIntercepted, player.PassesAllowed, player.TacklesCompleted, player.TacklesFailed,
+                    player.ShotsBlocked, player.ShotsPrevented, player.ShotsSaved, player.ShotsNotSaved);
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("{0,2}", player.FinalRating);
+                Console.ResetColor();
+
+                Console.WriteLine();
             }
 
             Console.WriteLine();

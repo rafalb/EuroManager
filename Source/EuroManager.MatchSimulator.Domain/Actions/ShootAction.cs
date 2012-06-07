@@ -29,7 +29,7 @@ namespace EuroManager.MatchSimulator.Domain.Actions
             Opponent = Shooter.Team.Opponent.PickPlayerToConfrontShooter(Shooter);
             Goalkeeper = Shooter.Team.Opponent.Goalkeeper;
 
-            ShotResult result = Shooter.TryShoot(Opponent, Goalkeeper);
+            ShotResult result = Shooter.TryShoot(Assistant, Opponent, Goalkeeper);
             match.OnShoot(Opponent, result);
             ratingAdjuster.OnShoot(Shooter, Assistant, Opponent, Goalkeeper, result);
         }

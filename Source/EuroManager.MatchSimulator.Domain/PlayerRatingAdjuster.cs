@@ -16,7 +16,7 @@ namespace EuroManager.MatchSimulator.Domain
             if (isSuccessful)
             {
                 AdjustExponentiallyRight(dribbler, 0.010, 0.015);
-                AdjustExponentiallyLeft(opponent, -0.010, 0.015);
+                AdjustExponentiallyLeft(opponent, -0.020, 0.020);
             }
             else
             {
@@ -29,9 +29,9 @@ namespace EuroManager.MatchSimulator.Domain
         {
             if (isSuccessful)
             {
-                AdjustExponentiallyRight(passingPlayer, 0.003, 0.020);
+                AdjustExponentiallyRight(passingPlayer, 0.003, 0.012);
                 AdjustExponentiallyRight(receiver, 0.002, 0.008);
-                AdjustExponentiallyLeft(opponent, -0.002, 0.028);
+                AdjustExponentiallyLeft(opponent, -0.002, 0.008);
             }
             else
             {
@@ -47,8 +47,8 @@ namespace EuroManager.MatchSimulator.Domain
             {
                 AdjustLinearly(shooter, 0.070, 0.030);
                 AdjustExponentiallyRight(assistant, 0.030, 0.070);
-                AdjustExponentiallyLeft(opponent, -0.020, 0.080);
-                AdjustExponentiallyLeft(goalkeeper, -0.020, 0.080);
+                AdjustExponentiallyLeft(opponent, -0.040, 0.060);
+                AdjustExponentiallyLeft(goalkeeper, -0.040, 0.060);
             }
             else if (result == ShotResult.Blocked)
             {
@@ -58,17 +58,17 @@ namespace EuroManager.MatchSimulator.Domain
             else if (result == ShotResult.Missed)
             {
                 AdjustExponentiallyLeft(shooter, -0.030, 0.070);
-                AdjustExponentiallyRight(opponent, 0.000, 0.080);
+                AdjustExponentiallyRight(opponent, 0.000, 0.050);
             }
             else if (result == ShotResult.Saved)
             {
-                AdjustExponentiallyLeft(shooter, 0.020, 0.100);
+                AdjustExponentially(shooter, -0.010, 0.040);
                 AdjustExponentiallyRight(opponent, 0.000, 0.050);
-                AdjustExponentially(goalkeeper, 0.070, 0.060);
+                AdjustExponentiallyRight(goalkeeper, 0.040, 0.060);
             }
             else
             {
-                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "Shot result {0} not supported", result));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Shot result {0} not supported", result));
             }
         }
 

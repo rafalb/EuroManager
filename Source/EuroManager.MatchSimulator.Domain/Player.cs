@@ -10,7 +10,7 @@ namespace EuroManager.MatchSimulator.Domain
 {
     public class Player
     {
-        public static readonly double InitialRating = 0.55;
+        public static readonly double InitialRating = 0.52;
 
         #region InitiateAttackChanceByPosition
         private static readonly Dictionary<Position, double> initiateAttackChanceByPosition = new Dictionary<Position, double>
@@ -72,6 +72,40 @@ namespace EuroManager.MatchSimulator.Domain
 
         public double Rating { get; private set; }
 
+        public int Goals { get; private set; }
+
+        public int Assists { get; private set; }
+
+        public int PassesCompleted { get; private set; }
+
+        public int PassesFailed { get; private set; }
+
+        public int DribblesCompleted { get; private set; }
+
+        public int DribblesFailed { get; private set; }
+
+        public int ShotsOnTarget { get; private set; }
+
+        public int ShotsMissed { get; private set; }
+
+        public int ShotsBlocked { get; private set; }
+
+        public int PassesIntercepted { get; private set; }
+
+        public int PassesAllowed { get; private set; }
+
+        public int TacklesCompleted { get; private set; }
+
+        public int TacklesFailed { get; private set; }
+
+        public int ShotsPrevented { get; private set; }
+
+        public int ShotsAllowed { get; private set; }
+
+        public int ShotsSaved { get; private set; }
+
+        public int ShotsNotSaved { get; private set; }
+
         public int FinalRating
         {
             get { return Math.Max(1, (int)Math.Ceiling(10 * Rating)); }
@@ -128,25 +162,86 @@ namespace EuroManager.MatchSimulator.Domain
 
         public bool TryPass(Player receiver, Player opponent)
         {
-            return randomizer.TryPass(
+            bool isSuccessful = randomizer.TryPass(
                 passing: OffensiveSkills + Form,
                 positioning: receiver.OffensiveSkills + receiver.Form,
                 marking: opponent.DefensiveSkills + opponent.Form);
+
+            if (isSuccessful)
+            {
+                PassesCompleted += 1;
+                opponent.PassesAllowed += 1;
+            }
+            else
+            {
+                PassesFailed += 1;
+                opponent.PassesIntercepted += 1;
+            }
+
+            return isSuccessful;
         }
 
         public bool TryDribble(Player opponent)
         {
-            return randomizer.TryDribble(
+            bool isSuccessful = randomizer.TryDribble(
                 dribbling: OffensiveSkills + Form,
                 tackling: opponent.DefensiveSkills + opponent.Form);
+
+            if (isSuccessful)
+            {
+                DribblesCompleted += 1;
+                opponent.TacklesFailed += 1;
+            }
+            else
+            {
+                DribblesFailed += 1;
+                opponent.TacklesCompleted += 1;
+            }
+
+            return isSuccessful;
         }
 
-        public ShotResult TryShoot(Player opponent, Player goalkeeper)
+        public ShotResult TryShoot(Player assistant, Player opponent, Player goalkeeper)
         {
-            return randomizer.TryShoot(
+            ShotResult result = randomizer.TryShoot(
                 shooting: OffensiveSkills + Form,
                 blocking: opponent.DefensiveSkills + opponent.Form,
                 goalkeeping: goalkeeper.DefensiveSkills + goalkeeper.Form);
+
+            if (result == ShotResult.Scored)
+            {
+                Goals += 1;
+                ShotsOnTarget += 1;
+                opponent.ShotsAllowed += 1;
+                goalkeeper.ShotsNotSaved += 1;
+
+                if (assistant != null)
+                {
+                    assistant.Assists += 1;
+                }
+            }
+            else if (result == ShotResult.Saved)
+            {
+                ShotsOnTarget += 1;
+                opponent.ShotsAllowed += 1;
+                goalkeeper.ShotsSaved += 1;
+            }
+            else if (result == ShotResult.Missed)
+            {
+                ShotsMissed += 1;
+                opponent.ShotsAllowed += 1;
+            }
+            else if (result == ShotResult.Blocked)
+            {
+                ShotsBlocked += 1;
+                opponent.ShotsPrevented += 1;
+            }
+            else
+            {
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Shot result {0} not supported", result));
+            }
+
+            return result;
         }
 
         public double ChanceToInitiateAttack(TeamStrategy strategy)
