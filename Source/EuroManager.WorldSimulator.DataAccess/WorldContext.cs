@@ -45,6 +45,8 @@ namespace EuroManager.WorldSimulator.DataAccess
 
         public DbSet<Goal> Goals { get; set; }
 
+        public DbSet<PlayerTournamentStats> PlayerTournamentStats { get; set; }
+
         public World GetDefaultWorld(bool readOnly = false)
         {
             return Worlds.ReadOnly(readOnly).FirstOrDefault(w => w.IsDefault);

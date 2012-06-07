@@ -8,8 +8,9 @@ namespace EuroManager.WorldSimulator.Domain
 {
     public class PlayerTournamentStats : IEntity
     {
-        public PlayerTournamentStats(Player player)
+        public PlayerTournamentStats(TournamentSeason tournamentSeason, Player player)
         {
+            TournamentSeason = tournamentSeason;
             Player = player;
         }
 
@@ -21,6 +22,10 @@ namespace EuroManager.WorldSimulator.Domain
 
         [Timestamp]
         public byte[] Version { get; private set; }
+
+        public int? TournamentSeasonId { get; private set; }
+
+        public TournamentSeason TournamentSeason { get; private set; }
 
         public int? PlayerId { get; private set; }
 
