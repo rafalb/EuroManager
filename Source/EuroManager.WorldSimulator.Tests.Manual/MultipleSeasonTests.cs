@@ -96,11 +96,13 @@ namespace EuroManager.WorldSimulator.Tests.Manual
                 }
             }
 
+            Console.WriteLine();
+
             var playerStats = worldSimulator.GetTopPlayerStats(tournament.Id, 20);
 
             foreach (var stats in playerStats)
             {
-                Console.WriteLine("{0,-4} {1,-20}{2:2,4}", stats.Position, stats.Name, stats.Rating);
+                Console.WriteLine("          {0,-4} {1,-20}{2:0.00}", stats.Position, stats.Name, stats.Rating);
             }
 
             Console.WriteLine();

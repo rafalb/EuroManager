@@ -19,7 +19,7 @@ namespace EuroManager.WorldSimulator.Tests.Manual
         public void Run()
         {
             Console.SetWindowSize(120, 60);
-            Console.SetBufferSize(120, 60);
+            Console.SetBufferSize(120, 600);
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 

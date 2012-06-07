@@ -25,6 +25,11 @@ namespace EuroManager.WorldSimulator.Domain.Tests
             get { return new TeamBuilder(); }
         }
 
+        public static PlayerBuilder Player
+        {
+            get { return new PlayerBuilder(); }
+        }
+
         public static MatchResultBuilder MatchResult
         {
             get { return new MatchResultBuilder(); }

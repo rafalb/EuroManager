@@ -12,6 +12,8 @@ namespace EuroManager.WorldSimulator.Domain
         {
             TournamentSeason = tournamentSeason;
             Team = team;
+
+            PlayerStats = new List<PlayerTournamentStats>();
         }
 
         protected TeamTournamentStats()
@@ -31,8 +33,26 @@ namespace EuroManager.WorldSimulator.Domain
 
         public virtual Team Team { get; private set; }
 
+        public int Played { get; private set; }
+
+        public virtual List<PlayerTournamentStats> PlayerStats { get; private set; }
+
         public void ApplyResult(MatchResult result)
         {
+            if (result.Team1 == Team || result.Team2 == Team)
+            {
+                Played += 1;
+
+                if (!PlayerStats.Any())
+                {
+                    PlayerStats.AddRange(Team.Players.Select(p => new PlayerTournamentStats(TournamentSeason, p)).ToList());
+                }
+
+                foreach (var playerStats in PlayerStats)
+                {
+                    playerStats.ApplyResult(result);
+                }
+            }
         }
     }
 }

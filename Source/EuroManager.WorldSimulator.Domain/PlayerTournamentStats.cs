@@ -12,6 +12,7 @@ namespace EuroManager.WorldSimulator.Domain
         {
             TournamentSeason = tournamentSeason;
             Player = player;
+            PlayerName = player.Name;
         }
 
         protected PlayerTournamentStats()
@@ -25,11 +26,13 @@ namespace EuroManager.WorldSimulator.Domain
 
         public int? TournamentSeasonId { get; private set; }
 
-        public TournamentSeason TournamentSeason { get; private set; }
+        public virtual TournamentSeason TournamentSeason { get; private set; }
 
         public int? PlayerId { get; private set; }
 
         public virtual Player Player { get; private set; }
+
+        public string PlayerName { get; private set; }
 
         public int Played { get; private set; }
 

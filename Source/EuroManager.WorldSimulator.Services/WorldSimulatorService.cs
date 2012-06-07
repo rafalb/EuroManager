@@ -99,14 +99,14 @@ namespace EuroManager.WorldSimulator.Services
         public IEnumerable<Data.PlayerStats> GetTopPlayerStats(int tournamentId, int count)
         {
             var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
-                    join p in Context.Players on s.PlayerId equals p.Id
-                    join m in Context.SquadMembers on p.Id equals m.PlayerId
-                    where s.TournamentSeasonId == tournamentId
+                    join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
+                    join t in Context.TournamentSeasons on s.TournamentSeasonId equals t.Id
+                    where t.TournamentId == tournamentId
                     orderby s.AverageRating descending
                     select new Data.PlayerStats
                     {
                         Id = s.Id,
-                        Name = p.Name,
+                        Name = s.PlayerName,
                         Position = (PositionCode)m.PositionId,
                         Played = s.Played,
                         Rating = s.AverageRating
