@@ -18,8 +18,8 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 
         public void Perform()
         {
-            Team team1 = teamConverter.CreateTeam("FC Barcelona");
-            Team team2 = teamConverter.CreateTeam("Wisla Krakow");
+            Team team1 = teamConverter.CreateTeam("Polonia Warszawa");
+            Team team2 = teamConverter.CreateTeam("FC Barcelona");
 
             var match = new Match(team1, team2, isNeutralGround: false, isExtraTimeRequired: true);
             var simulator = new Simulator(MatchRandomizer.Current);
@@ -75,7 +75,7 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 
                 Console.Write("{0,2} {1,2} {2,2} {3,2} {4,2} {5,2} {6,2} {7,2} ",
                     player.PassesIntercepted, player.PassesAllowed, player.TacklesCompleted, player.TacklesFailed,
-                    player.ShotsBlocked, player.ShotsPrevented, player.ShotsSaved, player.ShotsNotSaved);
+                    player.ShotsPrevented, player.ShotsAllowed, player.ShotsSaved, player.ShotsNotSaved);
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("{0,2}", player.FinalRating);

@@ -10,7 +10,7 @@ namespace EuroManager.MatchSimulator.Domain
 {
     public class Player
     {
-        public static readonly double InitialRating = 0.52;
+        public static readonly double InitialRating = 0.53;
 
         #region InitiateAttackChanceByPosition
         private static readonly Dictionary<Position, double> initiateAttackChanceByPosition = new Dictionary<Position, double>
