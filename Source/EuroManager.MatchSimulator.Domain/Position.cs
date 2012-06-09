@@ -33,7 +33,7 @@ namespace EuroManager.MatchSimulator.Domain
         public static readonly Position LeftForward = new Position(PositionCode.LF, Location.Forward, Side.LeftCenter);
         public static readonly Position Striker = new Position(PositionCode.ST, Location.Forward, Side.Center);
 
-        private static readonly Dictionary<PositionCode, Position> allPositions = new Dictionary<PositionCode, Position>
+        private static readonly Dictionary<PositionCode, Position> AllPositions = new Dictionary<PositionCode, Position>
         {
             { PositionCode.GK, Goalkeeper },
             { PositionCode.RWB, RightWingBack },
@@ -61,7 +61,7 @@ namespace EuroManager.MatchSimulator.Domain
 
         #endregion Definitions
 
-        private static readonly Dictionary<Location, Location> oppositeLocations = new Dictionary<Location, Location>
+        private static readonly Dictionary<Location, Location> OppositeLocations = new Dictionary<Location, Location>
         {
             { Location.Goal, Location.Forward },
             { Location.Back, Location.Forward },
@@ -71,7 +71,7 @@ namespace EuroManager.MatchSimulator.Domain
             { Location.Forward, Location.Back }
         };
 
-        private static readonly Dictionary<Side, Side> oppositeSides = new Dictionary<Side, Side>
+        private static readonly Dictionary<Side, Side> OppositeSides = new Dictionary<Side, Side>
         {
             { Side.Right, Side.Left },
             { Side.RightCenter, Side.LeftCenter },
@@ -95,7 +95,7 @@ namespace EuroManager.MatchSimulator.Domain
 
         public static Position FromCode(PositionCode code)
         {
-            return allPositions[code];
+            return AllPositions[code];
         }
 
         public override string ToString()
@@ -116,7 +116,7 @@ namespace EuroManager.MatchSimulator.Domain
 
         public Position Opposite()
         {
-            return new Position(PositionCode.None, oppositeLocations[Location], oppositeSides[Side]);
+            return new Position(PositionCode.None, OppositeLocations[Location], OppositeSides[Side]);
         }
     }
 }

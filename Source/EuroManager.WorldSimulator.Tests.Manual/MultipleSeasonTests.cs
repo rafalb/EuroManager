@@ -11,7 +11,7 @@ namespace EuroManager.WorldSimulator.Tests.Manual
 {
     public class MultipleSeasonTests
     {
-        private static readonly string[] trackedTeams = { "Barcelona", "Real M", "Newcastle", "Wisla", "Polonia" };
+        private static readonly string[] TrackedTeams = { "Barcelona", "Real M", "Newcastle", "Wisla", "Polonia" };
 
         public void Perform()
         {
@@ -165,7 +165,7 @@ namespace EuroManager.WorldSimulator.Tests.Manual
 
         private void PrintTeamName(string format, string name)
         {
-            bool isTrackedTeam = trackedTeams.Any(t => name.Contains(t));
+            bool isTrackedTeam = TrackedTeams.Any(t => name.Contains(t));
 
             if (isTrackedTeam)
             {

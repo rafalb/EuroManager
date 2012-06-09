@@ -13,7 +13,7 @@ namespace EuroManager.MatchSimulator.Domain
         public static readonly double InitialRating = 0.53;
 
         #region InitiateAttackChanceByPosition
-        private static readonly Dictionary<Position, double> initiateAttackChanceByPosition = new Dictionary<Position, double>
+        private static readonly Dictionary<Position, double> InitiateAttackChanceByPosition = new Dictionary<Position, double>
         {
             { Position.Goalkeeper, 1 },
             { Position.RightWingBack, 4 },
@@ -246,7 +246,7 @@ namespace EuroManager.MatchSimulator.Domain
 
         public double ChanceToInitiateAttack(TeamStrategy strategy)
         {
-            double baseChance = initiateAttackChanceByPosition[Position];
+            double baseChance = InitiateAttackChanceByPosition[Position];
 
             if (IsStrategicPlayer(strategy))
             {

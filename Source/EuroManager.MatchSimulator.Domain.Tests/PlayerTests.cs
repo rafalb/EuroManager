@@ -97,7 +97,6 @@ namespace EuroManager.MatchSimulator.Domain.Tests.PlayerTests
             randomizerStub.Setup(r => r.TryShoot(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<double>())).Returns(ShotResult.Scored);
             MatchRandomizer.Current = randomizerStub.Object;
 
-
             player = A.Player.Build();
             assistant = A.Player.Build();
             opponent = A.Player.Build();
@@ -160,7 +159,6 @@ namespace EuroManager.MatchSimulator.Domain.Tests.PlayerTests
             var randomizerStub = mocks.Create<IMatchRandomizer>();
             randomizerStub.Setup(r => r.TryDribble(It.IsAny<double>(), It.IsAny<double>())).Returns(false);
             MatchRandomizer.Current = randomizerStub.Object;
-
 
             player = A.Player.Build();
             dribbler = A.Player.Build();
