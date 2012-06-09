@@ -10,7 +10,7 @@ namespace EuroManager.MatchSimulator.Domain
 {
     public class Player
     {
-        public static readonly double InitialRating = 0.53;
+        public static readonly double InitialRating = 0.55;
 
         #region InitiateAttackChanceByPosition
         private static readonly Dictionary<Position, double> InitiateAttackChanceByPosition = new Dictionary<Position, double>
@@ -292,6 +292,11 @@ namespace EuroManager.MatchSimulator.Domain
                     chance *= 2.0;
                 }
 
+                if (IsGoalkeeper)
+                {
+                    chance /= 5;
+                }
+
                 return chance;
             }
         }
@@ -335,6 +340,11 @@ namespace EuroManager.MatchSimulator.Domain
             if (distanceSideways > 0)
             {
                 chance /= 2 * distanceSideways;
+            }
+
+            if (IsGoalkeeper)
+            {
+                chance /= 5;
             }
 
             return chance;

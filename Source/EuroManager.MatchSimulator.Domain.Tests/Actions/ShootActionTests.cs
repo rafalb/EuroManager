@@ -119,11 +119,5 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Actions
         {
             Assert.That(action.CanContinue, Is.False);
         }
-
-        [Test]
-        public void ShouldDecreaseShooterRating()
-        {
-            Assert.That(action.Shooter.Rating, Is.LessThan(Player.InitialRating));
-        }
     }
 }
