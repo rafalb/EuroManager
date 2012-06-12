@@ -18,8 +18,8 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 
         public void Perform()
         {
-            Team team1 = teamConverter.CreateTeam("Newcastle United");
-            Team team2 = teamConverter.CreateTeam("Wisla Krakow");
+            Team team1 = teamConverter.CreateTeam("Real Madrid");
+            Team team2 = teamConverter.CreateTeam("FC Barcelona");
 
             var match = new Match(team1, team2, isNeutralGround: false, isExtraTimeRequired: true);
             var simulator = new Simulator(MatchRandomizer.Current);

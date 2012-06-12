@@ -60,12 +60,6 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Actions
         }
 
         [Test]
-        public void ShouldIncreasePassReceiverRating()
-        {
-            Assert.That(action.Receiver.Rating, Is.GreaterThan(Player.InitialRating));
-        }
-
-        [Test]
         public void ShouldDecreaseOpponentRating()
         {
             Assert.That(action.Opponent.Rating, Is.LessThan(Player.InitialRating));
@@ -114,12 +108,6 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Actions
         public void ShouldDecreasePassingPlayerRating()
         {
             Assert.That(action.PassingPlayer.Rating, Is.LessThan(Player.InitialRating));
-        }
-
-        [Test]
-        public void ShouldDecreasePassReceiverRating()
-        {
-            Assert.That(action.Receiver.Rating, Is.LessThan(Player.InitialRating));
         }
 
         [Test]
