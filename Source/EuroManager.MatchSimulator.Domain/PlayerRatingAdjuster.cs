@@ -50,12 +50,12 @@ namespace EuroManager.MatchSimulator.Domain
 
                 foreach (var player in shooter.Team.Squad)
                 {
-                    AdjustLinearly(player, 0.030, 0.005);
+                    AdjustLinearly(player, 0.025, 0.010);
                 }
 
                 foreach (var player in opponent.Team.Squad)
                 {
-                    AdjustLinearly(player, -0.030, 0.005);
+                    AdjustLinearly(player, -0.025, 0.010);
                 }
             }
             else if (result == ShotResult.Blocked)
