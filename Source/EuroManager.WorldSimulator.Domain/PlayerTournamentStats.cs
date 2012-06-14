@@ -38,6 +38,10 @@ namespace EuroManager.WorldSimulator.Domain
 
         public double AverageRating { get; private set; }
 
+        public int Goals { get; private set; }
+
+        public int Assists { get; private set; }
+
         public void ApplyResult(MatchResult result)
         {
             PlayerMatchStats matchStats = result.PlayersStats.FirstOrDefault(s => s.Player == Player);
@@ -45,6 +49,9 @@ namespace EuroManager.WorldSimulator.Domain
             if (matchStats != null)
             {
                 Played += 1;
+                Goals += matchStats.Goals;
+                Assists += matchStats.Assists;
+
                 AverageRating = (AverageRating * (Played - 1) + matchStats.Rating) / Played;
             }
         }

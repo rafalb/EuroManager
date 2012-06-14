@@ -111,6 +111,54 @@ namespace EuroManager.WorldSimulator.Services
                         TeamName = tm.Name,
                         Position = (PositionCode)m.PositionId,
                         Played = s.Played,
+                        Goals = s.Goals,
+                        Assists = s.Assists,
+                        Rating = s.AverageRating
+                    };
+
+            return q.Take(count).ToArray();
+        }
+
+        public IEnumerable<Data.PlayerStats> GetTopGoalScorers(int tournamentId, int count)
+        {
+            var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
+                    join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
+                    join t in Context.TournamentSeasons on s.TournamentSeasonId equals t.Id
+                    join tm in Context.Teams on m.TeamId equals tm.Id
+                    where t.TournamentId == tournamentId && t.IsActive
+                    orderby s.Goals descending
+                    select new Data.PlayerStats
+                    {
+                        Id = s.Id,
+                        Name = s.PlayerName,
+                        TeamName = tm.Name,
+                        Position = (PositionCode)m.PositionId,
+                        Played = s.Played,
+                        Goals = s.Goals,
+                        Assists = s.Assists,
+                        Rating = s.AverageRating
+                    };
+
+            return q.Take(count).ToArray();
+        }
+
+        public IEnumerable<Data.PlayerStats> GetTopAssistants(int tournamentId, int count)
+        {
+            var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
+                    join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
+                    join t in Context.TournamentSeasons on s.TournamentSeasonId equals t.Id
+                    join tm in Context.Teams on m.TeamId equals tm.Id
+                    where t.TournamentId == tournamentId && t.IsActive
+                    orderby s.Assists descending
+                    select new Data.PlayerStats
+                    {
+                        Id = s.Id,
+                        Name = s.PlayerName,
+                        TeamName = tm.Name,
+                        Position = (PositionCode)m.PositionId,
+                        Played = s.Played,
+                        Goals = s.Goals,
+                        Assists = s.Assists,
                         Rating = s.AverageRating
                     };
 

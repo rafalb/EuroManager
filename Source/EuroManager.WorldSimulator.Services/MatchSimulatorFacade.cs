@@ -42,8 +42,8 @@ namespace EuroManager.WorldSimulator.Services
                 winner = simulatorResult.Winner == team1 ? fixture.Team1 : fixture.Team2;
             }
 
-            var playersStats1 = team1.Squad.Select(p => new PlayerMatchStats(MapPlayer(p), p.FinalRating)).ToArray();
-            var playersStats2 = team2.Squad.Select(p => new PlayerMatchStats(MapPlayer(p), p.FinalRating)).ToArray();
+            var playersStats1 = team1.Squad.Select(p => new PlayerMatchStats(MapPlayer(p), p.FinalRating, p.Goals, p.Assists)).ToArray();
+            var playersStats2 = team2.Squad.Select(p => new PlayerMatchStats(MapPlayer(p), p.FinalRating, p.Goals, p.Assists)).ToArray();
 
             var result = new MatchResult(fixture, winner, simulatorResult.Score1, simulatorResult.Score2,
                 simulatorResult.PenaltyScore1, simulatorResult.PenaltyScore2,

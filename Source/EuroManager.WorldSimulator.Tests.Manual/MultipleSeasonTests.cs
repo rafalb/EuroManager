@@ -13,13 +13,13 @@ namespace EuroManager.WorldSimulator.Tests.Manual
     {
         private static readonly string[] TrackedTeams = { "Barcelona", "Real M", "Newcastle", "Wisla", "Polonia" };
 
+        private DateTime nextPauseDate;
+
         public void Perform()
         {
-            DateTime nextDate;
-
             using (var worldSimulator = new WorldSimulatorService())
             {
-                nextDate = worldSimulator.GetCurrentDate();
+                nextPauseDate = worldSimulator.GetCurrentDate();
             }
 
             while (true)
@@ -34,7 +34,7 @@ namespace EuroManager.WorldSimulator.Tests.Manual
                     {
                         PlayTournament(worldSimulator, date, tournament);
 
-                        if (date >= nextDate)
+                        if (date >= nextPauseDate)
                         {
                             Console.Write("> ");
                             string answer = Console.ReadLine();
@@ -42,11 +42,11 @@ namespace EuroManager.WorldSimulator.Tests.Manual
 
                             if (int.TryParse(answer, out weeks))
                             {
-                                nextDate = date.AddDays(7 * weeks);
+                                nextPauseDate = date.AddDays(7 * weeks);
                             }
                             else
                             {
-                                nextDate = date;
+                                nextPauseDate = date;
                             }
                         }
                     }
@@ -96,16 +96,33 @@ namespace EuroManager.WorldSimulator.Tests.Manual
                 }
             }
 
-            Console.WriteLine();
-
-            var playerStats = worldSimulator.GetTopPlayerStats(tournament.Id, 20);
-
-            foreach (var stats in playerStats)
+            if (date >= nextPauseDate)
             {
-                Console.WriteLine("          {0,-4} {1,-20}{2,-25}{3:0.00}", stats.Position, stats.Name, stats.TeamName, stats.Rating);
+                Console.ReadLine();
             }
 
+            Console.WriteLine("Top rated:");
+            PrintPlayerStats(worldSimulator.GetTopPlayerStats(tournament.Id, 20));
             Console.WriteLine();
+
+            Console.WriteLine("Top scorers:");
+            PrintPlayerStats(worldSimulator.GetTopGoalScorers(tournament.Id, 10));
+            Console.WriteLine();
+
+            Console.WriteLine("Top assistants:");
+            PrintPlayerStats(worldSimulator.GetTopAssistants(tournament.Id, 10));
+            Console.WriteLine();
+
+            Console.WriteLine();
+        }
+
+        private void PrintPlayerStats(IEnumerable<PlayerStats> playerStats)
+        {
+            foreach (var stats in playerStats)
+            {
+                Console.WriteLine("      {0,-5}{1,-20}{2,-25}{3,3}{4,3}  {5:0.00}",
+                    stats.Position, stats.Name, stats.TeamName, stats.Goals, stats.Assists, stats.Rating);
+            }
         }
 
         private void PrintMatchResult(MatchResult result)

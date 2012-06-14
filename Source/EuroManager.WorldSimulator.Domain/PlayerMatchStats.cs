@@ -8,10 +8,12 @@ namespace EuroManager.WorldSimulator.Domain
 {
     public class PlayerMatchStats : IEntity
     {
-        public PlayerMatchStats(Player player, int rating)
+        public PlayerMatchStats(Player player, int rating, int goals, int assists)
         {
             Player = player;
             Rating = rating;
+            Goals = goals;
+            Assists = assists;
         }
 
         protected PlayerMatchStats()
@@ -28,5 +30,9 @@ namespace EuroManager.WorldSimulator.Domain
         public virtual Player Player { get; private set; }
 
         public int Rating { get; private set; }
+
+        public int Goals { get; private set; }
+
+        public int Assists { get; private set; }
     }
 }

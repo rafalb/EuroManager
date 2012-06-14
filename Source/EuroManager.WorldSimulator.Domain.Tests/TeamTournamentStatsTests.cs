@@ -25,7 +25,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests.TeamTournamentStatsTests
             player = team.Players.ElementAt(6);
             stats.ApplyResult(A.MatchResult
                 .ForTeams(team, A.Team.Build())
-                .WithTeam1PlayersStats(new PlayerMatchStats(player, 4))
+                .WithTeam1PlayersStats(new PlayerMatchStats(player, rating: 4, goals: 0, assists: 0))
                 .Build());
         }
 

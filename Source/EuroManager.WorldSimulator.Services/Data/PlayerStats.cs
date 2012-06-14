@@ -18,6 +18,10 @@ namespace EuroManager.WorldSimulator.Services.Data
 
         public int Played { get; set; }
 
+        public int Goals { get; set; }
+
+        public int Assists { get; set; }
+
         public double Rating { get; set; }
     }
 }
