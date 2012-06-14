@@ -31,7 +31,7 @@ namespace EuroManager.MatchSimulator.Domain
             { Position.CenterMidfielder, 8 },
             { Position.LeftCenterMidfielder, 8 },
             { Position.LeftMidfielder, 8 },
-            { Position.CenterAttackingMidfielder, 10 },
+            { Position.CenterAttackingMidfielder, 8 },
             { Position.RightWinger, 8 },
             { Position.LeftWinger, 8 },
             { Position.RightForward, 4 },
@@ -250,7 +250,7 @@ namespace EuroManager.MatchSimulator.Domain
 
             if (IsStrategicPlayer(strategy))
             {
-                baseChance *= 3.0;
+                baseChance *= 2.0;
             }
 
             return baseChance;
@@ -289,7 +289,7 @@ namespace EuroManager.MatchSimulator.Domain
 
                 if (IsStrategicPlayer(strategy) && !passingPlayer.IsStrategicPlayer(strategy))
                 {
-                    chance *= 2.0;
+                    chance *= 1.5;
                 }
 
                 if (IsGoalkeeper)
