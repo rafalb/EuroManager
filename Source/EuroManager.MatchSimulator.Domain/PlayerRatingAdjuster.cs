@@ -43,8 +43,8 @@ namespace EuroManager.MatchSimulator.Domain
         {
             if (result == ShotResult.Scored)
             {
-                AdjustLinearly(shooter, 0.080, 0.020);
-                AdjustExponentiallyRight(assistant, 0.020, 0.060);
+                AdjustLinearly(shooter, 0.100, 0.020);
+                AdjustExponentiallyRight(assistant, 0.030, 0.070);
                 AdjustExponentiallyLeft(opponent, -0.020, 0.040);
                 AdjustExponentiallyLeft(goalkeeper, -0.020, 0.060);
 
