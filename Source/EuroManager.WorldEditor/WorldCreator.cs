@@ -53,11 +53,10 @@ namespace EuroManager.WorldEditor
                 }
             }
 
-            Console.WriteLine("Creating EuroLeague...");
+            Console.WriteLine("Creating European Cups...");
             worldCreationService.CreateEuroLeague(worldId,
-                world.EuroLeague.Division1.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray(),
-                world.EuroLeague.Division2.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray(),
-                world.EuroLeague.Division3.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray());
+                world.EuropeanCups.ChampionsLeague.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray(),
+                world.EuropeanCups.EuropaLeague.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray());
 
             Console.WriteLine("World created successfully.");
 

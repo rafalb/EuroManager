@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <World xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
        Name="Sample" Year="2011">
-  <EuroLeague>
-    <Division1>
+  <EuropeanCups>
+    <ChampionsLeague>
       <Club Id="Barcelona"/>
       <Club Id="RealM"/>
       <Club Id="ManUtd"/>
@@ -11,8 +11,6 @@
       <Club Id="Milan"/>
       <Club Id="BorussiaD"/>
       <Club Id="Lille"/>
-    </Division1>
-    <Division2>
       <Club Id="Villarreal"/>
       <Club Id="Arsenal"/>
       <Club Id="Bayern"/>
@@ -21,8 +19,8 @@
       <Club Id="Ajax"/>
       <Club Id="Shakhtar"/>
       <Club Id="Olympiakos"/>
-    </Division2>
-    <Division3>
+    </ChampionsLeague>
+    <EuropaLeague>
       <Club Id="Atletico"/>
       <Club Id="Bilbao"/>
       <Club Id="Getafe"/>
@@ -39,8 +37,8 @@
       <Club Id="Tottenham"/>
       <Club Id="Wisla"/>
       <Club Id="Polonia"/>
-    </Division3>
-  </EuroLeague>
+    </EuropaLeague>
+  </EuropeanCups>
   <League Name="Spanish">
     <Division Level="1" Name="Spanish Primera Division">
       <Club Id="Bilbao" Name="Athletic Bilbao" Strategy="Wings">

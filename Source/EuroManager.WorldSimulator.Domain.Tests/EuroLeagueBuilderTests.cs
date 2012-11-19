@@ -18,9 +18,8 @@ namespace EuroManager.WorldSimulator.Domain.Tests
 
             var teams1 = Enumerable.Repeat(0, 8).Select(x => A.Team.Build()).ToArray();
             var teams2 = Enumerable.Repeat(0, 8).Select(x => A.Team.Build()).ToArray();
-            var teams3 = Enumerable.Repeat(0, 16).Select(x => A.Team.Build()).ToArray();
 
-            var euroLeagueSeason = euroLeagueBuilder.CreateEuroLeague(teams1, teams2, teams3);
+            var euroLeagueSeason = euroLeagueBuilder.CreateEuroLeague(teams1, teams2);
 
             Assert.That(euroLeagueSeason, Is.Not.Null);
         }

@@ -74,15 +74,14 @@ namespace EuroManager.WorldSimulator.Services
             return division.Id;
         }
 
-        public int CreateEuroLeague(int worldId, IEnumerable<int> division1ClubIds, IEnumerable<int> division2ClubIds, IEnumerable<int> division3ClubIds)
+        public int CreateEuroLeague(int worldId, IEnumerable<int> championsLeagueClubIds, IEnumerable<int> europaLeagueClubIds)
         {
             var world = Context.Worlds.Find(worldId);
-            var division1Clubs = division1ClubIds.Select(id => Context.Teams.Find(id)).ToArray();
-            var division2Clubs = division2ClubIds.Select(id => Context.Teams.Find(id)).ToArray();
-            var division3Clubs = division3ClubIds.Select(id => Context.Teams.Find(id)).ToArray();
+            var championsLeagueClubs = championsLeagueClubIds.Select(id => Context.Teams.Find(id)).ToArray();
+            var europaLeagueClubs = europaLeagueClubIds.Select(id => Context.Teams.Find(id)).ToArray();
 
             var euroLeagueBuilder = new EuroLeagueBuilder(world);
-            var euroLeauge = euroLeagueBuilder.CreateEuroLeague(division1Clubs, division2Clubs, division3Clubs);
+            var euroLeauge = euroLeagueBuilder.CreateEuroLeague(championsLeagueClubs, europaLeagueClubs);
 
             Context.NationalLeagues.Add(euroLeauge.League);
             Context.NationalLeagueSeasons.Add(euroLeauge);

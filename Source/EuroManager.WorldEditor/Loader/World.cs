@@ -15,7 +15,7 @@ namespace EuroManager.WorldEditor.Loader
         [XmlAttribute]
         public int Year { get; set; }
 
-        public DivisionSet EuroLeague { get; set; }
+        public DivisionSet EuropeanCups { get; set; }
 
         [XmlElement("League")]
         public League[] Leagues { get; set; }

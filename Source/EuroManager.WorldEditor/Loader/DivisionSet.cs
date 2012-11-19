@@ -8,10 +8,8 @@ namespace EuroManager.WorldEditor.Loader
 {
     public class DivisionSet
     {
-        public ClubRefSet Division1 { get; set; }
+        public ClubRefSet ChampionsLeague { get; set; }
 
-        public ClubRefSet Division2 { get; set; }
-
-        public ClubRefSet Division3 { get; set; }
+        public ClubRefSet EuropaLeague { get; set; }
     }
 }
