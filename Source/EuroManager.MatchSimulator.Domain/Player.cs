@@ -142,6 +142,11 @@ namespace EuroManager.MatchSimulator.Domain
             }
         }
 
+        public bool IsForward
+        {
+            get { return Position.Location.In(Location.Forward); }
+        }
+
         public bool IsStrategicPlayer(TeamStrategy strategy)
         {
             return
@@ -290,6 +295,11 @@ namespace EuroManager.MatchSimulator.Domain
                 if (IsStrategicPlayer(strategy) && !passingPlayer.IsStrategicPlayer(strategy))
                 {
                     chance *= 1.5;
+                }
+
+                if (IsForward)
+                {
+                    chance *= 2.0;
                 }
 
                 if (IsGoalkeeper)
