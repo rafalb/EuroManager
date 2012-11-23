@@ -19,25 +19,19 @@ namespace EuroManager.WorldSimulator.Domain
         {
             var league = new NationalLeague(world, "European Cups");
 
-            var championsLeagueStages = new List<CupStage>
-            {
-                new GroupStage(groupCount: 4, groupTeamCount: 4, groupPromotedCount: 2, isNeutralGround: false, hasReturnRound: true),
-                new TieKnockoutStage(4),
-                new TieKnockoutStage(2),
-                new KnockoutStage(1)
-            };
+            var championsLeague = new League(league, "Champions League", 1, DayOfWeek.Wednesday, 2, hasReturnRound: false);
+            championsLeague.AutomaticRelegationCount = 2;
+            championsLeague.ConditionalRelegationCount = 2;
+            league.AddDivision(championsLeague);
 
-            league.AddDivision(new Cup(league, "Champions League", 1, DayOfWeek.Wednesday, 2, championsLeagueStages));
-
-            var europaCupStages = new List<CupStage>
-            {
-                new GroupStage(groupCount: 4, groupTeamCount: 4, groupPromotedCount: 2, isNeutralGround: false, hasReturnRound: true),
-                new TieKnockoutStage(4),
-                new TieKnockoutStage(2),
-                new KnockoutStage(1)
-            };
-
-            league.AddDivision(new Cup(league, "Europa League", 2, DayOfWeek.Thursday, 2, europaCupStages));
+            var europaCup = new Cup(league, "Europa League", 2, DayOfWeek.Thursday, 2,
+                new List<CupStage>
+                {
+                    new GroupStage(groupCount: 2, groupTeamCount: 8, groupPromotedCount: 4, isNeutralGround: true, hasReturnRound: false),
+                    new TieKnockoutStage(4),
+                    new TieKnockoutStage(2)
+                });
+            league.AddDivision(europaCup);
 
             league.PlayOffs = new LeaguePlayOffs(league, "European Play-Offs", DayOfWeek.Wednesday);
 
@@ -45,7 +39,7 @@ namespace EuroManager.WorldSimulator.Domain
             DateTime endDate = new DateTime(world.StartYear + 1, 05, 16);
 
             var leagueSeason = new NationalLeagueSeason(league, startDate, endDate);
-            leagueSeason.AddDivisionSeason(new CupSeason((Cup)league.Divisions[0], startDate, endDate, championsLeagueClubs));
+            leagueSeason.AddDivisionSeason(new LeagueSeason((League)league.Divisions[0], startDate, endDate, championsLeagueClubs));
             leagueSeason.AddDivisionSeason(new CupSeason((Cup)league.Divisions[1], startDate, endDate, europaLeagueClubs));
 
             return leagueSeason;

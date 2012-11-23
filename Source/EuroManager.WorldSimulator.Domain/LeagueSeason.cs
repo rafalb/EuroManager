@@ -14,6 +14,7 @@ namespace EuroManager.WorldSimulator.Domain
         {
             DayOfWeek = League.DayOfWeek;
             Frequency = League.Frequency;
+            HasReturnRound = League.HasReturnRound;
 
             TeamStats = teams.Select(t => new TeamStats(t)).ToList();
         }
@@ -33,6 +34,8 @@ namespace EuroManager.WorldSimulator.Domain
         }
 
         public int Frequency { get; private set; }
+
+        public bool HasReturnRound { get; private set; }
 
         public IEnumerable<TeamStats> Standings
         {
@@ -77,7 +80,7 @@ namespace EuroManager.WorldSimulator.Domain
             if (Phase == TournamentPhase.NotStarted)
             {
                 var scheduler = new Scheduler();
-                var fixtures = scheduler.ScheduleLeagueFixtures(this, Teams, StartDate, EndDate, DayOfWeek, Frequency);
+                var fixtures = scheduler.ScheduleLeagueFixtures(this, Teams, StartDate, EndDate, DayOfWeek, Frequency, HasReturnRound);
 
                 foreach (var fixture in fixtures)
                 {
@@ -98,7 +101,7 @@ namespace EuroManager.WorldSimulator.Domain
 
             if (Phase == TournamentPhase.InProgress)
             {
-                int roundsToPlay = (TeamStats.Count - 1) * 2;
+                int roundsToPlay = (TeamStats.Count - 1) * (HasReturnRound ? 2 : 1);
 
                 if (TeamStats.All(s => s.Played == roundsToPlay))
                 {

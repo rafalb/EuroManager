@@ -38,9 +38,19 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         }
 
         [Test]
-        public void ShouldFinishWhenAllMatchesPlayed()
+        public void ShouldFinishWhenAllMatchesPlayedWithReturnRound()
         {
             var leagueSeason = A.LeagueSeason.Build();
+            FixtureSetTestHelper.PlayAllFixtures(leagueSeason);
+
+            Assert.That(leagueSeason.IsFinished, Is.True);
+        }
+
+        [Test]
+        public void ShouldFinishWhenAllMatchesPlayedWithoutReturnRound()
+        {
+            var league = A.League.WithReturnRound(false).Build();
+            var leagueSeason = A.LeagueSeason.ForLeague(league).Build();
             FixtureSetTestHelper.PlayAllFixtures(leagueSeason);
 
             Assert.That(leagueSeason.IsFinished, Is.True);

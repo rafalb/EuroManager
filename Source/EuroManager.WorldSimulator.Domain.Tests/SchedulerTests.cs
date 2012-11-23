@@ -109,6 +109,18 @@ namespace EuroManager.WorldSimulator.Domain.Tests
         }
 
         [Test]
+        public void ShouldScheduleBreakWithoutReturnRound()
+        {
+            var teams = A.Team.Repeat(16);
+            var fixtures = scheduler.ScheduleLeagueFixtures(CreateLeagueSeason(teams), teams, new DateTime(2012, 08, 01), new DateTime(2013, 05, 31),
+                DayOfWeek.Wednesday, 2, hasReturnRound: false);
+
+            var dates = fixtures.Select(f => f.Date);
+
+            Assert.That(dates, Has.None.GreaterThan(new DateTime(2012, 11, 20)).And.LessThan(new DateTime(2013, 02, 10)));
+        }
+
+        [Test]
         public void ShouldScheduleAtLeastHalfOfRoundsBeforeBreak()
         {
             var roundDates = scheduler.ScheduleRoundDates(new DateTime(2012, 08, 01), new DateTime(2013, 05, 31), DayOfWeek.Saturday, 1, 2, 2, 5, 2, 2);

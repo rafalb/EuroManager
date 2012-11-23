@@ -9,6 +9,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
     {
         private NationalLeague nationalLeague;
         private int level = 1;
+        private bool hasReturnRound = true;
 
         public LeagueBuilder ForNationalLeague(NationalLeague nationalLeague)
         {
@@ -22,6 +23,12 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
             return this;
         }
 
+        public LeagueBuilder WithReturnRound(bool hasReturnRound)
+        {
+            this.hasReturnRound = hasReturnRound;
+            return this;
+        }
+
         public League Build()
         {
             if (nationalLeague == null)
@@ -29,7 +36,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
                 nationalLeague = A.NationalLeague.Build();
             }
 
-            return new League(nationalLeague, "Test", level, DayOfWeek.Saturday, 1);
+            return new League(nationalLeague, "Test", level, DayOfWeek.Saturday, 1, hasReturnRound);
         }
 
         public IEnumerable<League> Repeat(int count)

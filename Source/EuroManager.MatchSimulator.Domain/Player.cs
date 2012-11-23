@@ -116,6 +116,11 @@ namespace EuroManager.MatchSimulator.Domain
             get { return Position == Position.Goalkeeper; }
         }
 
+        public bool IsForward
+        {
+            get { return Position.Location.In(Location.Forward); }
+        }
+
         private bool IsCenterMidfielder
         {
             get
@@ -140,11 +145,6 @@ namespace EuroManager.MatchSimulator.Domain
                     Position.RightWinger,
                     Position.LeftWinger);
             }
-        }
-
-        public bool IsForward
-        {
-            get { return Position.Location.In(Location.Forward); }
         }
 
         public bool IsStrategicPlayer(TeamStrategy strategy)

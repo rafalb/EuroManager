@@ -52,12 +52,15 @@ namespace EuroManager.WorldSimulator.Domain
         }
         
         public IEnumerable<Fixture> ScheduleLeagueFixtures(TournamentSeason season, IEnumerable<Team> teams,
-            DateTime startDate, DateTime endDate, DayOfWeek dayOfWeek, int frequency)
+            DateTime startDate, DateTime endDate, DayOfWeek dayOfWeek, int frequency, bool hasReturnRound = true)
         {
             int roundCount = CalculateRoundCount(teams.Count());
-            var dates = ScheduleRoundDates(startDate, endDate, dayOfWeek, frequency, roundCount, roundCount);
+            int stage1RoundCount = hasReturnRound ? roundCount : roundCount / 2 + 1;
+            int stage2RoundCount = hasReturnRound ? roundCount : roundCount - stage1RoundCount;
 
-            return ScheduleLeagueFixtures(season, dates, true, teams);
+            var dates = ScheduleRoundDates(startDate, endDate, dayOfWeek, frequency, stage1RoundCount, stage2RoundCount);
+
+            return ScheduleLeagueFixtures(season, dates, hasReturnRound, teams);
         }
 
         public IEnumerable<Fixture> ScheduleLeagueFixtures(TournamentSeason season, IEnumerable<DateTime> dates, bool hasReturnRound, IEnumerable<Team> teams)

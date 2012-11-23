@@ -10,11 +10,12 @@ namespace EuroManager.WorldSimulator.Domain
 {
     public class League : Tournament
     {
-        public League(NationalLeague league, string name, int level, DayOfWeek dayOfWeek, int frequency)
+        public League(NationalLeague league, string name, int level, DayOfWeek dayOfWeek, int frequency, bool hasReturnRound = true)
             : base(league, name, level)
         {
             DayOfWeek = dayOfWeek;
             Frequency = frequency;
+            HasReturnRound = hasReturnRound;
 
             AutomaticPromotionCount = 1;
             ConditionalPromotionCount = 1;
@@ -36,12 +37,14 @@ namespace EuroManager.WorldSimulator.Domain
 
         public int Frequency { get; private set; }
 
-        public int AutomaticPromotionCount { get; private set; }
+        public bool HasReturnRound { get; private set; }
 
-        public int ConditionalPromotionCount { get; private set; }
+        public int AutomaticPromotionCount { get; set; }
 
-        public int AutomaticRelegationCount { get; private set; }
+        public int ConditionalPromotionCount { get; set; }
 
-        public int ConditionalRelegationCount { get; private set; }
+        public int AutomaticRelegationCount { get; set; }
+
+        public int ConditionalRelegationCount { get; set; }
     }
 }
