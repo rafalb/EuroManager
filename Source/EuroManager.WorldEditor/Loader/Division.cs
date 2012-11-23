@@ -8,16 +8,14 @@ namespace EuroManager.WorldEditor.Loader
 {
     public class Division
     {
-        [XmlIgnore]
+        public string Id { get; set; }
+
         public int NewId { get; set; }
 
-        [XmlAttribute]
-        public int Level { get; set; }
-
-        [XmlAttribute]
         public string Name { get; set; }
 
-        [XmlElement("Club")]
-        public Club[] Clubs { get; set; }
+        public string LeagueId { get; set; }
+
+        public int Level { get; set; }
     }
 }

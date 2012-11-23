@@ -16,11 +16,8 @@ namespace EuroManager.MatchSimulator.Tests.Manual
             Console.SetWindowSize(120, 60);
             Console.SetBufferSize(120, 600);
 
-            using (var stream = File.OpenRead("Data.xml"))
-            {
-                var loader = new WorldLoader();
-                world = loader.LoadWorld(stream);
-            }
+            var loader = new WorldLoader();
+            world = loader.LoadWorld("Data.xlsx");
 
             var singleMatchTests = new SingleMatchTests(world);
             singleMatchTests.Perform();

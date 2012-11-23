@@ -9,17 +9,18 @@ namespace EuroManager.WorldEditor.Loader
     [XmlRoot("World")]
     public class World
     {
-        [XmlAttribute]
         public string Name { get; set; }
 
-        [XmlAttribute]
         public int Year { get; set; }
 
-        public DivisionSet EuropeanCups { get; set; }
+        public IEnumerable<League> Leagues { get; set; }
 
-        [XmlElement("League")]
-        public League[] Leagues { get; set; }
+        public IEnumerable<Division> Divisions { get; set; }
 
-        public ClubSet RestOfWorld { get; set; }
+        public IEnumerable<Club> Clubs { get; set; }
+
+        public IEnumerable<ClubRef> EuropeanCupsClubs { get; set; }
+
+        public IEnumerable<Player> Players { get; set; }
     }
 }

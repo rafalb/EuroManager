@@ -12,19 +12,16 @@ namespace EuroManager.WorldEditor.Loader
         [XmlIgnore]
         public int NewId { get; set; }
 
-        [XmlAttribute]
         public string Name { get; set; }
 
-        [XmlAttribute]
+        public string ClubId { get; set; }
+
         public PositionCode Position { get; set; }
 
-        [XmlAttribute]
         public int Defending { get; set; }
 
-        [XmlAttribute]
         public int Attacking { get; set; }
 
-        [XmlAttribute]
         public int Form { get; set; }
     }
 }

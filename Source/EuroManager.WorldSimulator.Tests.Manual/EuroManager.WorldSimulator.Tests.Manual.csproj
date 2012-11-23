@@ -81,6 +81,9 @@
     </Compile>
     <None Include="App.config" />
     <AppDesigner Include="Properties\" />
+    <Content Include="Data.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EuroManager.Common.Domain\EuroManager.Common.Domain.csproj">

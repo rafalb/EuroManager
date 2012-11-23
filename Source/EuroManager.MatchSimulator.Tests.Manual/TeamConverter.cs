@@ -9,22 +9,21 @@ namespace EuroManager.MatchSimulator.Tests.Manual
 {
     public class TeamConverter
     {
-        private IEnumerable<Club> clubs;
+        private World world;
 
         public TeamConverter(World world)
         {
-            clubs = Enumerable.Union(
-                        world.Leagues.SelectMany(l => l.Divisions).SelectMany(d => d.Clubs),
-                        world.RestOfWorld.Clubs)
-                    .ToArray();
+            this.world = world;
         }
 
         public Team CreateTeam(string name)
         {
-            Club club = clubs.First(c => c.Name == name);
+            Club club = world.Clubs.First(c => c.Name == name);
             var team = new Team(club.Name, club.Strategy);
 
-            foreach (var player in club.Players)
+            var clubPlayers = world.Players.Where(p => p.ClubId == club.Id);
+
+            foreach (var player in clubPlayers)
             {
                 team.AddSquadPlayer(0, player.Name, Position.FromCode(player.Position), player.Defending, player.Attacking, player.Form);
             }

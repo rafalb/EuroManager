@@ -9,19 +9,14 @@ namespace EuroManager.WorldEditor.Loader
 {
     public class Club
     {
-        [XmlIgnore]
+        public string Id { get; set; }
+        
         public int NewId { get; set; }
 
-        [XmlAttribute]
-        public string Id { get; set; }
-
-        [XmlAttribute]
         public string Name { get; set; }
 
-        [XmlAttribute]
-        public TeamStrategy Strategy { get; set; }
+        public string DivisionId { get; set; }
 
-        [XmlElement("Player")]
-        public Player[] Players { get; set; }
+        public TeamStrategy Strategy { get; set; }
     }
 }

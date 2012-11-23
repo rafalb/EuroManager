@@ -43,11 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Loader\Club.cs" />
-    <Compile Include="Loader\ClubSet.cs" />
     <Compile Include="Loader\ClubRef.cs" />
-    <Compile Include="Loader\ClubRefSet.cs" />
     <Compile Include="Loader\Division.cs" />
-    <Compile Include="Loader\DivisionSet.cs" />
     <Compile Include="Loader\League.cs" />
     <Compile Include="Loader\Player.cs" />
     <Compile Include="Loader\World.cs" />
@@ -65,6 +62,7 @@
       <Name>EuroManager.WorldSimulator.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -46,7 +46,7 @@
         <Player Name="Iraola" Position="RB" Defending="79" Attacking="70" Form="79" />
         <Player Name="San Jose" Position="RCB" Defending="78" Attacking="65" Form="78" />
         <Player Name="Amorebieta" Position="LCB" Defending="78" Attacking="65" Form="78" />
-        <Player Name="De Marcos" Position="RB" Defending="71" Attacking="65" Form="71" />
+        <Player Name="De Marcos" Position="LB" Defending="71" Attacking="65" Form="71" />
         <Player Name="Javi Martinez" Position="CDM" Defending="82" Attacking="75" Form="82" />
         <Player Name="Ander Herrera" Position="RCM" Defending="75" Attacking="79" Form="79" />
         <Player Name="Iturraspe" Position="LCM" Defending="70" Attacking="73" Form="73" />

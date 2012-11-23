@@ -49,11 +49,8 @@ namespace EuroManager.WorldSimulator.Tests.Manual
         {
             World world;
 
-            using (var stream = File.OpenRead("Data.xml"))
-            {
-                var worldLoader = new WorldLoader();
-                world = worldLoader.LoadWorld(stream);
-            }
+            var worldLoader = new WorldLoader();
+            world = worldLoader.LoadWorld("Data.xlsx");
 
             var worldCreator = new WorldCreator();
             int worldId = worldCreator.CreateWorld(world);

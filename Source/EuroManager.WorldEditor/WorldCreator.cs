@@ -16,47 +16,49 @@ namespace EuroManager.WorldEditor
             DateTime seasonStart = new DateTime(world.Year, 08, 01);
             DateTime seasonEnd = new DateTime(world.Year + 1, 05, 31);
 
-            var leagues = world.Leagues;
-            var divisions = leagues.SelectMany(l => l.Divisions).ToArray();
-            var clubs = divisions.SelectMany(d => d.Clubs).Union(world.RestOfWorld.Clubs).ToArray();
-            var players = clubs.SelectMany(t => t.Players).ToArray();
-
             var worldCreationService = new WorldCreationService();
 
             Console.WriteLine("Creating new world...");
             int worldId = worldCreationService.CreateWorld(world.Name, world.Year);
 
-            foreach (var player in players)
+            foreach (var player in world.Players)
             {
                 Console.WriteLine("Creating player {0}...", player.Name);
                 player.NewId = worldCreationService.CreatePlayer(worldId, player.Name, player.Defending, player.Attacking, player.Form);
             }
 
-            foreach (var club in clubs)
+            foreach (var club in world.Clubs)
             {
                 Console.WriteLine("Creating club {0}...", club.Name);
-                var squad = club.Players.Select(p => new Tuple<PositionCode, int>(p.Position, p.NewId)).ToArray();
+                var clubPlayers = world.Players.Where(p => p.ClubId == club.Id);
+                var squad = clubPlayers.Select(p => new Tuple<PositionCode, int>(p.Position, p.NewId)).ToArray();
                 club.NewId = worldCreationService.CreateTeam(worldId, club.Name, club.Strategy, squad);
             }
 
-            foreach (var league in leagues)
+            foreach (var league in world.Leagues)
             {
                 Console.WriteLine("Creating league {0}...", league.Name);
                 league.NewId = worldCreationService.CreateLeague(worldId, league.Name, seasonStart, seasonEnd);
 
-                foreach (var division in league.Divisions)
+                var leagueDivisions = world.Divisions.Where(d => d.LeagueId == league.Id);
+
+                foreach (var division in leagueDivisions)
                 {
                     Console.WriteLine("Creating division {0}...", division.Name);
-                    var teamIds = division.Clubs.Select(c => c.NewId).ToArray();
+                    var divisionClubs = world.Clubs.Where(c => c.DivisionId == division.Id);
+                    var teamIds = divisionClubs.Select(c => c.NewId).ToArray();
                     worldCreationService.CreateDivision(league.NewId, division.Name, division.Level,
                         seasonStart, new DateTime(world.Year + 1, 05, 16), DayOfWeek.Saturday, 1, teamIds);
                 }
             }
 
             Console.WriteLine("Creating European Cups...");
+            var championsLeagueClubs = world.Clubs.Where(c => world.EuropeanCupsClubs.Any(cr => cr.ClubId == c.Id && cr.Level == 1));
+            var europaLeagueClubs = world.Clubs.Where(c => world.EuropeanCupsClubs.Any(cr => cr.ClubId == c.Id && cr.Level == 2));
+
             worldCreationService.CreateEuroLeague(worldId,
-                world.EuropeanCups.ChampionsLeague.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray(),
-                world.EuropeanCups.EuropaLeague.Clubs.Select(c => clubs.First(c2 => c2.Id == c.Id).NewId).ToArray());
+                championsLeagueClubs.Select(c => c.NewId).ToArray(),
+                europaLeagueClubs.Select(c => c.NewId).ToArray());
 
             Console.WriteLine("World created successfully.");
 

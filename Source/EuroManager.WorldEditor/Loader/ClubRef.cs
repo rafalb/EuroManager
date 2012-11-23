@@ -8,7 +8,8 @@ namespace EuroManager.WorldEditor.Loader
 {
     public class ClubRef
     {
-        [XmlAttribute]
-        public string Id { get; set; }
+        public string ClubId { get; set; }
+
+        public int Level { get; set; }
     }
 }
