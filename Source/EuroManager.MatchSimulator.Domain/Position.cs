@@ -29,8 +29,8 @@ namespace EuroManager.MatchSimulator.Domain
         public static readonly Position CenterAttackingMidfielder = new Position(PositionCode.CAM, Location.Offensive, Side.Center);
         public static readonly Position RightWinger = new Position(PositionCode.RW, Location.Offensive, Side.Right);
         public static readonly Position LeftWinger = new Position(PositionCode.LW, Location.Offensive, Side.Left);
-        public static readonly Position RightForward = new Position(PositionCode.RF, Location.Forward, Side.RightCenter);
-        public static readonly Position LeftForward = new Position(PositionCode.LF, Location.Forward, Side.LeftCenter);
+        public static readonly Position RightStriker = new Position(PositionCode.RS, Location.Forward, Side.RightCenter);
+        public static readonly Position LeftStriker = new Position(PositionCode.LS, Location.Forward, Side.LeftCenter);
         public static readonly Position Striker = new Position(PositionCode.ST, Location.Forward, Side.Center);
 
         private static readonly Dictionary<PositionCode, Position> AllPositions = new Dictionary<PositionCode, Position>
@@ -54,8 +54,8 @@ namespace EuroManager.MatchSimulator.Domain
             { PositionCode.CAM, CenterAttackingMidfielder },
             { PositionCode.RW, RightWinger },
             { PositionCode.LW, LeftWinger },
-            { PositionCode.RF, RightForward },
-            { PositionCode.LF, LeftForward },
+            { PositionCode.RS, RightStriker },
+            { PositionCode.LS, LeftStriker },
             { PositionCode.ST, Striker }
         };
 

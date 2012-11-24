@@ -23,7 +23,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
         public void ShouldCalculateDistanceForward()
         {
             Position position1 = Position.FromCode(PositionCode.RB);
-            Position position2 = Position.FromCode(PositionCode.LF);
+            Position position2 = Position.FromCode(PositionCode.LS);
 
             Assert.That(position1.DistanceForward(position2), Is.EqualTo(4));
         }
@@ -41,7 +41,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
         public void ShouldCalculateDistanceSideways()
         {
             Position position1 = Position.FromCode(PositionCode.RCB);
-            Position position2 = Position.FromCode(PositionCode.LF);
+            Position position2 = Position.FromCode(PositionCode.LS);
 
             Assert.That(position1.DistanceSideways(position2), Is.EqualTo(2));
         }
@@ -49,7 +49,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
         [Test]
         public void ShouldCalculateOppositeLocation()
         {
-            Position position = Position.FromCode(PositionCode.RF).Opposite();
+            Position position = Position.FromCode(PositionCode.RS).Opposite();
 
             Assert.That(position.Location, Is.EqualTo(Location.Back));
         }
@@ -57,7 +57,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests
         [Test]
         public void ShouldCalculateOppositeSide()
         {
-            Position position = Position.FromCode(PositionCode.RF).Opposite();
+            Position position = Position.FromCode(PositionCode.RS).Opposite();
 
             Assert.That(position.Side, Is.EqualTo(Side.LeftCenter));
         }

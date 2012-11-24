@@ -34,8 +34,8 @@ namespace EuroManager.MatchSimulator.Domain
             { Position.CenterAttackingMidfielder, 8 },
             { Position.RightWinger, 8 },
             { Position.LeftWinger, 8 },
-            { Position.RightForward, 4 },
-            { Position.LeftForward, 4 },
+            { Position.RightStriker, 4 },
+            { Position.LeftStriker, 4 },
             { Position.Striker, 4 }
         };
         #endregion

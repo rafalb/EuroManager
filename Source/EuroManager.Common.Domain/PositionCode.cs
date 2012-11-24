@@ -27,8 +27,8 @@ namespace EuroManager.Common.Domain
         CAM,
         RW,
         LW,
-        RF,
-        LF,
+        RS,
+        LS,
         ST
     }
 }

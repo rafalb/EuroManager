@@ -39,7 +39,7 @@ namespace EuroManager.MatchSimulator.Domain.Tests.Builders
                 Position.Goalkeeper,
                 Position.RightBack, Position.RightCenterBack, Position.LeftCenterBack, Position.LeftBack,
                 Position.RightMidfielder, Position.RightCenterMidfielder, Position.LeftCenterMidfielder, Position.LeftMidfielder,
-                Position.RightForward, Position.LeftForward
+                Position.RightStriker, Position.LeftStriker
             };
 
             for (int i = 1; i <= 11; i++)
