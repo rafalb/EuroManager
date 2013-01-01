@@ -27,7 +27,7 @@ namespace EuroManager.WorldSimulator.Domain
             var europaCup = new Cup(league, "Europa League", 2, DayOfWeek.Thursday, 2,
                 new List<CupStage>
                 {
-                    new GroupStage(groupCount: 2, groupTeamCount: 8, groupPromotedCount: 4, isNeutralGround: true, hasReturnRound: false),
+                    new GroupStage(groupCount: 4, groupTeamCount: 4, groupPromotedCount: 2, isNeutralGround: false, hasReturnRound: true),
                     new TieKnockoutStage(4),
                     new TieKnockoutStage(2)
                 });
