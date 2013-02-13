@@ -154,9 +154,9 @@ namespace EuroManager.WorldSimulator.Tests.Manual
         private void PrintStandings(IEnumerable<TeamStats> standings)
         {
             Console.WriteLine();
-            Console.WriteLine("                          {0,2}  {1,-23}{2,3}{3,4}  {4,3}{5,3}{6,3}  {7,3}-{8,-3}",
+            Console.WriteLine("                          {0,2}  {1,-25}{2,3}{3,4}  {4,3}{5,3}{6,3}  {7,3}-{8,-3}",
                 "#", "Team", "M", "Pts", "W", "D", "L", "F", "A");
-            Console.WriteLine("                          -----------------------------------------------------");
+            Console.WriteLine("                            -----------------------------------------------------");
 
             int position = 1;
             int previousGroupNumber = standings.First().GroupNumber;
@@ -166,11 +166,11 @@ namespace EuroManager.WorldSimulator.Tests.Manual
                 if (standing.GroupNumber != previousGroupNumber)
                 {
                     position = 1;
-                    Console.WriteLine("                          -----------------------------------------------------");
+                    Console.WriteLine("                            -----------------------------------------------------");
                 }
 
                 Console.Write("                          {0,2}. ", position);
-                PrintTeamName("{0,-23}", standing.TeamName);
+                PrintTeamName("{0,-25}", standing.TeamName);
                 Console.WriteLine("{0,3}{1,4}  {2,3}{3,3}{4,3}  {5,3}-{6,-3}",
                     standing.Played, standing.Points, standing.Wins, standing.Draws, standing.Losses,
                     standing.GoalsFor, standing.GoalsAgainst);
