@@ -37,13 +37,7 @@ namespace EuroManager.WorldSimulator.Domain
 
         public virtual CupSeason CupSeason { get; set; }
 
-        public int PhaseId { get; private set; }
-
-        public TournamentPhase Phase
-        {
-            get { return (TournamentPhase)PhaseId; }
-            protected set { PhaseId = (int)value; }
-        }
+        public TournamentPhase Phase { get; protected set; }
 
         public int StageNumber { get; private set; }
 

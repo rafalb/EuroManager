@@ -34,13 +34,7 @@ namespace EuroManager.WorldSimulator.Domain
         [StringLength(100)]
         public string Name { get; private set; }
 
-        public int StrategyId { get; private set; }
-
-        public TeamStrategy Strategy
-        {
-            get { return (TeamStrategy)StrategyId; }
-            private set { StrategyId = (int)value; }
-        }
+        public TeamStrategy Strategy { get; private set; }
 
         public virtual List<SquadMember> Squad { get; private set; }
 

@@ -26,13 +26,7 @@ namespace EuroManager.WorldSimulator.Domain
         {
         }
 
-        public int DayOfWeekId { get; private set; }
-
-        public DayOfWeek DayOfWeek
-        {
-            get { return (DayOfWeek)DayOfWeekId; }
-            private set { DayOfWeekId = (int)value; }
-        }
+        public DayOfWeek DayOfWeek { get; private set; }
 
         public int Frequency { get; private set; }
 

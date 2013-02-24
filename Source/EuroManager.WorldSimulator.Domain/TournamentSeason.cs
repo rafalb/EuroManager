@@ -68,13 +68,7 @@ namespace EuroManager.WorldSimulator.Domain
 
         public virtual List<Team> RelegationPlayOffTeams { get; private set; }
 
-        public int PhaseId { get; private set; }
-
-        public TournamentPhase Phase
-        {
-            get { return (TournamentPhase)PhaseId; }
-            protected set { PhaseId = (int)value; }
-        }
+        public TournamentPhase Phase { get; protected set; }
 
         public bool IsFinished
         {

@@ -33,13 +33,7 @@ namespace EuroManager.WorldSimulator.Domain
 
         public int? TeamId { get; private set; }
 
-        public int PositionId { get; private set; }
-
-        public PositionCode Position
-        {
-            get { return (PositionCode)PositionId; }
-            private set { PositionId = (int)value; }
-        }
+        public PositionCode Position { get; private set; }
 
         public int? PlayerId { get; private set; }
 
