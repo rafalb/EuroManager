@@ -316,6 +316,12 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EuroManager.WorldSimulator.Services\EuroManager.WorldSimulator.Services.csproj">
+      <Project>{f55132d8-def7-405d-8ed3-4ec970a490ac}</Project>
+      <Name>EuroManager.WorldSimulator.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

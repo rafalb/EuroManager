@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EuroManager.WorldSimulator.Services;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 {
@@ -10,7 +11,15 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            using (var worldSimulator = new WorldSimulatorService())
+            {
+                var tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
+
+                if (tournaments.Any())
+                {
+                    ViewBag.TeamStats = worldSimulator.GetLeagueStandings(tournaments.First().Id);
+                }
+            }
 
             return View();
         }

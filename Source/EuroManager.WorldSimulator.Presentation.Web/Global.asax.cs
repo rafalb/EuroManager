@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using EuroManager.WorldSimulator.Services;
 
 namespace EuroManager.WorldSimulator.Presentation.Web
 {
@@ -22,6 +23,9 @@ namespace EuroManager.WorldSimulator.Presentation.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            var bootstrapper = new Bootstrapper();
+            bootstrapper.Initialize();
         }
     }
 }
