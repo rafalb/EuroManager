@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1EC5C5
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuroManager.WorldSimulator.Presentation.Web", "EuroManager.WorldSimulator.Presentation.Web\EuroManager.WorldSimulator.Presentation.Web.csproj", "{EC43E9BC-264F-45A1-B266-973607B24FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,16 @@ Global
 		{D5E80905-67C9-4245-A501-968B2502E5FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D5E80905-67C9-4245-A501-968B2502E5FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D5E80905-67C9-4245-A501-968B2502E5FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
