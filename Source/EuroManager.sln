@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuroManager.MatchSimulator.Tests.Manual", "EuroManager.MatchSimulator.Tests.Manual\EuroManager.MatchSimulator.Tests.Manual.csproj", "{8C0F355C-6344-4097-B9AD-E1D95DC0F93E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuroManager.MatchSimulator.Domain", "EuroManager.MatchSimulator.Domain\EuroManager.MatchSimulator.Domain.csproj", "{E0CC53BB-164B-44FB-8D52-67370450AED6}"
