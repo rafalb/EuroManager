@@ -17,11 +17,14 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 
                 if (tournaments.Any())
                 {
-                    ViewBag.TeamStats = worldSimulator.GetLeagueStandings(tournaments.First().Id);
+                    var teamStats = worldSimulator.GetLeagueStandings(tournaments.First().Id);
+                    return View(teamStats);
+                }
+                else
+                {
+                    return View();
                 }
             }
-
-            return View();
         }
 
         public ActionResult About()

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<EuroManager.WorldSimulator.Services.Data.TeamStats>
+
+@{
     ViewBag.Title = "Home Page";
 }
 @section featured {
@@ -12,7 +14,7 @@
     </section>
 }
 <ul>
-    @foreach (var teamStats in ViewBag.TeamStats)
+    @foreach (var teamStats in Model)
     {
         <li>@teamStats.TeamName</li>
     }
