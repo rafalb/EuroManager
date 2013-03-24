@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EuroManager.WorldSimulator.Services.Data.TeamStats>
+﻿@model EuroManager.WorldSimulator.Presentation.Web.Models.TournamentResultsModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -13,9 +13,41 @@
         </div>
     </section>
 }
+
+<div>
+    Date: @Model.CurrentDate
+</div>
 <ul>
-    @foreach (var teamStats in Model)
+    @foreach (var tournamentResults in Model.TournamentResults)
     {
-        <li>@teamStats.TeamName</li>
+        <li>
+            @tournamentResults.Tournament.Name
+
+            <ul>
+                @foreach (var matchResult in tournamentResults.MatchResults)
+                {
+                    <li>@matchResult.Team1Name - @matchResult.Team2Name <strong>@matchResult.Score1 : @matchResult.Score2</strong>
+                    </li>
+                }
+            </ul>
+
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Team</td>
+                            <td>Points</td>
+                        </tr>
+                    </thead>
+                    @foreach (var teamStats in tournamentResults.TeamStats)
+                    {
+                        <tr>
+                            <td>@teamStats.TeamName</td>
+                            <td>@teamStats.Points</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </li>
     }
 </ul>
