@@ -11,6 +11,11 @@ namespace EuroManager.WorldSimulator.DataAccess
     {
         private WorldModelMapper modelMapper = new WorldModelMapper();
 
+        public WorldContext()
+            : base("DefaultConnection")
+        {
+        }
+
         public DbSet<World> Worlds { get; set; }
 
         public DbSet<Competition> Competitions { get; set; }
