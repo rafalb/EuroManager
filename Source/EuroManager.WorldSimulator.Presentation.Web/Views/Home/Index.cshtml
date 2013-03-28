@@ -15,7 +15,13 @@
 }
 
 <div>
-    Date: @Model.CurrentDate
+    @using (Html.BeginForm())
+    {
+        <div>
+            Date: @Model.CurrentDate.ToLongDateString()
+            <input type="submit" value="Advance" />
+        </div>
+    }
 </div>
 <ul>
     @foreach (var tournamentResults in Model.TournamentResults)

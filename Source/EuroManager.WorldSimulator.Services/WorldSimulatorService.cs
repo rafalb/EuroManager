@@ -34,7 +34,7 @@ namespace EuroManager.WorldSimulator.Services
             World world = Context.GetDefaultWorld(readOnly: true);
             var tournaments = from s in Context.TournamentSeasons.ReadOnly(true)
                               where s.WorldId == world.Id
-                              where Context.Fixtures.Any(f => f.TournamentSeasonId == s.Id && f.Date == world.Date)
+                              where Context.Fixtures.Any(f => f.TournamentSeasonId == s.Id && f.Date == world.Date && f.Result == null)
                               select new Data.Tournament
                               {
                                   Id = s.Tournament.Id,

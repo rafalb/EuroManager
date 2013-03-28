@@ -41,6 +41,36 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Index(string dummy)
+        {
+            using (var worldSimulator = new WorldSimulatorService())
+            {
+                var tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
+
+                while (!tournaments.Any())
+                {
+                    if (worldSimulator.IsSeasonEnd())
+                    {
+                        worldSimulator.AdvanceSeason();
+                    }
+                    else
+                    {
+                        worldSimulator.AdvanceDate();
+                    }
+
+                    tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
+                }
+
+                foreach (var tournament in tournaments)
+                {
+                    while (worldSimulator.PlayNextTodayFixture(tournament.Id)) ;
+                }
+            }
+
+            return Index();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
