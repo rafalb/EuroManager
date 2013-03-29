@@ -10,7 +10,8 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(bool advanceByMonth = false)
         {
             using (var worldSimulator = new WorldSimulatorService())
             {
@@ -29,6 +30,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
                     var model = new TournamentResultsModel
                     {
                         CurrentDate = worldSimulator.GetCurrentDate(),
+                        AdvanceByMonth = advanceByMonth,
                         TournamentResults = results
                     };
 
@@ -42,33 +44,27 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string dummy)
+        public ActionResult Index(TournamentResultsModel model)
         {
+            DateTime targetDate;
+            DateTime currentDate;
+
             using (var worldSimulator = new WorldSimulatorService())
             {
-                var tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
+                currentDate = worldSimulator.GetCurrentDate();
+                targetDate = model.AdvanceByMonth ? currentDate.AddMonths(1) : currentDate.AddDays(1);
+            }
 
-                while (!tournaments.Any())
+            while (currentDate < targetDate)
+            {
+                using (var worldSimulator = new WorldSimulatorService())
                 {
-                    if (worldSimulator.IsSeasonEnd())
-                    {
-                        worldSimulator.AdvanceSeason();
-                    }
-                    else
-                    {
-                        worldSimulator.AdvanceDate();
-                    }
-
-                    tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
-                }
-
-                foreach (var tournament in tournaments)
-                {
-                    while (worldSimulator.PlayNextTodayFixture(tournament.Id)) ;
+                    PlayFixturesAndAdvanceDate(worldSimulator);
+                    currentDate = worldSimulator.GetCurrentDate();
                 }
             }
 
-            return Index();
+            return RedirectToAction("Index", new { model.AdvanceByMonth });
         }
 
         public ActionResult About()
@@ -83,6 +79,30 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        private static void PlayFixturesAndAdvanceDate(WorldSimulatorService worldSimulator)
+        {
+            var tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
+
+            while (!tournaments.Any())
+            {
+                if (worldSimulator.IsSeasonEnd())
+                {
+                    worldSimulator.AdvanceSeason();
+                }
+                else
+                {
+                    worldSimulator.AdvanceDate();
+                }
+
+                tournaments = worldSimulator.GetTournamentsWithFixturesForToday();
+            }
+
+            foreach (var tournament in tournaments)
+            {
+                while (worldSimulator.PlayNextTodayFixture(tournament.Id)) ;
+            }
         }
     }
 }

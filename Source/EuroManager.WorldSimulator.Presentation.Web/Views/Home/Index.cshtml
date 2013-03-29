@@ -20,6 +20,8 @@
         <div>
             Date: @Model.CurrentDate.ToLongDateString()
             <input type="submit" value="Advance" />
+            @Html.LabelFor(m => m.AdvanceByMonth, "By month")
+            @Html.EditorFor(m => m.AdvanceByMonth)
         </div>
     }
 </div>
