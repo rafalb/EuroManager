@@ -160,6 +160,12 @@ namespace EuroManager.WorldSimulator.DataAccess
             return fixture;
         }
 
+        public MatchResult GetMatchResult(int resultId, bool readOnly = false)
+        {
+            MatchResult result = Results.ReadOnly(readOnly).Single(r => r.Id == resultId);
+            return result;
+        }
+
         public IEnumerable<MatchResult> GetMatchResults(int tournamentId, DateTime date, bool readOnly = false)
         {
             TournamentSeason season = TournamentSeasons.First(s => s.TournamentId == tournamentId && s.IsActive);

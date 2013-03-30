@@ -67,6 +67,17 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             return RedirectToAction("Index", new { model.AdvanceByMonth });
         }
 
+        public ActionResult MatchResult(int resultId)
+        {
+            using (var worldSimulator = new WorldSimulatorService())
+            {
+                var result = worldSimulator.GetMatchResult(resultId);
+                var model = new MatchResultModel { Result = result };
+
+                return View(model);
+            }
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";

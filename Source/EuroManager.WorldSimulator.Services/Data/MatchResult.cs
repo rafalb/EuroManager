@@ -7,6 +7,8 @@ namespace EuroManager.WorldSimulator.Services.Data
 {
     public class MatchResult
     {
+        public int Id { get; set; }
+
         public DateTime Date { get; set; }
 
         public string Team1Name { get; set; }

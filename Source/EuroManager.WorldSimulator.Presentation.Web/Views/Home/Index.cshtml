@@ -34,7 +34,10 @@
             <ul>
                 @foreach (var matchResult in tournamentResults.MatchResults)
                 {
-                    <li>@matchResult.Team1Name - @matchResult.Team2Name <strong>@matchResult.Score1 : @matchResult.Score2</strong>
+                    <li>
+                        @matchResult.Team1Name &mdash; @matchResult.Team2Name
+                        <strong>@matchResult.Score1 : @matchResult.Score2</strong>
+                        @Html.ActionLink("Details", "MatchResult", new { resultId = matchResult.Id })
                     </li>
                 }
             </ul>

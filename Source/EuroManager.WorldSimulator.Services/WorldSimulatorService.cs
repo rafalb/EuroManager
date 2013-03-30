@@ -68,6 +68,14 @@ namespace EuroManager.WorldSimulator.Services
             return mappedResults;
         }
 
+        public Data.MatchResult GetMatchResult(int resultId)
+        {
+            MatchResult result = Context.GetMatchResult(resultId, readOnly: true);
+
+            var mappedResult = Mapper.Map<MatchResult, Data.MatchResult>(result);
+            return mappedResult;
+        }
+
         public Data.MatchResult GetLastMatchResult(int tournamentId)
         {
             World world = Context.GetDefaultWorld(readOnly: true);

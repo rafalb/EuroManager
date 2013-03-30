@@ -1,0 +1,36 @@
+﻿@model EuroManager.WorldSimulator.Presentation.Web.Models.MatchResultModel
+
+@using EuroManager.WorldSimulator.Services.Data
+
+@{
+    ViewBag.Title = "MatchResult";
+}
+
+<div>
+    <div>
+        <strong>@Model.Result.Team1Name @Model.Result.Score1 : @Model.Result.Score2 @Model.Result.Team2Name</strong>
+    </div>
+    <div>
+        @GoalScorers(Model.Result.Goals1) &mdash; @GoalScorers(Model.Result.Goals2)
+    </div>
+
+    @helper GoalScorers(IEnumerable<Goal> goals)
+    {
+        @String.Join(", ", goals.Select(FormatGoalInfo))
+    }
+
+    @functions
+    {
+        private string FormatGoalInfo(Goal goal)
+        {
+            if (goal.Extended > 0)
+            {
+                return String.Format("{0} {1}+{2}", goal.ScorerName, goal.Minute, goal.Extended);
+            }
+            else
+            {
+                return String.Format("{0} {1}", goal.ScorerName, goal.Minute);
+            }
+        }
+    }
+</div>
