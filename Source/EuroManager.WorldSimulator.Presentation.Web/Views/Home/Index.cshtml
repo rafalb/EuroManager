@@ -46,6 +46,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <td>#</td>
                             <td>Team</td>
                             <td>Played</td>
                             <td>W</td>
@@ -55,17 +56,25 @@
                             <td>Goals</td>
                         </tr>
                     </thead>
-                    @foreach (var teamStats in tournamentResults.TeamStats)
-                    {
-                        <tr>
-                            <td><strong>@teamStats.TeamName</strong></td>
-                            <td>@teamStats.Played</td>
-                            <td>@teamStats.Wins</td>
-                            <td>@teamStats.Draws</td>
-                            <td>@teamStats.Losses</td>
-                            <td><strong>@teamStats.Points</strong></td>
-                            <td>@teamStats.GoalsFor-@teamStats.GoalsAgainst</td>
-                        </tr>
+
+                    @{
+                        int position = 1;
+
+                        foreach (var teamStats in tournamentResults.TeamStats)
+                        {
+                            <tr>
+                                <td><strong>@position</strong></td>
+                                <td><strong>@teamStats.TeamName</strong></td>
+                                <td>@teamStats.Played</td>
+                                <td>@teamStats.Wins</td>
+                                <td>@teamStats.Draws</td>
+                                <td>@teamStats.Losses</td>
+                                <td><strong>@teamStats.Points</strong></td>
+                                <td>@teamStats.GoalsFor-@teamStats.GoalsAgainst</td>
+                            </tr>
+                        
+                            position++;
+                        }
                     }
                 </table>
             </div>
