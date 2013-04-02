@@ -1,7 +1,7 @@
 ﻿@model EuroManager.WorldSimulator.Presentation.Web.Models.TournamentResultsModel
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Latest Results";
 }
 @section featured {
     <section class="featured">
@@ -47,14 +47,24 @@
                     <thead>
                         <tr>
                             <td>Team</td>
-                            <td>Points</td>
+                            <td>Played</td>
+                            <td>W</td>
+                            <td>D</td>
+                            <td>L</td>
+                            <td>Pts</td>
+                            <td>Goals</td>
                         </tr>
                     </thead>
                     @foreach (var teamStats in tournamentResults.TeamStats)
                     {
                         <tr>
-                            <td>@teamStats.TeamName</td>
-                            <td>@teamStats.Points</td>
+                            <td><strong>@teamStats.TeamName</strong></td>
+                            <td>@teamStats.Played</td>
+                            <td>@teamStats.Wins</td>
+                            <td>@teamStats.Draws</td>
+                            <td>@teamStats.Losses</td>
+                            <td><strong>@teamStats.Points</strong></td>
+                            <td>@teamStats.GoalsFor-@teamStats.GoalsAgainst</td>
                         </tr>
                     }
                 </table>

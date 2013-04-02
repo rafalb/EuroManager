@@ -15,6 +15,8 @@ namespace EuroManager.WorldSimulator.Services
         {
             Mapper.CreateMap<Domain.Goal, Data.Goal>();
             Mapper.CreateMap<Domain.MatchResult, Data.MatchResult>();
+            Mapper.CreateMap<Domain.MatchResult, Data.MatchResultDetails>();
+            Mapper.CreateMap<Domain.PlayerMatchStats, Data.PlayerMatchStats>();
             Mapper.CreateMap<Domain.TeamStats, Data.TeamStats>();
 
             using (var context = new WorldContext())

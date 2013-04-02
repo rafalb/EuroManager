@@ -3,7 +3,7 @@
 @using EuroManager.WorldSimulator.Services.Data
 
 @{
-    ViewBag.Title = "MatchResult";
+    ViewBag.Title = "Match Details";
 }
 
 <div>
@@ -13,6 +13,9 @@
     <div>
         @GoalScorers(Model.Result.Goals1) &mdash; @GoalScorers(Model.Result.Goals2)
     </div>
+
+    @PlayerStats(Model.Result.Team1Name, Model.Result.PlayersStats1)
+    @PlayerStats(Model.Result.Team2Name, Model.Result.PlayersStats2)
 
     @helper GoalScorers(IEnumerable<Goal> goals)
     {
@@ -32,5 +35,31 @@
                 return String.Format("{0} {1}", goal.ScorerName, goal.Minute);
             }
         }
+    }
+
+    @helper PlayerStats(string teamName, IEnumerable<PlayerMatchStats> playerStats)
+    {
+        <div>
+            <h4>Player stats: @teamName</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Player</td>
+                        <td>Goals</td>
+                        <td>Assists</td>
+                        <td>Rating</td>
+                    </tr>
+                </thead>
+                @foreach (var player in playerStats)
+                {
+                    <tr>
+                        <td>@player.PlayerName</td>
+                        <td>@player.Goals</td>
+                        <td>@player.Assists</td>
+                        <td>@player.Rating</td>
+                    </tr>
+                }
+            </table>
+        </div>
     }
 </div>

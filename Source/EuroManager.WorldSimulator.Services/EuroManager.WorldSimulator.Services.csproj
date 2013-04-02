@@ -68,6 +68,8 @@
   <ItemGroup>
     <Compile Include="ApplicationService.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Data\MatchResultDetails.cs" />
+    <Compile Include="Data\PlayerMatchStats.cs" />
     <Compile Include="Data\PlayerStats.cs" />
     <Compile Include="Data\Tournament.cs" />
     <Compile Include="Data\Goal.cs" />

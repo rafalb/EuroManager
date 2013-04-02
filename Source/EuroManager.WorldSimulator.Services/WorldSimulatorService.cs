@@ -68,11 +68,11 @@ namespace EuroManager.WorldSimulator.Services
             return mappedResults;
         }
 
-        public Data.MatchResult GetMatchResult(int resultId)
+        public Data.MatchResultDetails GetMatchResultDetails(int resultId)
         {
             MatchResult result = Context.GetMatchResult(resultId, readOnly: true);
 
-            var mappedResult = Mapper.Map<MatchResult, Data.MatchResult>(result);
+            var mappedResult = Mapper.Map<MatchResult, Data.MatchResultDetails>(result);
             return mappedResult;
         }
 

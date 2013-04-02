@@ -8,6 +8,6 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Models
 {
     public class MatchResultModel
     {
-        public MatchResult Result { get; set; }
+        public MatchResultDetails Result { get; set; }
     }
 }

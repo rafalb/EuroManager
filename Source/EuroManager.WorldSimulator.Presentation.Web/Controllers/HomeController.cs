@@ -71,7 +71,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
         {
             using (var worldSimulator = new WorldSimulatorService())
             {
-                var result = worldSimulator.GetMatchResult(resultId);
+                var result = worldSimulator.GetMatchResultDetails(resultId);
                 var model = new MatchResultModel { Result = result };
 
                 return View(model);
