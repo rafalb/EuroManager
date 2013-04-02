@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EuroManager.WorldSimulator.Presentation.Web.Filters;
 using EuroManager.WorldSimulator.Presentation.Web.Models;
 using EuroManager.WorldSimulator.Services;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 {
+    [InitializeSimpleMembership]
     public class HomeController : Controller
     {
         [HttpGet]
@@ -43,6 +45,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Index(TournamentResultsModel model)
         {

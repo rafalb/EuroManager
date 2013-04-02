@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using EuroManager.WorldSimulator.Presentation.Web.Models;
@@ -11,6 +12,9 @@ namespace EuroManager.WorldSimulator.Presentation.Web
     {
         public static void RegisterAuth()
         {
+            OAuthWebSecurity.RegisterFacebookClient(
+                ConfigurationManager.AppSettings["FacebookAppId"],
+                ConfigurationManager.AppSettings["FacebookAppSecret"]);
         }
     }
 }
