@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EuroManager.WorldSimulator.Presentation.Web.Filters;
 using EuroManager.WorldSimulator.Presentation.Web.Models;
 using EuroManager.WorldSimulator.Services;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 {
-    [InitializeSimpleMembership]
     public class HomeController : Controller
     {
         [HttpGet]
@@ -45,8 +43,8 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize(Roles = UserRole.Administrator)]
         public ActionResult Index(TournamentResultsModel model)
         {
             DateTime targetDate;
@@ -115,7 +113,9 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 
             foreach (var tournament in tournaments)
             {
-                while (worldSimulator.PlayNextTodayFixture(tournament.Id)) ;
+                while (worldSimulator.PlayNextTodayFixture(tournament.Id))
+                {
+                }
             }
         }
     }

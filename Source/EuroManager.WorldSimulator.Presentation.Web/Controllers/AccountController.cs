@@ -6,15 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
-using EuroManager.WorldSimulator.Presentation.Web.Filters;
 using EuroManager.WorldSimulator.Presentation.Web.Models;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 {
-    [Authorize]
-    [InitializeSimpleMembership]
+    [Authorize(Roles = UserRole.Administrator)]
     public class AccountController : Controller
     {
         public enum ManageMessageId
