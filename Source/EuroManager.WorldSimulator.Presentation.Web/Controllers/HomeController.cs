@@ -30,6 +30,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
                     var model = new TournamentResultsModel
                     {
                         CurrentDate = worldSimulator.GetCurrentDate(),
+                        AllowAdvanceDate = User.IsInRole(UserRole.Administrator),
                         AdvanceByMonth = advanceByMonth,
                         TournamentResults = results
                     };
