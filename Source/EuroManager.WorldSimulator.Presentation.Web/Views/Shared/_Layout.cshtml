@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - EuroManager</title>
+        <title>EuroManager - @ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/bootstrap")
@@ -30,13 +30,16 @@
                 </div>
             </div>
             <div class="row">
+                <hgroup class="title span12">
+                    <h1>EuroManager.</h1>
+                    <h2>A realistic football world simulation.</h2>
+                </hgroup>
+            </div>
+            <div class="row">
                 <div class="span3">
                 </div>
                 <div class="span9">
-                    @RenderSection("featured", required: false)
-                    <section class="content-wrapper main-content clear-fix">
-                        @RenderBody()
-                    </section>
+                    @RenderBody()
                 </div>
             </div>
             <div class="row">
