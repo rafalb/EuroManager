@@ -10,6 +10,7 @@
     {
         @Html.AntiForgeryToken()
         <ul class="nav">
+            <li class="divider-vertical"></li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }
@@ -17,7 +18,10 @@
 else
 {
     <ul class="nav">
+        <li class="divider-vertical"></li>
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="divider-vertical"></li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="divider-vertical"></li>
     </ul>
 }

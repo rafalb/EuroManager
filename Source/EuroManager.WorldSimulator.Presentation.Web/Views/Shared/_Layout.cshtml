@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using EuroManager.WorldSimulator.Presentation.Web.Helpers;
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -15,11 +16,11 @@
                     @Html.ActionLink("EuroManager", "Index", "Home", null, new { @class = "brand" })
                     <ul class="nav">
                         <li class="divider-vertical"></li>
-                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                        @Html.NavigationLink("Home", "Index", "Home")
                         <li class="divider-vertical"></li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        @Html.NavigationLink("About", "About", "Home")
                         <li class="divider-vertical"></li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @Html.NavigationLink("Contact", "Contact", "Home")
                         <li class="divider-vertical"></li>
                     </ul>
                     <div class="pull-right">
@@ -31,8 +32,8 @@
             </div>
             <div class="row">
                 <hgroup class="title span12">
-                    <h1>EuroManager.</h1>
-                    <h2>A realistic football world simulation.</h2>
+                    <h1>EuroManager</h1>
+                    <p class="lead">A realistic football world simulation.</p>
                 </hgroup>
             </div>
             <div class="row">
