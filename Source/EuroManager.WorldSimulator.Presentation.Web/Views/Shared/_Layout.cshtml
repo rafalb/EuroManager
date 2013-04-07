@@ -1,4 +1,6 @@
 ﻿@using EuroManager.WorldSimulator.Presentation.Web.Helpers;
+@using EuroManager.WorldSimulator.Presentation.Web.Models;
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,10 +19,33 @@
                     @Html.ActionLink("EuroManager", "Index", "Home", null, new { @class = "brand" })
                     <ul class="nav">
                         @Html.NavigationLink("Start", "Index", "Home")
-                        @Html.NavigationLink("About", "About", "Home")
                         @Html.NavigationLink("Results", "", "")
-                        @Html.NavigationLink("Teams", "", "")
-                        @Html.NavigationLink("Players", "", "")
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                World
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                @Html.NavigationLink("Competitions", "", "")
+                                @Html.NavigationLink("Teams", "", "")
+                                @Html.NavigationLink("Players", "", "")
+                                @Html.NavigationLink("Transfers", "", "")
+                                @Html.NavigationLink("Rankings", "", "")
+                            </ul>
+                        </li>
+                        @if (User.IsInRole(UserRole.Administrator))
+                        {
+                            <li class="dropdown active">
+                                <a class="dropdown-toggle btn-danger" data-toggle="dropdown" href="#">
+                                    Admin
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    @Html.NavigationLink("Advance date", "", "")
+                                    @Html.NavigationLink("Advance by month", "", "")
+                                </ul>
+                            </li>
+                        }
                     </ul>
                     <div class="pull-right">
                         @Html.Partial("_LoginPartial")
@@ -28,12 +53,21 @@
                     <form class="navbar-search pull-right">
                       <input type="text" class="search-query" placeholder="Search">
                     </form>
+                    <div class="pull-right">
+                        <ul class="nav">
+                            <li class="active"><a>@Html.Action("WorldDate", "Home")</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <header class="hero-unit page-header">
             <div class="container">
-                <h1>EuroManager <small>A realistic football world simulation</small></h1>
+                <h1>
+                    EuroManager
+                    <small>A realistic football world simulation</small>
+                    @Html.ActionLink("Learn more", "About", null, new { @class = "btn btn-success btn-large" })
+                </h1>
             </div>
         </header>
         <div class="container">

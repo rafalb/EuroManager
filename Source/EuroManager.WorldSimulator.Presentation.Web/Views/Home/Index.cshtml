@@ -7,11 +7,9 @@
 <div class="container">
     <h2>Recent results</h2>
 
-    @using (Html.BeginForm())
+    @if (Model.AllowAdvanceDate)
     {
-        <text>Date: @Model.CurrentDate.ToLongDateString()</text>
-
-        if (Model.AllowAdvanceDate)
+        using (Html.BeginForm())
         {
             <input type="submit" value="Advance" />
             @Html.LabelFor(m => m.AdvanceByMonth, "By month")
@@ -23,7 +21,7 @@
 {
     <div class="row">
         <div class="span4">
-            <h3>@tournamentResults.Tournament.Name</h3>
+            <h4>@tournamentResults.Tournament.Name</h4>
             <ul>
                 @foreach (var matchResult in tournamentResults.MatchResults)
                 {

@@ -90,6 +90,16 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public ActionResult WorldDate()
+        {
+            using (var worldSimulator = new WorldSimulatorService())
+            {
+                ViewBag.WorldDate = worldSimulator.GetCurrentDate();
+                return PartialView();
+            }
+        }
+
         private static void PlayFixturesAndAdvanceDate(WorldSimulatorService worldSimulator)
         {
             var tournaments = worldSimulator.GetTournamentsWithFixturesForToday();

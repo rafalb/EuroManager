@@ -1,4 +1,4 @@
-﻿header.hero-unit {
+﻿/*header.hero-unit {
     background: linear-gradient(#0f7015 0%, #96e99f 100%);
 }
 
@@ -8,9 +8,9 @@ header small{
 
 header.hero-unit h1 {
     color: black;
-}
+}*/
 
-.search-query{
+.search-query {
     width: 120px;
 }
 
@@ -28,3 +28,62 @@ header.hero-unit h1 {
     border-right: 0;
     border-radius: 0 3px 3px 0;
 }*/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 0.75em;
+    border: 0 none;
+}
+
+th {
+    font-size: 1.2em;
+    text-align: left;
+    border: none 0px;
+    padding-left: 0;
+}
+
+    th a {
+        display: block;
+        position: relative;
+    }
+
+    th a:link, th a:visited, th a:active, th a:hover {
+        color: #333;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0;
+    }
+
+    th a:hover {
+        color: #000;
+    }
+
+    th.asc a, th.desc a {
+        margin-right: .75em;
+    }
+
+    th.asc a:after, th.desc a:after {
+        display: block;
+        position: absolute;
+        right: 0em;
+        top: 0;
+        font-size: 0.75em;
+    }
+
+    th.asc a:after {
+        content: '▲';
+    }
+
+    th.desc a:after {
+        content: '▼';
+    }
+
+td {
+    padding: 0.25em 2em 0.25em 0em;
+    border: 0 none;
+}
+
+tr.pager td {
+    padding: 0 0.25em 0 0;
+}

@@ -338,6 +338,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Home\MatchResult.cshtml" />
+    <Content Include="Views\Home\WorldDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

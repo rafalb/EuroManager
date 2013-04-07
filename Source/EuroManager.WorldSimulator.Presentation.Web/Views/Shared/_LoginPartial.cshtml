@@ -1,27 +1,23 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <ul class="nav">
-        <li>
-            @Html.ActionLink("User: " + User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                User: @User.Identity.Name
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li>@Html.ActionLink("Manage account", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username" })</li>
+                <li>@Ajax.ActionLink("Logout", "LogOff", "Account", new AjaxOptions { HttpMethod = "Post" })</li>
+            </ul>
         </li>
     </ul>
-
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-form pull-right" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav">
-            <li class="divider-vertical"></li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
-    }
 }
 else
 {
     <ul class="nav">
         <li class="divider-vertical"></li>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="divider-vertical"></li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-        <li class="divider-vertical"></li>
+        <li class="active">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-success" })</li>
+        <li class="active">@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
