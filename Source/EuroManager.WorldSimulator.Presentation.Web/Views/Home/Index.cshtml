@@ -4,27 +4,24 @@
     ViewBag.Title = "Latest Results";
 }
 
-<div>
+<div class="container">
     @using (Html.BeginForm())
     {
-        <div>
-            Date: @Model.CurrentDate.ToLongDateString()
+        <text>Date: @Model.CurrentDate.ToLongDateString()</text>
 
-            @if (Model.AllowAdvanceDate)
-            {
-                <input type="submit" value="Advance" />
-                @Html.LabelFor(m => m.AdvanceByMonth, "By month")
-                @Html.EditorFor(m => m.AdvanceByMonth)
-            }
-        </div>
+        if (Model.AllowAdvanceDate)
+        {
+            <input type="submit" value="Advance" />
+            @Html.LabelFor(m => m.AdvanceByMonth, "By month")
+            @Html.EditorFor(m => m.AdvanceByMonth)
+        }
     }
 </div>
-<ul>
-    @foreach (var tournamentResults in Model.TournamentResults)
-    {
-        <li>
-            @tournamentResults.Tournament.Name
-
+@foreach (var tournamentResults in Model.TournamentResults)
+{
+    <div class="row">
+        <div class="span4">
+            <h3>@tournamentResults.Tournament.Name</h3>
             <ul>
                 @foreach (var matchResult in tournamentResults.MatchResults)
                 {
@@ -35,43 +32,42 @@
                     </li>
                 }
             </ul>
+        </div>
+        <div class="span8">
+            <table>
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Team</td>
+                        <td>Played</td>
+                        <td>W</td>
+                        <td>D</td>
+                        <td>L</td>
+                        <td>Pts</td>
+                        <td>Goals</td>
+                    </tr>
+                </thead>
 
-            <div>
-                <table>
-                    <thead>
+                @{
+                    int position = 1;
+
+                    foreach (var teamStats in tournamentResults.TeamStats)
+                    {
                         <tr>
-                            <td>#</td>
-                            <td>Team</td>
-                            <td>Played</td>
-                            <td>W</td>
-                            <td>D</td>
-                            <td>L</td>
-                            <td>Pts</td>
-                            <td>Goals</td>
+                            <td><strong>@position</strong></td>
+                            <td><strong>@teamStats.TeamName</strong></td>
+                            <td>@teamStats.Played</td>
+                            <td>@teamStats.Wins</td>
+                            <td>@teamStats.Draws</td>
+                            <td>@teamStats.Losses</td>
+                            <td><strong>@teamStats.Points</strong></td>
+                            <td>@teamStats.GoalsFor-@teamStats.GoalsAgainst</td>
                         </tr>
-                    </thead>
-
-                    @{
-                        int position = 1;
-
-                        foreach (var teamStats in tournamentResults.TeamStats)
-                        {
-                            <tr>
-                                <td><strong>@position</strong></td>
-                                <td><strong>@teamStats.TeamName</strong></td>
-                                <td>@teamStats.Played</td>
-                                <td>@teamStats.Wins</td>
-                                <td>@teamStats.Draws</td>
-                                <td>@teamStats.Losses</td>
-                                <td><strong>@teamStats.Points</strong></td>
-                                <td>@teamStats.GoalsFor-@teamStats.GoalsAgainst</td>
-                            </tr>
                         
-                            position++;
-                        }
+                        position++;
                     }
-                </table>
-            </div>
-        </li>
-    }
-</ul>
+                }
+            </table>
+        </div>
+    </div>
+}

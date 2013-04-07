@@ -7,43 +7,35 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/bootstrap")
+        @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <div class="container">
-            <div class="navbar">
-                <div class="navbar-inner">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
                     @Html.ActionLink("EuroManager", "Index", "Home", null, new { @class = "brand" })
                     <ul class="nav">
-                        <li class="divider-vertical"></li>
                         @Html.NavigationLink("Home", "Index", "Home")
-                        <li class="divider-vertical"></li>
                         @Html.NavigationLink("About", "About", "Home")
-                        <li class="divider-vertical"></li>
                         @Html.NavigationLink("Contact", "Contact", "Home")
-                        <li class="divider-vertical"></li>
                     </ul>
                     <div class="pull-right">
-                        <section id="login">
-                            @Html.Partial("_LoginPartial")
-                        </section>
-                    </div>                    
+                        @Html.Partial("_LoginPartial")
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <hgroup class="title span12">
-                    <h1>EuroManager</h1>
-                    <p class="lead">A realistic football world simulation.</p>
-                </hgroup>
+        </div>
+        <header class="hero-unit page-header">
+            <div class="container">
+                <h1>EuroManager <small>A realistic football world simulation</small></h1>
             </div>
-            <div class="row">
-                <div class="span3">
-                </div>
-                <div class="span9">
-                    @RenderBody()
-                </div>
-            </div>
-            <div class="row">
+        </header>
+        <div class="container">
+            @RenderBody()
+        </div>
+        <div class="row">
+            <div class="container">
                 <p>&copy; 2012-@DateTime.Now.Year by Rafał Barszczewski</p>
             </div>
         </div>
