@@ -85,11 +85,6 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
         [ChildActionOnly]
         public ActionResult WorldDate()
         {
