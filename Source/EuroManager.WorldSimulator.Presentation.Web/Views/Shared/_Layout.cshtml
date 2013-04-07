@@ -16,13 +16,18 @@
                 <div class="container">
                     @Html.ActionLink("EuroManager", "Index", "Home", null, new { @class = "brand" })
                     <ul class="nav">
-                        @Html.NavigationLink("Home", "Index", "Home")
+                        @Html.NavigationLink("Start", "Index", "Home")
                         @Html.NavigationLink("About", "About", "Home")
-                        @Html.NavigationLink("Contact", "Contact", "Home")
+                        @Html.NavigationLink("Results", "", "")
+                        @Html.NavigationLink("Teams", "", "")
+                        @Html.NavigationLink("Players", "", "")
                     </ul>
                     <div class="pull-right">
                         @Html.Partial("_LoginPartial")
                     </div>
+                    <form class="navbar-search pull-right">
+                      <input type="text" class="search-query" placeholder="Search">
+                    </form>
                 </div>
             </div>
         </div>
