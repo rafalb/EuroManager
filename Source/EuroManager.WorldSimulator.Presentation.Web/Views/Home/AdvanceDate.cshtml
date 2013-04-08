@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Advance Date";
+}
+
+<h2>Advance Date</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.TextBox("datepicker", "10-04-2012", new { id = "datepicker" })
+    <input type="submit" value="Advance" />
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $('#datepicker').datepicker();
+        });
+    </script>
+}

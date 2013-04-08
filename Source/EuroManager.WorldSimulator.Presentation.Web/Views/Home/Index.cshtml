@@ -4,19 +4,8 @@
     ViewBag.Title = "Latest Results";
 }
 
-<div class="container">
-    <h2>Recent results</h2>
+<h2>Recent results</h2>
 
-    @if (Model.AllowAdvanceDate)
-    {
-        using (Html.BeginForm())
-        {
-            <input type="submit" value="Advance" />
-            @Html.LabelFor(m => m.AdvanceByMonth, "By month")
-            @Html.EditorFor(m => m.AdvanceByMonth)
-        }
-    }
-</div>
 @foreach (var tournamentResults in Model.TournamentResults)
 {
     <div class="row">

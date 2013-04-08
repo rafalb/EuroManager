@@ -9,7 +9,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
 {
     public static class HtmlHelperExtensions
     {
-        public static MvcHtmlString NavigationLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
+        public static MvcHtmlString MenuItem(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
         {
             var tag = new TagBuilder("li");
             tag.InnerHtml = htmlHelper.ActionLink(linkText, actionName, controllerName).ToHtmlString();

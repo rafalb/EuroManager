@@ -10,10 +10,6 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Models
     {
         public DateTime CurrentDate { get; set; }
 
-        public bool AllowAdvanceDate { get; set; }
-
-        public bool AdvanceByMonth { get; set; }
-
         public IEnumerable<TournamentResults> TournamentResults { get; set; }
     }
 }

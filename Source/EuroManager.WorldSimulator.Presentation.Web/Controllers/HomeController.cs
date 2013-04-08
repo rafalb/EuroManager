@@ -30,8 +30,6 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
                     var model = new TournamentResultsModel
                     {
                         CurrentDate = worldSimulator.GetCurrentDate(),
-                        AllowAdvanceDate = User.IsInRole(UserRole.Administrator),
-                        AdvanceByMonth = advanceByMonth,
                         TournamentResults = results
                     };
 
@@ -44,9 +42,16 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
+        [HttpGet]
+        [Authorize(Roles = UserRole.Administrator)]
+        public ActionResult AdvanceDate()
+        {
+            return View();
+        }
+
         [HttpPost]
         [Authorize(Roles = UserRole.Administrator)]
-        public ActionResult Index(TournamentResultsModel model)
+        public ActionResult AdvanceDate(string dummy)
         {
             DateTime targetDate;
             DateTime currentDate;
@@ -54,7 +59,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             using (var worldSimulator = new WorldSimulatorService())
             {
                 currentDate = worldSimulator.GetCurrentDate();
-                targetDate = model.AdvanceByMonth ? currentDate.AddMonths(1) : currentDate.AddDays(1);
+                targetDate = currentDate.AddDays(1);
             }
 
             while (currentDate < targetDate)
@@ -66,7 +71,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
                 }
             }
 
-            return RedirectToAction("Index", new { model.AdvanceByMonth });
+            return RedirectToAction("Index");
         }
 
         public ActionResult MatchResult(int resultId)

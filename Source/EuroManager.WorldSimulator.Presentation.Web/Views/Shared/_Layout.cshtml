@@ -18,19 +18,19 @@
                 <div class="container">
                     @Html.ActionLink("EuroManager", "Index", "Home", null, new { @class = "brand" })
                     <ul class="nav">
-                        @Html.NavigationLink("Start", "Index", "Home")
-                        @Html.NavigationLink("Results", "", "")
+                        @Html.MenuItem("Start", "Index", "Home")
+                        @Html.MenuItem("Results", "", "")
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 World
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                @Html.NavigationLink("Competitions", "", "")
-                                @Html.NavigationLink("Teams", "", "")
-                                @Html.NavigationLink("Players", "", "")
-                                @Html.NavigationLink("Transfers", "", "")
-                                @Html.NavigationLink("Rankings", "", "")
+                                @Html.MenuItem("Competitions", "", "")
+                                @Html.MenuItem("Teams", "", "")
+                                @Html.MenuItem("Players", "", "")
+                                @Html.MenuItem("Transfers", "", "")
+                                @Html.MenuItem("Rankings", "", "")
                             </ul>
                         </li>
                         @if (User.IsInRole(UserRole.Administrator))
@@ -41,8 +41,7 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    @Html.NavigationLink("Advance date", "", "")
-                                    @Html.NavigationLink("Advance by month", "", "")
+                                    <li>@Html.ActionLink("Advance date", "AdvanceDate", "Home")</li>
                                 </ul>
                             </li>
                         }
