@@ -29,6 +29,17 @@ namespace EuroManager.WorldSimulator.Services
             return world.IsSeasonEnd;
         }
 
+        public DateTime GetNextFixtureDate()
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+            Fixture nextFixture = (from f in Context.Fixtures
+                                   where f.Date > world.Date
+                                   orderby f.Date
+                                   select f).FirstOrDefault();
+
+            return nextFixture == null ? world.NextSeasonStartDate : nextFixture.Date;
+        }
+
         public IEnumerable<Data.Tournament> GetTournamentsWithFixturesForToday()
         {
             World world = Context.GetDefaultWorld(readOnly: true);

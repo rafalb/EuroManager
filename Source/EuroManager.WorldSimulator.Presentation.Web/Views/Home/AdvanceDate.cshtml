@@ -1,20 +1,29 @@
-﻿@{
-    ViewBag.Title = "Advance Date";
+﻿@model EuroManager.WorldSimulator.Presentation.Web.Models.AdvanceDateModel
+
+@{
+    ViewBag.Title = "Advance date";
 }
 
-<h2>Advance Date</h2>
+<h2>Advance date</h2>
 
 @using (Html.BeginForm())
 {
-    @Html.TextBox("datepicker", "10-04-2012", new { id = "datepicker" })
-    <input type="submit" value="Advance" />
+    @Html.LabelFor(m => m.TargetDate, "Target date")
+    @Html.TextBoxFor(m => m.TargetDate, "{0:MM-dd-yyyy}", new { id = "datepicker" })
+    @Html.ValidationMessageFor(m => m.TargetDate)
+    <div>
+        <input type="submit" value="Advance" />
+    </div>
 }
 
 @section scripts
 {
     <script type="text/javascript">
         $(function () {
-            $('#datepicker').datepicker();
+            $('#datepicker').datepicker({
+                autoclose: true,
+                format: 'mm-dd-yyyy'
+            });
         });
     </script>
 }

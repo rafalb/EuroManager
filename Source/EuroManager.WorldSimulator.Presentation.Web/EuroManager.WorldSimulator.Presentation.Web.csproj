@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdvanceDateModel.cs" />
     <Compile Include="Models\MatchResultModel.cs" />
     <Compile Include="Models\TournamentResults.cs" />
     <Compile Include="Models\TournamentResultsModel.cs" />

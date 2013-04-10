@@ -61,6 +61,11 @@ namespace EuroManager.WorldSimulator.Domain
             get { return Date == SeasonEndDate; }
         }
 
+        public DateTime NextSeasonStartDate
+        {
+            get { return new DateTime(SeasonYear + 1, 08, 01); }
+        }
+
         public override string ToString()
         {
             return string.Format(CultureInfo.InvariantCulture, "{0} {1}", CreatedDate, Name);
