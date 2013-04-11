@@ -37,6 +37,12 @@ namespace EuroManager.WorldSimulator.Domain.Tests.WorldTests
         {
             Assert.That(() => world.AdvanceDate(true), Throws.InvalidOperationException);
         }
+
+        [Test]
+        public void ShouldCalculateNextSeasonStartDate()
+        {
+            Assert.That(world.NextSeasonStartDate, Is.EqualTo(world.SeasonEndDate.AddDays(1)));
+        }
     }
 
     [TestFixture]

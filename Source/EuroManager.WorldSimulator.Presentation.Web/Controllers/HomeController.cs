@@ -43,7 +43,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             {
                 var model = new AdvanceDateModel
                 {
-                    TargetDate = worldSimulator.GetNextFixtureDate()
+                    TargetDate = worldSimulator.GetNextFixtureDate() ?? worldSimulator.GetNextSeasonStartDate()
                 };
 
                 return View(model);

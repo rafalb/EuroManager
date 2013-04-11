@@ -56,14 +56,14 @@ namespace EuroManager.WorldSimulator.Domain
             get { return new DateTime(SeasonYear + 1, 07, 31); }
         }
 
+        public DateTime NextSeasonStartDate
+        {
+            get { return SeasonStartDate.AddYears(1); }
+        }
+
         public bool IsSeasonEnd
         {
             get { return Date == SeasonEndDate; }
-        }
-
-        public DateTime NextSeasonStartDate
-        {
-            get { return new DateTime(SeasonYear + 1, 08, 01); }
         }
 
         public override string ToString()
