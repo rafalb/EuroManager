@@ -60,15 +60,17 @@
                 </div>
             </div>
         </div>
-        <header class="hero-unit page-header">
-            <div class="container">
-                <h1>
-                    EuroManager
-                    <small>A realistic football world simulation</small>
-                    @Html.ActionLink("Learn more", "About", null, new { @class = "btn btn-success btn-large" })
-                </h1>
-            </div>
-        </header>
+        @if (IsSectionDefined("PageHeader"))
+        {
+            @RenderSection("PageHeader", required: false);
+        }
+        else
+        {
+            <header class="page-header">
+                <div class="container">
+                </div>
+            </header>
+        }
         <div class="container">
             @RenderBody()
         </div>
