@@ -189,6 +189,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -341,9 +343,10 @@
     <Content Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Home\MatchResult.cshtml" />
-    <Content Include="Views\Home\WorldDate.cshtml" />
-    <Content Include="Views\Home\AdvanceDate.cshtml" />
+    <Content Include="Views\Results\MatchResult.cshtml" />
+    <Content Include="Views\World\WorldDate.cshtml" />
+    <Content Include="Views\World\AdvanceDate.cshtml" />
+    <Content Include="Views\Results\RecentResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

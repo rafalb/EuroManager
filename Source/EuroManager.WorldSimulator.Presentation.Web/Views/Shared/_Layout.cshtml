@@ -19,7 +19,7 @@
                     @Html.ActionLink("EuroManager", "Index", "Home", null, new { @class = "brand" })
                     <ul class="nav">
                         @Html.MenuItem("Start", "Index", "Home")
-                        @Html.MenuItem("Results", "", "")
+                        @Html.MenuItem("Results", "RecentResults", "Results")
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 World
@@ -41,7 +41,7 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("Advance date", "AdvanceDate", "Home")</li>
+                                    <li>@Html.ActionLink("Advance date", "AdvanceDate", "World")</li>
                                 </ul>
                             </li>
                         }
@@ -54,7 +54,7 @@
                     </form>
                     <div class="pull-right">
                         <ul class="nav">
-                            <li class="active"><a>@Html.Action("WorldDate", "Home")</a></li>
+                            <li class="active"><a>@Html.Action("WorldDate", "World")</a></li>
                         </ul>
                     </div>
                 </div>
