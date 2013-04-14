@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.LabelFor(m => m.TargetDate, "Target date")
-    @Html.TextBoxFor(m => m.TargetDate, "{0:MM-dd-yyyy}", new { id = "datepicker" })
+    @Html.TextBoxFor(m => m.TargetDate, "{0:d}", new { id = "datepicker" })
     @Html.ValidationMessageFor(m => m.TargetDate)
     <div>
         <input type="submit" value="Advance" />
@@ -22,7 +22,7 @@
         $(function () {
             $('#datepicker').datepicker({
                 autoclose: true,
-                format: 'mm-dd-yyyy'
+                format: 'mm/dd/yyyy'
             });
         });
     </script>

@@ -1,6 +1,10 @@
-﻿@model EuroManager.WorldSimulator.Presentation.Web.Models.TournamentResultsModel
+﻿@model TournamentResultsModel
 
-<h2>Recent results</h2>
+@{
+    ViewBag.Title = "Recent results";
+}
+
+<h2>@ViewBag.Title</h2>
 
 @foreach (var tournamentResults in Model.TournamentResults)
 {
@@ -11,7 +15,9 @@
                 @foreach (var matchResult in tournamentResults.MatchResults)
                 {
                     <li>
-                        @matchResult.Team1Name &mdash; @matchResult.Team2Name
+                        @Html.TeamLink(matchResult.Team1Id, matchResult.Team1Name)
+                        &mdash;
+                        @Html.TeamLink(matchResult.Team2Id, matchResult.Team2Name)
                         <strong>@matchResult.Score1 : @matchResult.Score2</strong>
                         @Html.ActionLink("Details", "MatchResult", "Results", new { resultId = matchResult.Id }, null)
                     </li>
@@ -40,7 +46,7 @@
                     {
                         <tr>
                             <td><strong>@position</strong></td>
-                            <td><strong>@teamStats.TeamName</strong></td>
+                            <td><strong>@Html.TeamLink(@teamStats.TeamId, @teamStats.TeamName)</strong></td>
                             <td>@teamStats.Played</td>
                             <td>@teamStats.Wins</td>
                             <td>@teamStats.Draws</td>

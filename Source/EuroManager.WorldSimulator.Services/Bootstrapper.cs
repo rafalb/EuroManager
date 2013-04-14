@@ -23,6 +23,7 @@ namespace EuroManager.WorldSimulator.Services
             Mapper.CreateMap<Domain.MatchResult, Data.MatchResult>();
             Mapper.CreateMap<Domain.MatchResult, Data.MatchResultDetails>();
             Mapper.CreateMap<Domain.PlayerMatchStats, Data.PlayerMatchStats>();
+            Mapper.CreateMap<Domain.Team, Data.Team>();
             Mapper.CreateMap<Domain.TeamStats, Data.TeamStats>();
         }
 

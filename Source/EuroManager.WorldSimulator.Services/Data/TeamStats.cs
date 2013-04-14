@@ -7,6 +7,8 @@ namespace EuroManager.WorldSimulator.Services.Data
 {
     public class TeamStats
     {
+        public int TeamId { get; set; }
+
         public string TeamName { get; set; }
 
         public int GroupNumber { get; set; }

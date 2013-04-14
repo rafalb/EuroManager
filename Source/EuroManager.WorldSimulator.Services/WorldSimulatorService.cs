@@ -35,6 +35,15 @@ namespace EuroManager.WorldSimulator.Services
             return world.NextSeasonStartDate;
         }
 
+        public Data.Team GetTeam(int teamId)
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+            Team team = Context.Teams.ReadOnly(true).Single(t => t.Id == teamId && t.WorldId == world.Id);
+
+            var mappedTeam = Mapper.Map<Data.Team>(team);
+            return mappedTeam;
+        }
+
         public DateTime? GetNextFixtureDate()
         {
             World world = Context.GetDefaultWorld(readOnly: true);

@@ -190,6 +190,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -347,6 +348,7 @@
     <Content Include="Views\World\WorldDate.cshtml" />
     <Content Include="Views\World\AdvanceDate.cshtml" />
     <Content Include="Views\Results\RecentResults.cshtml" />
+    <Content Include="Views\Teams\Team.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

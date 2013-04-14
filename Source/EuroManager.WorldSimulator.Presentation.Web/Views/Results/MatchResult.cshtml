@@ -6,16 +6,22 @@
     ViewBag.Title = "Match Details";
 }
 
+<h2>@ViewBag.Title</h2>
+
 <div>
     <div>
-        <strong>@Model.Result.Team1Name @Model.Result.Score1 : @Model.Result.Score2 @Model.Result.Team2Name</strong>
+        <strong>
+            @Html.TeamLink(Model.Result.Team1Id, Model.Result.Team1Name)
+            @Model.Result.Score1 : @Model.Result.Score2
+            @Html.TeamLink(Model.Result.Team2Id, Model.Result.Team2Name)
+        </strong>
     </div>
     <div>
         @GoalScorers(Model.Result.Goals1) &mdash; @GoalScorers(Model.Result.Goals2)
     </div>
 
-    @PlayerStats(Model.Result.Team1Name, Model.Result.PlayersStats1)
-    @PlayerStats(Model.Result.Team2Name, Model.Result.PlayersStats2)
+    @PlayerStats(Model.Result.Team1Id, Model.Result.Team1Name, Model.Result.PlayersStats1)
+    @PlayerStats(Model.Result.Team2Id, Model.Result.Team2Name, Model.Result.PlayersStats2)
 
     @helper GoalScorers(IEnumerable<Goal> goals)
     {
@@ -37,10 +43,10 @@
         }
     }
 
-    @helper PlayerStats(string teamName, IEnumerable<PlayerMatchStats> playerStats)
+    @helper PlayerStats(int teamId, string teamName, IEnumerable<PlayerMatchStats> playerStats)
     {
         <div>
-            <h4>Player stats: @teamName</h4>
+            <h4>@Html.TeamLink(teamId, teamName) stats</h4>
             <table>
                 <thead>
                     <tr>

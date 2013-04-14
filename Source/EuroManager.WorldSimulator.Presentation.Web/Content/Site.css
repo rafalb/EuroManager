@@ -139,3 +139,7 @@ tr.pager td {
 #logoutForm {
     display: inline;
 }
+
+a.team-link {
+    color: #333333;
+}
