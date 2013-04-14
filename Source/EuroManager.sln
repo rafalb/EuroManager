@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1EC5C5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuroManager.WorldSimulator.Presentation.Web", "EuroManager.WorldSimulator.Presentation.Web\EuroManager.WorldSimulator.Presentation.Web.csproj", "{EC43E9BC-264F-45A1-B266-973607B24FDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuroManager.MatchSimulator.Tests.Statistical", "EuroManager.MatchSimulator.Tests.Statistical\EuroManager.MatchSimulator.Tests.Statistical.csproj", "{C0983363-C12A-4D0F-A33C-8C2512E6369B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppHarbor|Any CPU = AppHarbor|Any CPU
@@ -247,6 +249,21 @@ Global
 		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EC43E9BC-264F-45A1-B266-973607B24FDA}.Release|x86.ActiveCfg = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.AppHarbor|Any CPU.ActiveCfg = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.AppHarbor|Any CPU.Build.0 = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.AppHarbor|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.AppHarbor|Mixed Platforms.Build.0 = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.AppHarbor|x86.ActiveCfg = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C0983363-C12A-4D0F-A33C-8C2512E6369B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
