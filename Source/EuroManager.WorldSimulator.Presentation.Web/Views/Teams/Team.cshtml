@@ -1,5 +1,33 @@
-﻿@{
-    ViewBag.Title = "Team: " + Model.Name;
+﻿@model TeamModel
+
+@{
+    ViewBag.Title = "Team: " + Model.Team.Name;
 }
 
 <h2>@ViewBag.Title</h2>
+
+<p>Strategy: @Model.Team.Strategy</p>
+
+<table>
+    <thead>
+        <tr>
+            <td title="Position">Pos</td>
+            <td>Name</td>
+            <td title="Defensive skills">Def</td>
+            <td title="Offensive skills">Off</td>
+            <td>Form</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in @Model.Players.OrderBy(p => p.Position))
+        {
+            <tr>
+                <td>@player.Position</td>
+                <td><strong>@player.Name</strong></td>
+                <td>@player.DefensiveSkills</td>
+                <td>@player.OffensiveSkills</td>
+                <td>@player.Form</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -56,15 +56,17 @@
                         <td>Rating</td>
                     </tr>
                 </thead>
-                @foreach (var player in playerStats)
-                {
-                    <tr>
-                        <td>@player.PlayerName</td>
-                        <td>@player.Goals</td>
-                        <td>@player.Assists</td>
-                        <td>@player.Rating</td>
-                    </tr>
-                }
+                <tbody>
+                    @foreach (var player in playerStats)
+                    {
+                        <tr>
+                            <td>@player.PlayerName</td>
+                            <td>@player.Goals</td>
+                            <td>@player.Assists</td>
+                            <td>@player.Rating</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     }

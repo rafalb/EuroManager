@@ -10,6 +10,10 @@ header.hero-unit h1 {
     color: black;
 }*/
 
+.footer {
+    margin-top: 30pt;
+}
+
 .search-query {
     width: 120px;
 }

@@ -44,6 +44,26 @@ namespace EuroManager.WorldSimulator.Services
             return mappedTeam;
         }
 
+        public IEnumerable<Data.Player> GetTeamPlayers(int teamId)
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+
+            var players = from p in Context.Players.ReadOnly(true)
+                          join m in Context.SquadMembers on p.Id equals m.PlayerId
+                          where m.TeamId == teamId
+                          select new Data.Player
+                          {
+                              Id = p.Id,
+                              Name = p.Name,
+                              Position = m.Position,
+                              DefensiveSkills = p.DefensiveSkills,
+                              OffensiveSkills = p.OffensiveSkills,
+                              Form = p.Form
+                          };
+
+            return players.ToArray();
+        }
+
         public DateTime? GetNextFixtureDate()
         {
             World world = Context.GetDefaultWorld(readOnly: true);
