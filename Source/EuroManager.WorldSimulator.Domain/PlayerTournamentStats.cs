@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 
@@ -54,6 +55,22 @@ namespace EuroManager.WorldSimulator.Domain
 
                 AverageRating = (AverageRating * (Played - 1) + matchStats.Rating) / Played;
             }
+        }
+
+        public static PlayerTournamentStats Combine(params PlayerTournamentStats[] stats)
+        {
+            Contract.Requires(stats.Any());
+            Contract.Requires(stats.All(s => s.Player == stats.First().Player));
+
+            var resultStats = new PlayerTournamentStats(stats.First().TournamentSeason, stats.First().Player)
+            {
+                Played = stats.Sum(s => s.Played),
+                Goals = stats.Sum(s => s.Goals),
+                Assists = stats.Sum(s => s.Assists),
+                AverageRating = stats.Sum(s => s.Played * s.AverageRating) / stats.Sum(s => s.Played)
+            };
+
+            return resultStats;
         }
     }
 }

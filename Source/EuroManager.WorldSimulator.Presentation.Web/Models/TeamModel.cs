@@ -11,5 +11,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Models
         public Team Team { get; set; }
 
         public IEnumerable<Player> Players { get; set; }
+
+        public IEnumerable<PlayerStats> PlayerStats { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
             string currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");
             string currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
 
-            if (String.Equals(actionName, currentAction, StringComparison.InvariantCultureIgnoreCase) &&
-                String.Equals(controllerName, currentController, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(actionName, currentAction, StringComparison.InvariantCultureIgnoreCase) &&
+                string.Equals(controllerName, currentController, StringComparison.InvariantCultureIgnoreCase))
             {
                 tag.AddCssClass("active");
             }
@@ -29,7 +29,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
 
         public static MvcHtmlString TeamLink(this HtmlHelper htmlHelper, int teamId, string teamName)
         {
-            return htmlHelper.ActionLink(teamName, "Team", "Teams", new { teamId }, new { @class = "team-link" });
+            return htmlHelper.ActionLink(teamName, "Team", "Teams", new { id = teamId }, new { @class = "team-link" });
         }
     }
 }

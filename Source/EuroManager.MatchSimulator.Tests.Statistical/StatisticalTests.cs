@@ -12,7 +12,7 @@ namespace EuroManager.MatchSimulator.Tests.Statistical
     [TestFixture]
     public class StatisticalTests
     {
-        private static readonly int matchRepeatCount = 1000;
+        private static readonly int MatchRepeatCount = 1000;
         private IMatchRandomizer randomizer = MatchRandomizer.Current;
         private Simulator simulator;
         private Team veryStrongTeam = CreateVeryStrongTeam();
@@ -51,7 +51,7 @@ namespace EuroManager.MatchSimulator.Tests.Statistical
         public void VeryStrongTeamShouldNotLoseManyGoalsWithWeakTeam()
         {
             double averageGoalsLost = (double)results.Sum(r => r.Score2) / results.Count();
-            Assert.That(averageGoalsLost, Is.LessThan(0.37));
+            Assert.That(averageGoalsLost, Is.LessThan(0.38));
         }
 
         private double CalculateResultsPercent(IEnumerable<MatchResult> results, Func<MatchResult, bool> predicate)
@@ -61,9 +61,9 @@ namespace EuroManager.MatchSimulator.Tests.Statistical
 
         private IEnumerable<MatchResult> SimulateMatchRepeatedly(Team team1, Team team2, bool isNeutralGround, bool isExtraTimeRequired)
         {
-            var results = new MatchResult[matchRepeatCount];
+            var results = new MatchResult[MatchRepeatCount];
 
-            for (int i = 0; i < matchRepeatCount; i++)
+            for (int i = 0; i < MatchRepeatCount; i++)
             {
                 var match = new Match(team1, team2, isNeutralGround, isExtraTimeRequired);
                 results[i] = simulator.Play(match);

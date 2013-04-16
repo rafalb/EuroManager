@@ -45,15 +45,15 @@
 
     @helper PlayerStats(int teamId, string teamName, IEnumerable<PlayerMatchStats> playerStats)
     {
-        <div>
+        <div class="span3">
             <h4>@Html.TeamLink(teamId, teamName) stats</h4>
-            <table>
+            <table class="table table-condensed table-hover">
                 <thead>
                     <tr>
                         <td>Player</td>
-                        <td>Goals</td>
-                        <td>Assists</td>
-                        <td>Rating</td>
+                        <td title="Goals">Gl</td>
+                        <td title="Assists">As</td>
+                        <td title="Rating">Rat</td>
                     </tr>
                 </thead>
                 <tbody>

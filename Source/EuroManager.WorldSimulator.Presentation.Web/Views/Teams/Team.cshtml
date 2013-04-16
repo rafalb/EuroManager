@@ -8,26 +8,38 @@
 
 <p>Strategy: @Model.Team.Strategy</p>
 
-<table>
-    <thead>
-        <tr>
-            <td title="Position">Pos</td>
-            <td>Name</td>
-            <td title="Defensive skills">Def</td>
-            <td title="Offensive skills">Off</td>
-            <td>Form</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var player in @Model.Players.OrderBy(p => p.Position))
-        {
+<div class="span8">
+    <table class="table table-condensed table-hover">
+        <thead>
             <tr>
-                <td>@player.Position</td>
-                <td><strong>@player.Name</strong></td>
-                <td>@player.DefensiveSkills</td>
-                <td>@player.OffensiveSkills</td>
-                <td>@player.Form</td>
+                <td title="Position">Pos</td>
+                <td>Name</td>
+                <td title="Defensive skills">Def</td>
+                <td title="Offensive skills">Off</td>
+                <td>Form</td>
+                <td title="Played">Pl</td>
+                <td title="Goals">Gl</td>
+                <td title="Assists">As</td>
+                <td title="Average rating">Rating</td>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var player in @Model.Players.OrderBy(p => p.Position))
+            {
+                var stats = @Model.PlayerStats.Single(s => s.Id == player.Id);
+            
+                <tr>
+                    <td>@player.Position</td>
+                    <td><strong>@player.Name</strong></td>
+                    <td>@player.DefensiveSkills</td>
+                    <td>@player.OffensiveSkills</td>
+                    <td>@player.Form</td>
+                    <td>@stats.Played</td>
+                    <td>@stats.Goals</td>
+                    <td>@stats.Assists</td>
+                    <td><strong>@stats.Rating.ToString("n2")</strong></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

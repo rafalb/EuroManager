@@ -64,6 +64,42 @@ namespace EuroManager.WorldSimulator.Services
             return players.ToArray();
         }
 
+        public IEnumerable<Data.PlayerStats> GetCombinedPlayerStatsByTeam(int teamId)
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+
+            var stats = from s in Context.PlayerTournamentStats.ReadOnly(true)
+                        join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
+                        join t in Context.TournamentSeasons on s.TournamentSeasonId equals t.Id
+                        join tm in Context.Teams on m.TeamId equals tm.Id
+                        where tm.WorldId == world.Id && tm.Id == teamId && t.IsActive
+                        select new
+                        {
+                            PlayerId = s.PlayerId,
+                            Stats = s,
+                            Position = m.Position,
+                            TeamName = tm.Name
+                        };
+
+            var combinedStats = from s in stats.ToArray()
+                                group s by s.PlayerId into g
+                                let cs = PlayerTournamentStats.Combine(g.Select(gr => gr.Stats).ToArray())
+                                let fs = g.First()
+                                select new Data.PlayerStats
+                                {
+                                    Id = fs.PlayerId ?? 0,
+                                    Name = fs.Stats.PlayerName,
+                                    TeamName = fs.TeamName,
+                                    Position = fs.Position,
+                                    Played = cs.Played,
+                                    Goals = cs.Goals,
+                                    Assists = cs.Assists,
+                                    Rating = cs.AverageRating
+                                };
+
+            return combinedStats.ToArray();
+        }
+
         public DateTime? GetNextFixtureDate()
         {
             World world = Context.GetDefaultWorld(readOnly: true);
