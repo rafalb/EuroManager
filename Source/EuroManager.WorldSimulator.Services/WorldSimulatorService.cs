@@ -35,6 +35,21 @@ namespace EuroManager.WorldSimulator.Services
             return world.NextSeasonStartDate;
         }
 
+        public IEnumerable<Data.Tournament> GetTournaments()
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+            var tournaments = from s in Context.TournamentSeasons.ReadOnly(true)
+                              where s.WorldId == world.Id && s.IsActive
+                              select new Data.Tournament
+                              {
+                                  Id = s.Tournament.Id,
+                                  Name = s.Tournament.Name,
+                                  Level = s.Tournament.Level
+                              };
+
+            return tournaments.ToArray();
+        }
+
         public Data.Team GetTeam(int teamId)
         {
             World world = Context.GetDefaultWorld(readOnly: true);

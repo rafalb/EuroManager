@@ -24,6 +24,17 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
+        public ActionResult Tournament(int id = 0)
+        {
+            using (var worldSimulator = new WorldSimulatorService())
+            {
+                var tournaments = worldSimulator.GetTournaments();
+                var model = new TournamentDetailsModel { Tournaments = tournaments, SelectedTournamentId = id };
+
+                return View(model);
+            }
+        }
+
         public ActionResult Match(int id)
         {
             using (var worldSimulator = new WorldSimulatorService())

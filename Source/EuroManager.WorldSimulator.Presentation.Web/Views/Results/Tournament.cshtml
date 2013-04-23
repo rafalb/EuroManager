@@ -1,5 +1,19 @@
-﻿@{
-    ViewBag.Title = "Tournament";
+﻿@model TournamentDetailsModel
+
+@{
+    ViewBag.Title = "Tournament Results";
 }
 
-<h2>Tournament</h2>
+<h2>@ViewBag.Title</h2>
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            @foreach (var tournament in Model.Tournaments)
+            {
+                @Html.MenuItem(tournament.Name, "Tournament", "Results", new { id = tournament.Id },
+                    isActive: tournament.Id == Model.SelectedTournamentId)
+            }
+        </ul>
+    </div>
+</div>

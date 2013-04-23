@@ -9,16 +9,24 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
 {
     public static class HtmlHelperExtensions
     {
-        public static MvcHtmlString MenuItem(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
+        public static MvcHtmlString MenuItem(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName,
+            object routeValues = null, bool? isActive = null)
         {
             var tag = new TagBuilder("li");
-            tag.InnerHtml = htmlHelper.ActionLink(linkText, actionName, controllerName).ToHtmlString();
+            tag.InnerHtml = htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, null).ToHtmlString();
 
             string currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");
             string currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
 
-            if (string.Equals(actionName, currentAction, StringComparison.InvariantCultureIgnoreCase) &&
-                string.Equals(controllerName, currentController, StringComparison.InvariantCultureIgnoreCase))
+            if (isActive == null)
+            {
+                if (string.Equals(actionName, currentAction, StringComparison.InvariantCultureIgnoreCase) &&
+                    string.Equals(controllerName, currentController, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    tag.AddCssClass("active");
+                }
+            }
+            else if (isActive.Value)
             {
                 tag.AddCssClass("active");
             }
