@@ -10,24 +10,25 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 {
     public class ResultsController : Controller
     {
-        public ActionResult RecentResults()
+        public ActionResult Recent()
         {
             var model = LoadRecentTournamentResults();
-            return View(model);
+
+            if (ControllerContext.IsChildAction)
+            {
+                return PartialView(model);
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
-        [ChildActionOnly]
-        public ActionResult RecentResultsPartial()
-        {
-            var model = LoadRecentTournamentResults();
-            return PartialView("RecentResults", model);
-        }
-
-        public ActionResult MatchResult(int resultId)
+        public ActionResult Match(int id)
         {
             using (var worldSimulator = new WorldSimulatorService())
             {
-                var result = worldSimulator.GetMatchResultDetails(resultId);
+                var result = worldSimulator.GetMatchResultDetails(id);
                 var model = new MatchResultModel { Result = result };
 
                 return View(model);

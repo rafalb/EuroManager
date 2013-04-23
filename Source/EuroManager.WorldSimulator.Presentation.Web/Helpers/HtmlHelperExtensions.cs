@@ -29,7 +29,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
 
         public static MvcHtmlString TeamLink(this HtmlHelper htmlHelper, int teamId, string teamName)
         {
-            return htmlHelper.ActionLink(teamName, "Team", "Teams", new { id = teamId }, new { @class = "team-link" });
+            return htmlHelper.ActionLink(teamName, "Team", "World", new { id = teamId }, new { @class = "team-link" });
         }
     }
 }

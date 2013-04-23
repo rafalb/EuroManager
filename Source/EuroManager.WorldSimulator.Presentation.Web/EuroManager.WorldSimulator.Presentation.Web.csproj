@@ -190,7 +190,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
-    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -345,11 +344,12 @@
     <Content Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Results\MatchResult.cshtml" />
+    <Content Include="Views\Results\Match.cshtml" />
     <Content Include="Views\World\WorldDate.cshtml" />
     <Content Include="Views\World\AdvanceDate.cshtml" />
-    <Content Include="Views\Results\RecentResults.cshtml" />
-    <Content Include="Views\Teams\Team.cshtml" />
+    <Content Include="Views\Results\Recent.cshtml" />
+    <Content Include="Views\World\Team.cshtml" />
+    <Content Include="Views\Results\Tournament.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

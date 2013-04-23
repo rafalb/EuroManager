@@ -19,7 +19,7 @@
                         &mdash;
                         @Html.TeamLink(matchResult.Team2Id, matchResult.Team2Name)
                         <strong>@matchResult.Score1 : @matchResult.Score2</strong>
-                        @Html.ActionLink("Details", "MatchResult", "Results", new { resultId = matchResult.Id }, null)
+                        @Html.ActionLink("Details", "Match", "Results", new { id = matchResult.Id }, null)
                     </li>
                 }
             </ul>

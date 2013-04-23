@@ -4,7 +4,7 @@
     ViewBag.Title = "Team: " + Model.Team.Name;
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Team: @Html.TeamLink(Model.Team.Id, Model.Team.Name)</h2>
 
 <p>Strategy: @Model.Team.Strategy</p>
 

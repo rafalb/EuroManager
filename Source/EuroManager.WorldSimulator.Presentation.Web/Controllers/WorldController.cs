@@ -20,6 +20,21 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
+        public ActionResult Team(int id)
+        {
+            using (var worldSimulator = new WorldSimulatorService())
+            {
+                var teamModel = new TeamModel
+                {
+                    Team = worldSimulator.GetTeam(id),
+                    Players = worldSimulator.GetTeamPlayers(id),
+                    PlayerStats = worldSimulator.GetCombinedPlayerStatsByTeam(id)
+                };
+
+                return View(teamModel);
+            }
+        }
+
         [HttpGet]
         [Authorize(Roles = UserRole.Administrator)]
         public ActionResult AdvanceDate()
