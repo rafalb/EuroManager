@@ -29,7 +29,25 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             using (var worldSimulator = new WorldSimulatorService())
             {
                 var tournaments = worldSimulator.GetTournaments();
-                var model = new TournamentDetailsModel { Tournaments = tournaments, SelectedTournamentId = id };
+
+                if (id == 0)
+                {
+                    id = tournaments.First().Id;
+                }
+
+                var results = new TournamentResults
+                {
+                    Tournament = tournaments.Single(t => t.Id == id),
+                    MatchResults = worldSimulator.GetRecentMatchResults(id),
+                    Standings = worldSimulator.GetLeagueStandings(id)
+                };
+
+                var model = new TournamentDetailsModel
+                {
+                    Tournaments = tournaments,
+                    SelectedTournamentId = id,
+                    TournamentResults = results
+                };
 
                 return View(model);
             }
@@ -46,7 +64,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
             }
         }
 
-        private TournamentResultsModel LoadRecentTournamentResults()
+        private RecentResultsModel LoadRecentTournamentResults()
         {
             using (var worldSimulator = new WorldSimulatorService())
             {
@@ -57,14 +75,10 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
                     {
                         Tournament = t,
                         MatchResults = worldSimulator.GetTodayMatchResults(t.Id),
-                        TeamStats = worldSimulator.GetLeagueStandings(t.Id)
+                        Standings = worldSimulator.GetLeagueStandings(t.Id)
                     });
 
-                var model = new TournamentResultsModel
-                {
-                    CurrentDate = worldSimulator.GetCurrentDate(),
-                    TournamentResults = results
-                };
+                var model = new RecentResultsModel { TournamentResults = results };
 
                 return model;
             }

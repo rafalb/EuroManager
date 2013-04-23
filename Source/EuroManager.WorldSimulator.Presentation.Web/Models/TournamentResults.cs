@@ -12,6 +12,6 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Models
 
         public IEnumerable<MatchResult> MatchResults { get; set; }
 
-        public IEnumerable<TeamStats> TeamStats { get; set; }
+        public IEnumerable<TeamStats> Standings { get; set; }
     }
 }

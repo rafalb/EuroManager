@@ -1,7 +1,7 @@
-﻿@model TournamentResultsModel
+﻿@model RecentResultsModel
 
 @{
-    ViewBag.Title = "Recent results";
+    ViewBag.Title = "Recent Results";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -10,56 +10,11 @@
 {
     <div class="row">
         <div class="span5">
-            <h4>@tournamentResults.Tournament.Name</h4>
-            <ul>
-                @foreach (var matchResult in tournamentResults.MatchResults)
-                {
-                    <li>
-                        @Html.TeamLink(matchResult.Team1Id, matchResult.Team1Name)
-                        &mdash;
-                        @Html.TeamLink(matchResult.Team2Id, matchResult.Team2Name)
-                        <strong>@matchResult.Score1 : @matchResult.Score2</strong>
-                        @Html.ActionLink("Details", "Match", "Results", new { id = matchResult.Id }, null)
-                    </li>
-                }
-            </ul>
+            <h4>@Html.TournamentLink(tournamentResults.Tournament.Id, tournamentResults.Tournament.Name)</h4>
+            @Html.Partial("TournamentMatchResults", tournamentResults.MatchResults)
         </div>
         <div class="span7">
-            <table class="table table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Team</th>
-                        <th title="Played">P</th>
-                        <th title="Points">Pts</th>
-                        <th title="Wins">W</th>
-                        <th title="Draws">D</th>
-                        <th title="Losses">L</th>
-                        <th>Goals</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        int position = 1;
-
-                        foreach (var teamStats in tournamentResults.TeamStats)
-                        {
-                            <tr>
-                                <td><strong>@position</strong></td>
-                                <td><strong>@Html.TeamLink(@teamStats.TeamId, @teamStats.TeamName)</strong></td>
-                                <td>@teamStats.Played</td>
-                                <td><strong>@teamStats.Points</strong></td>
-                                <td>@teamStats.Wins</td>
-                                <td>@teamStats.Draws</td>
-                                <td>@teamStats.Losses</td>
-                                <td>@teamStats.GoalsFor-@teamStats.GoalsAgainst</td>
-                            </tr>
-                        
-                            position++;
-                        }
-                    }
-                </tbody>
-            </table>
+            @Html.Partial("TournamentStandings", tournamentResults.Standings)
         </div>
     </div>
 }

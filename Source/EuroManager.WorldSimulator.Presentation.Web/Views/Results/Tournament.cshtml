@@ -17,3 +17,13 @@
         </ul>
     </div>
 </div>
+
+<div class="row">
+    <div class="span5">
+        <h4>@Html.TournamentLink(Model.TournamentResults.Tournament.Id, Model.TournamentResults.Tournament.Name)</h4>
+        @Html.Partial("TournamentMatchResults", Model.TournamentResults.MatchResults)
+    </div>
+    <div class="span7">
+        @Html.Partial("TournamentStandings", Model.TournamentResults.Standings)
+    </div>
+</div>

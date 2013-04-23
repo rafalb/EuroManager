@@ -39,7 +39,9 @@ namespace EuroManager.WorldSimulator.Services
         {
             World world = Context.GetDefaultWorld(readOnly: true);
             var tournaments = from s in Context.TournamentSeasons.ReadOnly(true)
+                              join t in Context.Tournaments on s.TournamentId equals t.Id
                               where s.WorldId == world.Id && s.IsActive
+                              orderby t.Id
                               select new Data.Tournament
                               {
                                   Id = s.Tournament.Id,
@@ -160,6 +162,18 @@ namespace EuroManager.WorldSimulator.Services
         {
             World world = Context.GetDefaultWorld(readOnly: true);
             var results = Context.GetMatchResults(tournamentId, world.Date, readOnly: true);
+
+            var mappedResults = Mapper.Map<MatchResult[], Data.MatchResult[]>(results.ToArray());
+            return mappedResults;
+        }
+
+        public IEnumerable<Data.MatchResult> GetRecentMatchResults(int tournamentId)
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+            TournamentSeason season = Context.TournamentSeasons.First(s => s.TournamentId == tournamentId && s.IsActive);
+            DateTime date = Context.Results.Where(r => r.TournamentSeasonId == season.Id).Max(r => r.Date);
+
+            var results = Context.GetMatchResults(tournamentId, date, readOnly: true);
 
             var mappedResults = Mapper.Map<MatchResult[], Data.MatchResult[]>(results.ToArray());
             return mappedResults;

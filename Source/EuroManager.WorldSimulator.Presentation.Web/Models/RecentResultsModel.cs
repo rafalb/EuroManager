@@ -6,10 +6,8 @@ using System.Web;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Models
 {
-    public class TournamentResultsModel
+    public class RecentResultsModel
     {
-        public DateTime CurrentDate { get; set; }
-
         public IEnumerable<TournamentResults> TournamentResults { get; set; }
     }
 }

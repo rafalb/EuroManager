@@ -144,6 +144,6 @@ tr.pager td {
     display: inline;
 }
 
-a.team-link {
+a.team-link, h4 a.tournament-link {
     color: #333333;
 }

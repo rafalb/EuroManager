@@ -39,5 +39,10 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
         {
             return htmlHelper.ActionLink(teamName, "Team", "World", new { id = teamId }, new { @class = "team-link" });
         }
+
+        public static MvcHtmlString TournamentLink(this HtmlHelper htmlHelper, int tournamentId, string tournamentName)
+        {
+            return htmlHelper.ActionLink(tournamentName, "Tournament", "Results", new { id = tournamentId }, new { @class = "tournament-link" });
+        }
     }
 }

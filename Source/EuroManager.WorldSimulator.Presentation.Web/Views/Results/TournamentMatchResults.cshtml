@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EuroManager.WorldSimulator.Services.Data.MatchResult>
+
+<ul>
+    @foreach (var matchResult in Model)
+    {
+        <li>
+            @Html.TeamLink(matchResult.Team1Id, matchResult.Team1Name)
+            &mdash;
+            @Html.TeamLink(matchResult.Team2Id, matchResult.Team2Name)
+            <strong>@matchResult.Score1 : @matchResult.Score2</strong>
+            @Html.ActionLink("Details", "Match", "Results", new { id = matchResult.Id }, null)
+        </li>
+    }
+</ul>

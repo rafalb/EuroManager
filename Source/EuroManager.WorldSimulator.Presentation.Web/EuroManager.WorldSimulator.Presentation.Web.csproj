@@ -201,7 +201,7 @@
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Models\TournamentDetailsModel.cs" />
     <Compile Include="Models\TournamentResults.cs" />
-    <Compile Include="Models\TournamentResultsModel.cs" />
+    <Compile Include="Models\RecentResultsModel.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -351,6 +351,8 @@
     <Content Include="Views\Results\Recent.cshtml" />
     <Content Include="Views\World\Team.cshtml" />
     <Content Include="Views\Results\Tournament.cshtml" />
+    <Content Include="Views\Results\TournamentStandings.cshtml" />
+    <Content Include="Views\Results\TournamentMatchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

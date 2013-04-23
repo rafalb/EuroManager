@@ -11,5 +11,7 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Models
         public IEnumerable<Tournament> Tournaments { get; set; }
 
         public int SelectedTournamentId { get; set; }
+
+        public TournamentResults TournamentResults { get; set; }
     }
 }
