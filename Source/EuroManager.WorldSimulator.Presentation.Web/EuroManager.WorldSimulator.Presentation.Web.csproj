@@ -200,6 +200,7 @@
     <Compile Include="Models\MatchResultModel.cs" />
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Models\TournamentDetailsModel.cs" />
+    <Compile Include="Models\TournamentRatings.cs" />
     <Compile Include="Models\TournamentResults.cs" />
     <Compile Include="Models\RecentResultsModel.cs" />
     <Compile Include="Models\UserRole.cs" />
@@ -361,6 +362,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EuroManager.Common.Domain\EuroManager.Common.Domain.csproj">
+      <Project>{78aa6d0d-ccf7-4766-b2bb-cc2955b66bb1}</Project>
+      <Name>EuroManager.Common.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EuroManager.WorldSimulator.Services\EuroManager.WorldSimulator.Services.csproj">
       <Project>{f55132d8-def7-405d-8ed3-4ec970a490ac}</Project>
       <Name>EuroManager.WorldSimulator.Services</Name>

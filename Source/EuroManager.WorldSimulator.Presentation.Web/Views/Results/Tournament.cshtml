@@ -1,4 +1,4 @@
-﻿@model TournamentDetailsModel
+﻿@model TournamentResultsModel
 
 @{
     ViewBag.Title = "Tournament Results";
@@ -20,10 +20,94 @@
 
 <div class="row">
     <div class="span5">
-        <h4>@Html.TournamentLink(Model.TournamentResults.Tournament.Id, Model.TournamentResults.Tournament.Name)</h4>
-        @Html.Partial("TournamentMatchResults", Model.TournamentResults.MatchResults)
+        <h4>@Html.TournamentLink(Model.Results.Tournament.Id, Model.Results.Tournament.Name)</h4>
+        @Html.Partial("TournamentMatchResults", Model.Results.MatchResults)
     </div>
     <div class="span7">
-        @Html.Partial("TournamentStandings", Model.TournamentResults.Standings)
+        @Html.Partial("TournamentStandings", Model.Results.Standings)
+    </div>
+</div>
+
+<div class="row">
+    <div class="span4">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th title="Position">Pos</th>
+                    <th>Top scorers</th>
+                    <th>Team</th>
+                    <th title="Goals">G</th>
+                    <th title="Assists">A</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stats in Model.Ratings.TopScorers)
+                {
+                    <tr>
+                        <td>@stats.Position</td>
+                        <td><strong>@stats.Name</strong></td>
+                        <td>@stats.TeamName</td>
+                        <td><strong>@stats.Goals</strong></td>
+                        <td>@stats.Assists</td>
+                        <td>@stats.Rating.ToString("n2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="span4">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th title="Position">Pos</th>
+                    <th>Top assistants</th>
+                    <th>Team</th>
+                    <th title="Goals">G</th>
+                    <th title="Assists">A</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stats in Model.Ratings.TopAssistants)
+                {
+                    <tr>
+                        <td>@stats.Position</td>
+                        <td><strong>@stats.Name</strong></td>
+                        <td>@stats.TeamName</td>
+                        <td>@stats.Goals</td>
+                        <td><strong>@stats.Assists</strong></td>
+                        <td>@stats.Rating.ToString("n2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="span4">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th title="Position">Pos</th>
+                    <th>Top rating</th>
+                    <th>Team</th>
+                    <th title="Goals">G</th>
+                    <th title="Assists">A</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stats in Model.Ratings.TopRating)
+                {
+                    <tr>
+                        <td>@stats.Position</td>
+                        <td><strong>@stats.Name</strong></td>
+                        <td>@stats.TeamName</td>
+                        <td>@stats.Goals</td>
+                        <td>@stats.Assists</td>
+                        <td><strong>@stats.Rating.ToString("n2")</strong></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>

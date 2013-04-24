@@ -6,12 +6,14 @@ using EuroManager.WorldSimulator.Services.Data;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Models
 {
-    public class TournamentDetailsModel
+    public class TournamentResultsModel
     {
         public IEnumerable<Tournament> Tournaments { get; set; }
 
         public int SelectedTournamentId { get; set; }
 
-        public TournamentResults TournamentResults { get; set; }
+        public TournamentResults Results { get; set; }
+
+        public TournamentRatings Ratings { get; set; }
     }
 }

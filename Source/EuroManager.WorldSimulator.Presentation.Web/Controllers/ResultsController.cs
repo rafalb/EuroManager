@@ -39,14 +39,22 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
                 {
                     Tournament = tournaments.Single(t => t.Id == id),
                     MatchResults = worldSimulator.GetRecentMatchResults(id),
-                    Standings = worldSimulator.GetLeagueStandings(id)
+                    Standings = worldSimulator.GetLeagueStandings(id),
                 };
 
-                var model = new TournamentDetailsModel
+                var ratings = new TournamentRatings
+                {
+                    TopScorers = worldSimulator.GetTopGoalScorers(id, 20),
+                    TopAssistants = worldSimulator.GetTopAssistants(id, 20),
+                    TopRating = worldSimulator.GetTopPlayerStats(id, 20)
+                };
+
+                var model = new TournamentResultsModel
                 {
                     Tournaments = tournaments,
                     SelectedTournamentId = id,
-                    TournamentResults = results
+                    Results = results,
+                    Ratings = ratings
                 };
 
                 return View(model);
