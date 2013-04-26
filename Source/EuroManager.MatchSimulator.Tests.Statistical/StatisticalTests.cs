@@ -30,28 +30,28 @@ namespace EuroManager.MatchSimulator.Tests.Statistical
         public void VeryStrongTeamShouldWinMostMatchesWithWeakTeam()
         {
             double winsPercent = CalculateResultsPercent(results, r => r.Winner == veryStrongTeam);
-            Assert.That(winsPercent, Is.GreaterThan(0.84));
+            Assert.That(winsPercent, Is.GreaterThan(0.84).And.LessThan(0.91));
         }
 
         [Test]
         public void VeryStrongTeamShouldNotLoseTooManyMatchesWithWeakTeam()
         {
             double lossesPercent = CalculateResultsPercent(results, r => r.Winner == weakTeam);
-            Assert.That(lossesPercent, Is.LessThan(0.04));
+            Assert.That(lossesPercent, Is.GreaterThan(0.016).And.LessThan(0.042));
         }
 
         [Test]
         public void VeryStrongTeamShouldScoreManyGoalsWithWeakTeam()
         {
             double averageGoalsScored = (double)results.Sum(r => r.Score1) / results.Count();
-            Assert.That(averageGoalsScored, Is.GreaterThan(2.68));
+            Assert.That(averageGoalsScored, Is.GreaterThan(2.62).And.LessThan(2.88));
         }
 
         [Test]
         public void VeryStrongTeamShouldNotLoseManyGoalsWithWeakTeam()
         {
             double averageGoalsLost = (double)results.Sum(r => r.Score2) / results.Count();
-            Assert.That(averageGoalsLost, Is.LessThan(0.38));
+            Assert.That(averageGoalsLost, Is.GreaterThan(0.29).And.LessThan(0.39));
         }
 
         private double CalculateResultsPercent(IEnumerable<MatchResult> results, Func<MatchResult, bool> predicate)
