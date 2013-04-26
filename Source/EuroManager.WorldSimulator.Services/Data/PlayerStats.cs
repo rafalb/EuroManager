@@ -12,6 +12,8 @@ namespace EuroManager.WorldSimulator.Services.Data
 
         public string Name { get; set; }
 
+        public int TeamId { get; set; }
+
         public string TeamName { get; set; }
 
         public PositionCode Position { get; set; }

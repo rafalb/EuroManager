@@ -95,6 +95,7 @@ namespace EuroManager.WorldSimulator.Services
                             PlayerId = s.PlayerId,
                             Stats = s,
                             Position = m.Position,
+                            TeamId = tm.Id,
                             TeamName = tm.Name
                         };
 
@@ -106,6 +107,7 @@ namespace EuroManager.WorldSimulator.Services
                                 {
                                     Id = fs.PlayerId ?? 0,
                                     Name = fs.Stats.PlayerName,
+                                    TeamId = fs.TeamId,
                                     TeamName = fs.TeamName,
                                     Position = fs.Position,
                                     Played = cs.Played,
@@ -242,6 +244,7 @@ namespace EuroManager.WorldSimulator.Services
                     {
                         Id = s.Id,
                         Name = s.PlayerName,
+                        TeamId = tm.Id,
                         TeamName = tm.Name,
                         Position = m.Position,
                         Played = s.Played,
@@ -265,6 +268,7 @@ namespace EuroManager.WorldSimulator.Services
                     {
                         Id = s.Id,
                         Name = s.PlayerName,
+                        TeamId = tm.Id,
                         TeamName = tm.Name,
                         Position = m.Position,
                         Played = s.Played,
@@ -288,6 +292,7 @@ namespace EuroManager.WorldSimulator.Services
                     {
                         Id = s.Id,
                         Name = s.PlayerName,
+                        TeamId = tm.Id,
                         TeamName = tm.Name,
                         Position = m.Position,
                         Played = s.Played,
