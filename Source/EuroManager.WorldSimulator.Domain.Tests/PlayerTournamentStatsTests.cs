@@ -60,8 +60,6 @@ namespace EuroManager.WorldSimulator.Domain.Tests
     [TestFixture]
     public class PlayerTournamentStatsCombiningTests : UnitTestFixture
     {
-        private PlayerTournamentStats stats1;
-        private PlayerTournamentStats stats2;
         private PlayerTournamentStats combinedStats;
 
         [SetUp]

@@ -76,20 +76,29 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
         {
             using (var worldSimulator = new WorldSimulatorService())
             {
-                DateTime date = worldSimulator.GetLastMatchResultDate();
-                var tournaments = worldSimulator.GetTournamentsWithResultsForDate(date);
+                DateTime? date = worldSimulator.GetLastMatchResultDateForActiveTournaments();
 
-                var results = tournaments.Select(t =>
-                    new TournamentResults
+                if (date == null)
+                {
+                    return new RecentResultsModel
                     {
-                        Tournament = t,
-                        MatchResults = worldSimulator.GetMatchResults(t.Id, date),
-                        Standings = worldSimulator.GetLeagueStandings(t.Id)
-                    });
+                        TournamentResults = Enumerable.Empty<TournamentResults>()
+                    };
+                }
+                else
+                {
+                    var tournaments = worldSimulator.GetTournamentsWithResultsForDate(date.Value);
 
-                var model = new RecentResultsModel { TournamentResults = results };
+                    var results = tournaments.Select(t =>
+                        new TournamentResults
+                        {
+                            Tournament = t,
+                            MatchResults = worldSimulator.GetMatchResults(t.Id, date.Value),
+                            Standings = worldSimulator.GetLeagueStandings(t.Id)
+                        });
 
-                return model;
+                    return new RecentResultsModel { TournamentResults = results };
+                }
             }
         }
     }

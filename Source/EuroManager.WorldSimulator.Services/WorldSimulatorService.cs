@@ -147,16 +147,18 @@ namespace EuroManager.WorldSimulator.Services
             return tournaments.ToArray();
         }
 
-        public DateTime GetLastMatchResultDate()
+        public DateTime? GetLastMatchResultDateForActiveTournaments()
         {
             World world = Context.GetDefaultWorld(readOnly: true);
             var q = from r in Context.Results.ReadOnly(true)
                     join s in Context.TournamentSeasons on r.TournamentSeasonId equals s.Id
-                    where s.WorldId == world.Id
+                    where s.WorldId == world.Id && s.IsActive
                     orderby r.Date descending
-                    select r.Date;
+                    select r;
 
-            return q.FirstOrDefault();
+            MatchResult result = q.FirstOrDefault();
+
+            return result == null ? (DateTime?)null : result.Date;
         }
 
         public IEnumerable<Data.Tournament> GetTournamentsWithResultsForDate(DateTime date)
@@ -185,13 +187,25 @@ namespace EuroManager.WorldSimulator.Services
         public IEnumerable<Data.MatchResult> GetRecentMatchResults(int tournamentId)
         {
             World world = Context.GetDefaultWorld(readOnly: true);
-            TournamentSeason season = Context.TournamentSeasons.First(s => s.TournamentId == tournamentId && s.IsActive);
-            DateTime date = Context.Results.Where(r => r.TournamentSeasonId == season.Id).Max(r => r.Date);
+            TournamentSeason season = Context.TournamentSeasons.ReadOnly(true)
+                .First(s => s.TournamentId == tournamentId && s.IsActive);
 
-            var results = Context.GetMatchResults(tournamentId, date, readOnly: true);
+            MatchResult lastResult = Context.Results.ReadOnly(true)
+                .Where(r => r.TournamentSeasonId == season.Id)
+                .OrderByDescending(r => r.Date)
+                .FirstOrDefault();
 
-            var mappedResults = Mapper.Map<MatchResult[], Data.MatchResult[]>(results.ToArray());
-            return mappedResults;
+            if (lastResult == null)
+            {
+                return Enumerable.Empty<Data.MatchResult>();
+            }
+            else
+            {
+                var results = Context.GetMatchResults(tournamentId, lastResult.Date, readOnly: true);
+
+                var mappedResults = Mapper.Map<MatchResult[], Data.MatchResult[]>(results.ToArray());
+                return mappedResults;
+            }
         }
 
         public Data.MatchResultDetails GetMatchResultDetails(int resultId)
