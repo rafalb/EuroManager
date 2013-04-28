@@ -96,7 +96,8 @@ namespace EuroManager.WorldSimulator.Services
                             Stats = s,
                             Position = m.Position,
                             TeamId = tm.Id,
-                            TeamName = tm.Name
+                            TeamName = tm.Name,
+                            TeamShortName = tm.ShortName
                         };
 
             var combinedStats = from s in stats.ToArray()
@@ -109,6 +110,7 @@ namespace EuroManager.WorldSimulator.Services
                                     Name = fs.Stats.PlayerName,
                                     TeamId = fs.TeamId,
                                     TeamName = fs.TeamName,
+                                    TeamShortName = fs.TeamShortName,
                                     Position = fs.Position,
                                     Played = cs.Played,
                                     Goals = cs.Goals,
@@ -232,7 +234,7 @@ namespace EuroManager.WorldSimulator.Services
             }
         }
 
-        public IEnumerable<Data.PlayerStats> GetTopPlayerStats(int tournamentId, int count)
+        public IEnumerable<Data.PlayerStats> GetTopRatedPlayersStats(int tournamentId, int count)
         {
             var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
                     join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
@@ -246,6 +248,7 @@ namespace EuroManager.WorldSimulator.Services
                         Name = s.PlayerName,
                         TeamId = tm.Id,
                         TeamName = tm.Name,
+                        TeamShortName = tm.ShortName,
                         Position = m.Position,
                         Played = s.Played,
                         Goals = s.Goals,
@@ -256,7 +259,7 @@ namespace EuroManager.WorldSimulator.Services
             return q.Take(count).ToArray();
         }
 
-        public IEnumerable<Data.PlayerStats> GetTopGoalScorers(int tournamentId, int count)
+        public IEnumerable<Data.PlayerStats> GetTopGoalScorersStats(int tournamentId, int count)
         {
             var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
                     join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
@@ -270,6 +273,7 @@ namespace EuroManager.WorldSimulator.Services
                         Name = s.PlayerName,
                         TeamId = tm.Id,
                         TeamName = tm.Name,
+                        TeamShortName = tm.ShortName,
                         Position = m.Position,
                         Played = s.Played,
                         Goals = s.Goals,
@@ -280,7 +284,7 @@ namespace EuroManager.WorldSimulator.Services
             return q.Take(count).ToArray();
         }
 
-        public IEnumerable<Data.PlayerStats> GetTopAssistants(int tournamentId, int count)
+        public IEnumerable<Data.PlayerStats> GetTopAssistantsStats(int tournamentId, int count)
         {
             var q = from s in Context.PlayerTournamentStats.ReadOnly(true)
                     join m in Context.SquadMembers on s.PlayerId equals m.PlayerId
@@ -294,6 +298,7 @@ namespace EuroManager.WorldSimulator.Services
                         Name = s.PlayerName,
                         TeamId = tm.Id,
                         TeamName = tm.Name,
+                        TeamShortName = tm.ShortName,
                         Position = m.Position,
                         Played = s.Played,
                         Goals = s.Goals,

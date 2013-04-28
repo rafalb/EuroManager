@@ -9,10 +9,11 @@ namespace EuroManager.WorldSimulator.Domain
 {
     public class Team : IEntity
     {
-        public Team(World world, string name, TeamStrategy strategy, IEnumerable<SquadMember> squad)
+        public Team(World world, string name, string shortName, TeamStrategy strategy, IEnumerable<SquadMember> squad)
         {
             World = world;
             Name = name;
+            ShortName = shortName;
             Strategy = strategy;
             Squad = squad.ToList();
         }
@@ -33,6 +34,10 @@ namespace EuroManager.WorldSimulator.Domain
         [Required]
         [StringLength(100)]
         public string Name { get; private set; }
+
+        [Required]
+        [StringLength(30)]
+        public string ShortName { get; private set; }
 
         public TeamStrategy Strategy { get; private set; }
 

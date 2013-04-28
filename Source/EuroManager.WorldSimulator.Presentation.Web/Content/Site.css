@@ -94,8 +94,10 @@ tr.pager td {
 
 /* login page */
 #loginForm {
-    border-right: solid 2px #c8c8c8;
     float: left;
+    border-left: solid 2px #c8c8c8;
+    margin-left: 20px;
+    padding-left: 20px;
     width: 55%;
 }
 
@@ -127,7 +129,6 @@ tr.pager td {
     }
 
 #socialLoginForm {
-    margin-left: 40px;
     float: left;
     width: 40%;
 }

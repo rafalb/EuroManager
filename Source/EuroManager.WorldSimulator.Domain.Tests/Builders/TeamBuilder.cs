@@ -26,7 +26,7 @@ namespace EuroManager.WorldSimulator.Domain.Tests.Builders
         public Team Build()
         {
             SquadMember[] squad = players.Select(p => new SquadMember(PositionCode.CB, p)).ToArray();
-            return new Team(world, "Test", TeamStrategy.Center, squad);
+            return new Team(world, "Test", "Test", TeamStrategy.Center, squad);
         }
 
         public IEnumerable<Team> Repeat(int count)

@@ -47,7 +47,7 @@
                     <tr>
                         <td>@stats.Position</td>
                         <td><strong>@stats.Name</strong></td>
-                        <td>@Html.TeamLink(stats.TeamId, stats.TeamName)</td>
+                        <td>@Html.TeamLink(stats.TeamId, stats.TeamShortName)</td>
                         <td><strong>@stats.Goals</strong></td>
                         <td>@stats.Assists</td>
                         <td>@stats.Rating.ToString("n2")</td>
@@ -74,7 +74,7 @@
                     <tr>
                         <td>@stats.Position</td>
                         <td><strong>@stats.Name</strong></td>
-                        <td>@Html.TeamLink(stats.TeamId, stats.TeamName)</td>
+                        <td>@Html.TeamLink(stats.TeamId, stats.TeamShortName)</td>
                         <td>@stats.Goals</td>
                         <td><strong>@stats.Assists</strong></td>
                         <td>@stats.Rating.ToString("n2")</td>
@@ -101,7 +101,7 @@
                     <tr>
                         <td>@stats.Position</td>
                         <td><strong>@stats.Name</strong></td>
-                        <td>@Html.TeamLink(stats.TeamId, stats.TeamName)</td>
+                        <td>@Html.TeamLink(stats.TeamId, stats.TeamShortName)</td>
                         <td>@stats.Goals</td>
                         <td>@stats.Assists</td>
                         <td><strong>@stats.Rating.ToString("n2")</strong></td>

@@ -44,9 +44,9 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
 
                 var ratings = new TournamentRatings
                 {
-                    TopScorers = worldSimulator.GetTopGoalScorers(id, 20),
-                    TopAssistants = worldSimulator.GetTopAssistants(id, 20),
-                    TopRating = worldSimulator.GetTopPlayerStats(id, 20)
+                    TopScorers = worldSimulator.GetTopGoalScorersStats(id, 20),
+                    TopAssistants = worldSimulator.GetTopAssistantsStats(id, 20),
+                    TopRating = worldSimulator.GetTopRatedPlayersStats(id, 20)
                 };
 
                 var model = new TournamentResultsModel

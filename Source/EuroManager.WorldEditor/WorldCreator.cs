@@ -32,7 +32,7 @@ namespace EuroManager.WorldEditor
                 Console.WriteLine("Creating club {0}...", club.Name);
                 var clubPlayers = world.Players.Where(p => p.ClubId == club.Id);
                 var squad = clubPlayers.Select(p => new Tuple<PositionCode, int>(p.Position, p.NewId)).ToArray();
-                club.NewId = worldCreationService.CreateTeam(worldId, club.Name, club.Strategy, squad);
+                club.NewId = worldCreationService.CreateTeam(worldId, club.Name, club.Id, club.Strategy, squad);
             }
 
             foreach (var league in world.Leagues)

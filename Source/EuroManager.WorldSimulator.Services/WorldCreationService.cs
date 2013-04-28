@@ -31,10 +31,10 @@ namespace EuroManager.WorldSimulator.Services
             return player.Id;
         }
 
-        public int CreateTeam(int worldId, string name, TeamStrategy strategy, IEnumerable<Tuple<PositionCode, int>> squad)
+        public int CreateTeam(int worldId, string name, string shortName, TeamStrategy strategy, IEnumerable<Tuple<PositionCode, int>> squad)
         {
             var world = Context.Worlds.Find(worldId);
-            var team = new Team(world, name, strategy,
+            var team = new Team(world, name, shortName, strategy,
                 squad.Select(s => new SquadMember(s.Item1, s.Item2)).ToArray());
 
             Context.Teams.Add(team);

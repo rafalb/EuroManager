@@ -102,15 +102,15 @@ namespace EuroManager.WorldSimulator.Tests.Manual
             }
 
             Console.WriteLine("Top rated:");
-            PrintPlayerStats(worldSimulator.GetTopPlayerStats(tournament.Id, 20));
+            PrintPlayerStats(worldSimulator.GetTopRatedPlayersStats(tournament.Id, 20));
             Console.WriteLine();
 
             Console.WriteLine("Top scorers:");
-            PrintPlayerStats(worldSimulator.GetTopGoalScorers(tournament.Id, 10));
+            PrintPlayerStats(worldSimulator.GetTopGoalScorersStats(tournament.Id, 10));
             Console.WriteLine();
 
             Console.WriteLine("Top assistants:");
-            PrintPlayerStats(worldSimulator.GetTopAssistants(tournament.Id, 10));
+            PrintPlayerStats(worldSimulator.GetTopAssistantsStats(tournament.Id, 10));
             Console.WriteLine();
 
             Console.WriteLine();

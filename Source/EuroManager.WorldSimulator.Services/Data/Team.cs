@@ -13,6 +13,8 @@ namespace EuroManager.WorldSimulator.Services.Data
 
         public string Name { get; set; }
 
+        public string ShortName { get; set; }
+
         public TeamStrategy Strategy { get; set; }
     }
 }
