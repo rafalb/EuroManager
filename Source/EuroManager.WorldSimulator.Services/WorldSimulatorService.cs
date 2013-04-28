@@ -147,12 +147,24 @@ namespace EuroManager.WorldSimulator.Services
             return tournaments.ToArray();
         }
 
-        public IEnumerable<Data.Tournament> GetTournamentsWithResultsForToday()
+        public DateTime GetLastMatchResultDate()
+        {
+            World world = Context.GetDefaultWorld(readOnly: true);
+            var q = from r in Context.Results.ReadOnly(true)
+                    join s in Context.TournamentSeasons on r.TournamentSeasonId equals s.Id
+                    where s.WorldId == world.Id
+                    orderby r.Date descending
+                    select r.Date;
+
+            return q.FirstOrDefault();
+        }
+
+        public IEnumerable<Data.Tournament> GetTournamentsWithResultsForDate(DateTime date)
         {
             World world = Context.GetDefaultWorld(readOnly: true);
             var tournaments = from s in Context.TournamentSeasons.ReadOnly(true)
                               where s.WorldId == world.Id
-                              where Context.Results.Any(r => r.TournamentSeasonId == s.Id && r.Date == world.Date)
+                              where Context.Results.Any(r => r.TournamentSeasonId == s.Id && r.Date == date)
                               select new Data.Tournament
                               {
                                   Id = s.Tournament.Id,
@@ -162,10 +174,9 @@ namespace EuroManager.WorldSimulator.Services
             return tournaments.ToArray();
         }
 
-        public IEnumerable<Data.MatchResult> GetTodayMatchResults(int tournamentId)
+        public IEnumerable<Data.MatchResult> GetMatchResults(int tournamentId, DateTime date)
         {
-            World world = Context.GetDefaultWorld(readOnly: true);
-            var results = Context.GetMatchResults(tournamentId, world.Date, readOnly: true);
+            var results = Context.GetMatchResults(tournamentId, date, readOnly: true);
 
             var mappedResults = Mapper.Map<MatchResult[], Data.MatchResult[]>(results.ToArray());
             return mappedResults;

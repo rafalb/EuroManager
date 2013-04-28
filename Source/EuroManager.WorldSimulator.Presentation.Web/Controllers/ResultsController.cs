@@ -76,13 +76,14 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Controllers
         {
             using (var worldSimulator = new WorldSimulatorService())
             {
-                var tournaments = worldSimulator.GetTournamentsWithResultsForToday();
+                DateTime date = worldSimulator.GetLastMatchResultDate();
+                var tournaments = worldSimulator.GetTournamentsWithResultsForDate(date);
 
                 var results = tournaments.Select(t =>
                     new TournamentResults
                     {
                         Tournament = t,
-                        MatchResults = worldSimulator.GetTodayMatchResults(t.Id),
+                        MatchResults = worldSimulator.GetMatchResults(t.Id, date),
                         Standings = worldSimulator.GetLeagueStandings(t.Id)
                     });
 
