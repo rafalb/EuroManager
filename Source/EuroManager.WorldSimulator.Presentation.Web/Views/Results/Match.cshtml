@@ -9,39 +9,36 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    <div>
-        <strong>
-            @Html.TeamLink(Model.Result.Team1Id, Model.Result.Team1Name)
-            @Model.Result.Score1 : @Model.Result.Score2
-            @Html.TeamLink(Model.Result.Team2Id, Model.Result.Team2Name)
-        </strong>
-    </div>
-    <div>
-        @GoalScorers(Model.Result.Goals1) &mdash; @GoalScorers(Model.Result.Goals2)
+    <div class="row">
+        <table class="span6">
+            <tr class="match-result">
+                <td class="home">
+                    @Html.TeamLink(Model.Result.Team1Id, Model.Result.Team1Name)
+                </td>
+                <td class="result">
+                    <a href="@Url.Action("Match", "Results", new { id = Model.Result.Id })">
+                        @Model.Result.Score1&nbsp;:&nbsp;@Model.Result.Score2
+                    </a>
+                </td>
+                <td class="away">
+                    @Html.TeamLink(Model.Result.Team2Id, Model.Result.Team2Name)
+                </td>
+            </tr>
+            <tr class="goal-scorers">
+                <td class="home">
+                    @Html.GoalScorers(Model.Result.Goals1)
+                </td>
+                <td>
+                </td>
+                <td class="away">
+                    @Html.GoalScorers(Model.Result.Goals2)
+                </td>
+            </tr>
+        </table>
     </div>
 
     @PlayerStats(Model.Result.Team1Id, Model.Result.Team1Name, Model.Result.PlayersStats1)
     @PlayerStats(Model.Result.Team2Id, Model.Result.Team2Name, Model.Result.PlayersStats2)
-
-    @helper GoalScorers(IEnumerable<Goal> goals)
-    {
-        @String.Join(", ", goals.Select(FormatGoalInfo))
-    }
-
-    @functions
-    {
-        private string FormatGoalInfo(Goal goal)
-        {
-            if (goal.Extended > 0)
-            {
-                return String.Format("{0} {1}+{2}", goal.ScorerName, goal.Minute, goal.Extended);
-            }
-            else
-            {
-                return String.Format("{0} {1}", goal.ScorerName, goal.Minute);
-            }
-        }
-    }
 
     @helper PlayerStats(int teamId, string teamName, IEnumerable<PlayerMatchStats> playerStats)
     {

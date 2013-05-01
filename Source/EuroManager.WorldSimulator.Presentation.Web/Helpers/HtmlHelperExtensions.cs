@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using EuroManager.WorldSimulator.Services.Data;
 
 namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
 {
@@ -37,12 +38,30 @@ namespace EuroManager.WorldSimulator.Presentation.Web.Helpers
 
         public static MvcHtmlString TeamLink(this HtmlHelper htmlHelper, int teamId, string teamName)
         {
-            return htmlHelper.ActionLink(teamName, "Team", "World", new { id = teamId }, new { @class = "team-link" });
+            return htmlHelper.ActionLink(teamName, "Team", "World", new { id = teamId }, null);
         }
 
         public static MvcHtmlString TournamentLink(this HtmlHelper htmlHelper, int tournamentId, string tournamentName)
         {
-            return htmlHelper.ActionLink(tournamentName, "Tournament", "Results", new { id = tournamentId }, new { @class = "tournament-link" });
+            return htmlHelper.ActionLink(tournamentName, "Tournament", "Results", new { id = tournamentId }, null);
+        }
+
+        public static MvcHtmlString GoalScorers(this HtmlHelper htmlHelper, IEnumerable<Goal> goals)
+        {
+            string goalsInfo = String.Join(", ", goals.Select(FormatGoalInfo));
+            return new MvcHtmlString(goalsInfo);
+        }
+
+        private static string FormatGoalInfo(Goal goal)
+        {
+            if (goal.Extended > 0)
+            {
+                return String.Format("{0} {1}+{2}", goal.ScorerName, goal.Minute, goal.Extended).Replace(" ", "&nbsp;");
+            }
+            else
+            {
+                return String.Format("{0} {1}", goal.ScorerName, goal.Minute).Replace(" ", "&nbsp;");
+            }
         }
     }
 }

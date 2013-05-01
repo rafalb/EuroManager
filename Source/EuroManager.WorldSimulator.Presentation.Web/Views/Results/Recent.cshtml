@@ -9,11 +9,11 @@
 @foreach (var tournamentResults in Model.TournamentResults)
 {
     <div class="row">
-        <div class="span5">
+        <div class="span6">
             <h4>@Html.TournamentLink(tournamentResults.Tournament.Id, tournamentResults.Tournament.Name)</h4>
             @Html.Partial("TournamentMatchResults", tournamentResults.MatchResults)
         </div>
-        <div class="span7">
+        <div class="span6">
             @Html.Partial("TournamentStandings", tournamentResults.Standings)
         </div>
     </div>
